@@ -16,5 +16,4 @@
 * [Strings](topics/strings.md)
 * [Java](topics/java.md)
 * [Java Examples](topics/java-examples.md)
-* C++
 
