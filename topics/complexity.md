@@ -1,6 +1,6 @@
 # Complexity
 
-* Big Oh – measuring run time by counting the number of steps an algorithm takes \(translating to actual time is trivial\).
+* Big Oh – measuring run tiime by counting the number of steps an algorithm takes \(translating to actual time is trivial\).
 * `f(n) = O(g(n))` means `c*g(n)` is an upper bound on `f(n)`.
 * `f(n) = Ω(g(n))` means `c*g(n)` is a lower bound on `f(n)`.
 * `f(n) = Θ(g(n))` means `c1*g(n)` is an upper bound on `f(n)` and `c2*g(n)` is a lower bound on `f(n)`.
