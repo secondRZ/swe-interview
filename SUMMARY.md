@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [C++](c.md)
+* [C++ Details](c.md)
 * [Complexity](topics/complexity.md)
 * [Data Structures](topics/data-structures.md)
 * [Data Structures Examples](topics/data-structures-examples.md)
@@ -16,6 +16,5 @@
 * [Strings](topics/strings.md)
 * [Java](topics/java.md)
 * [Java Examples](topics/java-examples.md)
-* [OOP](topics/oop.md)
 * C++
 
