@@ -3,6 +3,7 @@
 ## STL Classes
 
 * **Array**: C style arrays have their own limitations. They decay to pointers when passing them to functions, which causes them to lose their length information, and dynamic arrays get messy when trying to manage memory on your own.
+
   * Start with`#include <array>`. Then - after using namespace std - `array<int, 5> my_array = {1, 2, 3, 4, 5};` It is passed to `functions with(const array<int, 5>&arr) {}` \(Notice the pass by const reference. This is to prevent the compiler from making a copy of the array for performance reasons. This is a good rule of thumb for STL arrays.\)
 
   * Common methods:
@@ -20,6 +21,7 @@
     * `array.max_size()` returns the maximum size of the array.
 
     * `sort(array.begin(), array.end())`or`(array.rbegin(), array.rend)`to sort the array forward or backward.
+
 * **Vector**: Like a dynamic array, except it manages its own memory. They also keep track of their own length via the `size()` method. Done like `vector<int> = {1, 2, 3, 4, 5}` after using std namespace and `#include <vector>`. Can't enter with random access unless the vector is already that size.
 
   * Common methods:
@@ -44,7 +46,7 @@
 
 * **Deque** \(pronounced "deck"\): A double-ended queue class. Same methods and initialization as a list. Unlike a list inserting in the middle is linear time, but accessing is constant because of random access.
 
-* **Map**: Key value pair of data with unique keys. Also called an associative array. All keys must be the same type, and all values must be the same type. Search, removal, and insertion all have logarithmic complexity as they are implemented with red-black trees. `#include <map`&gt; and then `map <string, int> my_map; `Then you create key value pairs with bracket notation. Or with `= {{"first", 1}, {"second", 2}}`
+* **Map**: Key value pair of data with unique keys. Also called an associative array. All keys must be the same type, and all values must be the same type. Search, removal, and insertion all have logarithmic complexity as they are implemented with red-black trees. `#include <map`&gt; and then `map <string, int> my_map;`Then you create key value pairs with bracket notation. Or with `= {{"first", 1}, {"second", 2}}`
 
 * **Set**: Container that stores unique elements. Sorted after every entry, not the order that you enter the elements. Logarithmic time for insertion, deletion, and search. A multiset is a set that allows duplicates. Same time complexities. Implemented with a Red Black Tree.
 
@@ -86,7 +88,7 @@
 
 * Read a line of that file with `getline(Reader, line);afterstring line;`
 
-* Close that stream the same way.` Reader.close();`
+* Close that stream the same way.`Reader.close();`
 
 * Sometimes you're not reading by lines, you're reading by something else, so check whether you're at the end with `Reader.eof();`
 
