@@ -14,5 +14,7 @@
 * [Operating Systems](topics/operating-systems.md)
 * [System Architecture](topics/system-architecture.md)
 * [System Architecture Examples](topics/system-architecture-examples.md)
-* [Accepting an Offer](accepting-an-offer.md)
+* [[Accepting an Offer](accepting-an-offer.md)](/topics/accepting-an-offer.md)
+
+
 
