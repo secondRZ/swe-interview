@@ -33,15 +33,10 @@
 ## Quick and Dirty Rules
 
 * Set an upper limit on an incrementing variable w/ modulo by the upper limit from the variable. So `hour % = 24` will never increment higher than 24.
-
 * Reset to that upper limit with a decrementing variable with `(variable + upper_limit) % upper_limit`. Then if it goes to -1, it'll be 1 minus the upper limit.
-
 * To get the last digit of an int, modulo by 10. To chop off that last digit, divide by 10.
-
-* Convert from decimal to any base: 
-
+* Convert from decimal to any base:
 * To get the number of a char in the alphabet, convert it to uppercase, then to an int, then subtract it from 64 \(1 under the char 'A', which is 65\).
-
 * For n characters, there are n! \(n factorial\) permutations of their arrangement. Unless they can be both upper and lower case, then it's $$2^n*(n!)$$
 
 ## Math
