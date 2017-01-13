@@ -70,6 +70,9 @@
 ![](/assets/Screen Shot 2017-01-12 at 5.32.06 PM.png)
 
 * In the above example, if you switch the P\(\)s in either function you risk deadlock. \(Mutex changed to 0, but there are no spaces for coke, so emptyBuffers is now 0 and the thread is now asleep. Now no one can do anything because mutex is 0.\) A solution to this is to separate the mutex functionality from the resource control functionality. Use locks for the mutex, and **conditional variables** for the scheduling.
+
+#### Monitors
+
 * Conditional variables allow a thread to sleep \(but be passed to a wait queue to it's not 
 * They have three operations: `wait()`, `signal()` \(wake up one waiter\), and `broadcast()`. These methods are always done **inside of** the lock. `wait()` puts you to sleep **and** releases the lock, and when you exit `wait()` you must acquire the lock. `signal()` places the waiter on the ready queue. This separation of mutex and resource control makes it easier to avoid deadlocking the system.
 
@@ -93,7 +96,6 @@
   * Signal – system message sent from one process to another, not usually used to transfer data but instead used to remotely command the partnered process.
   * Socket – data stream sent over a network interface, either to a different process on the same computer or to another computer on the network.
   * Pipe – two-way data stream between two processes interfaced through standard input and output and read in one character at a time.
-  * Named pipe – pipe implemented through a file on the file system instead of standard input and output.
   * Semaphore – A simple structure that synchronizes multiple processes acting on shared resources.
   * Shared memory – Multiple processes are given access to the same block of memory which creates a shared buffer for the processes to communicate with each other.
 
@@ -102,31 +104,38 @@
 * **Starvation** describes a situation where a thread is unable to gain regular access to shared resources and is unable to make progress. This happens when shared resources are made unavailable for long periods by "greedy" threads. For example, suppose an object provides a synchronized method that often takes a long time to return. If one thread invokes this method frequently, other threads that also need frequent synchronized access to the same object will often be blocked.
 * **Deadlock** is a specific type of starvation where two or more threads are blocked forever, waiting for each other.
 * Thread A owns Resource 1 \(say, the only cup\) and is waiting for Resource 2 \(say, the only straw\). Thread B owns Resource 2 and is waiting for Resource 3 \(say, the only faucet\). Thread C owns Resource 3 and is waiting for Resource 1.
-* How to avoid – make locking order fixed. \(\)
-* What to do if it happens
+* There are four conditions for a deadlock. If you get rid of one you'll fix your deadlock:
+  * Mutex: When one thread has a resource,  another one can't.
+  * Hold and wait: A thread grabs a resource and then waits for a different resource.
+  * No preemption: Resources can only be released voluntarily by the thread.
+  * Circular wait: Threads are waiting for resources in a circular manner.
+* Ways to avoid:
+  * Use the Banker's algorithm to keep things in a _safe state_. Making sure that before it gives away a resource, there are enough resources for at least one thread \(using the same resource, but perhaps not having enough in its control\) to finish and give up its resources. \(Can only pick up a chopstick if it's not the last one, or if someone else already has 2\). Ensuring all threads don't enter a waiting state.
+  * Don't allow waiting \(like ethernet. Everyone goes for the resource, if collision then retry\)
+  * Force resources to be requested in a particular order \(You have to get a cup first, or wait.\)
+* Things you can do if it happens:
   * Terminate thread and force it to give up its resources.
+  * Make sure that resources can be preempted if necessary.
+  * Roll back actions of a thread that is deadlocked.
 
 ## Thread Scheduler
 
 * The scheduler is responsible for allocating the available CPU time among the competing threads.
 * On multiprocessor systems, there is generally some kind of scheduler per processor, which then need to be coordinated in some way.
-* Most systems use priority-based round-robin scheduling to some extent:
-  * A thread of higher priority \(which is a function of base and local priorities\) will preempt a thread of lower priority.
-  * Otherwise, threads of equal priority take turns getting CPU time.
 * A thread can be in states:
-  * `New` – created and waiting to create needed resources
-  * `Runnable/Ready` – waiting for CPU allotment
-  * `Waiting` – cannot continue, waiting for a resource like lock/IO/memory to be paged/sleep to finish/etc.
-  * `Terminated` – finished by waiting to clear resources
-
-![](/assets/Screen Shot 2017-01-12 at 4.58.27 PM.png)
+  ![](/assets/Screen Shot 2017-01-12 at 4.58.27 PM.png)
 
 * Each thread has a quantum, which is effectively how long it is allowed to keep hold of the CPU. Kept in the TCB.
-* Thread quanta are generally defined in terms of some number of clock ticks.
-* A clock tick is typically 1ms under Linux.
-* A quantum is usually a small number of clock ticks, between 10-200 clock ticks \(i.e. 10-200 ms\) under Linux.
-* When an interrupt happens, the scheduler's job is to decide which thread on the ready queue is most appropriate to run on the CPU.
 * Priorities differ between OS, and can be partially set by the user.
+* Thread quanta are generally defined in terms of some number of clock ticks.
+* When an interrupt happens, the scheduler's job is to decide which thread on the ready queue is most appropriate to run on the CPU.
+* A clock tick is typically 1ms under Linux.
+* A quantum is usually a small number of clock ticks, between 10-100 clock ticks \(i.e. 10-100 ms\) under Linux. If its too big, response time suffers. Too small: too much overhead.
+* Round Robin: For `n` threads in the ready queue, and `q = quantum`, each thread gets `1/n` of the CPU time, but never  With this method, no thread ever waits `(1  - n)q` time. `q` must be large enough that there isn't more context switching than executing.
+* Shortest Job First / Shortest Remaining Time First: Calculate the amount of time a thread on the ready queue has remaining. If less than current thread then preempt it and give control to the short thread to run to completion. Could lead to starvation of the longer thread if there are a lot of short threads. This is not 100% accurate because it's hard to tell exactly how long a job will run. Can get a good estimate from the average of past runs of this thread.
+* Most systems use priority-based round-robin scheduling to some extent:
+  * A thread of higher priority \(which is a function of base and local priorities\) will preempt a thread of lower priority.
+  * Otherwise, threads of equal priority take turns getting CPU time
 
 
 
