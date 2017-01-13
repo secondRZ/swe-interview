@@ -1,5 +1,9 @@
 # C++
 
+## Data Types
+
+* **int vs unsigned int**: An unsigned int is good for when you know you won't need negative numbers. Same byte size, but no negatives means that you double the possible positive size \(say from ~-32K - ~32K to 0 - ~64K\)
+
 ## STL Classes
 
 * **Array**: C style arrays have their own limitations. They decay to pointers when passing them to functions, which causes them to lose their length information, and dynamic arrays get messy when trying to manage memory on your own.
