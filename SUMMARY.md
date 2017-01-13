@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [C++ Details](/topics/c-details.md) 
+* [C++ Details](topics/c-details.md) 
 * [Complexity](topics/complexity.md)
 * [Data Structures](topics/data-structures.md)
 * [Data Structures Examples](topics/data-structures-examples.md)
