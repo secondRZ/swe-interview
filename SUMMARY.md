@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Behavioral](/topics/behavioral.md)
+* [Behavioral](topics/behavioral.md)
 * [C++ Details](topics/c-details.md)
 * [Complexity](topics/complexity.md)
 * [Data Structures](topics/data-structures.md)
@@ -14,6 +14,5 @@
 * [Operating Systems](topics/operating-systems.md)
 * [System Architecture](topics/system-architecture.md)
 * [System Architecture Examples](topics/system-architecture-examples.md)
-
-
+* [Accepting an Offer](accepting-an-offer.md)
 
