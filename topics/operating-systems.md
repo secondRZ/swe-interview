@@ -57,7 +57,7 @@
 
 * Mutex is a _cross-process_ lock, same as a lock but system wide.
 * Mutex is a locking mechanism used to synchronize access to a **critical section**.
-* Mutex provides _mut_ual _ex_clusion, either producer or consumer can have the key \(mutex\) and proceed with their work.
+* Mutex provides \_mut\_ual \_ex\_clusion, either producer or consumer can have the key \(mutex\) and proceed with their work.
 
 #### Semaphore
 
