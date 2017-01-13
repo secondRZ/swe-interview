@@ -49,9 +49,11 @@
 
 ## Locks, Mutexes, Semaphores
 
-* _Lock_ is a generic term for an object that works like a key and allows the access to a target object only by one thread. Only the thread which owns the key can unlock the "door".
-* _Monitor_ is a _cross-thread_ lock.
-* Lock allows only one thread to enter the part that's locked and the lock is not shared with any other processes.
+* _Lock_ is a generic term for an object that works like a key and allows the access to a target object only by one thread. Only the thread which owns the key can unlock the "door". Shared data should always only be changed when the door is locked
+
+![](/assets/Screen Shot 2017-01-12 at 5.28.45 PM.png)
+
+* _**Monitor**_ is a lock plus one or more condition variables.
 
 #### Mutex
 
@@ -63,14 +65,37 @@
 
 * Semaphore is signaling mechanism \("I am done, you can carry on" kind of signal\).
 * A kind of lock that allows more than one thread to access the target object. It's like having more keys, so that many people can unlock the door.
-* If upper bound is set to one \(1\) it's the same as a **monitor**.
-* Does the same as a lock but allows `x` number of threads to enter.
+* Does the same as a lock but allows `x` number of threads to enter
 
 ![](/assets/Screen Shot 2017-01-12 at 5.32.06 PM.png)
 
-Implementing a semaphore.
+* In the above example, if you switch the P\(\)s in either function you risk deadlock. \(Mutex changed to 0, but there are no spaces for coke, so emptyBuffers is now 0 and the thread is now asleep. Now no one can do anything because mutex is 0.\) A solution to this is to separate the mutex functionality from the resource control functionality. Use locks for the mutex, and **conditional variables** for the scheduling.
+* Conditional variables allow a thread to sleep \(but be passed to a wait queue to it's not 
+* They have three operations: `wait()`, `signal()` \(wake up one waiter\), and `broadcast()`. These methods are always done **inside of** the lock. `wait()` puts you to sleep **and** releases the lock, and when you exit `wait()` you must acquire the lock. `signal()` places the waiter on the ready queue. This separation of mutex and resource control makes it easier to avoid deadlocking the system.
 
-![](/assets/Screen Shot 2017-01-11 at 9.59.44 PM.png)
+![](/assets/Screen Shot 2017-01-12 at 6.02.39 PM.png)
+
+![](/assets/Screen Shot 2017-01-12 at 6.54.30 PM.png)
+
+![](/assets/Screen Shot 2017-01-12 at 6.54.44 PM.png)
+
+## Race Conditions
+
+* A race condition occurs when 2 or more threads are able to access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any point, you don't know the order at which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are 'racing' to access/change the data.
+* Often problems occur when one thread does a "check-then-act" \(e.g. "check" if the value is X, and then "act" to do something that depends on the value being X\) and another thread does something to the value in between the "check" and the "act".
+* In order to prevent race conditions occurring, typically you would put a lock around the shared data to ensure that only one thread can access the data at a time.
+
+### IPC \(Inter-Process Communication\)
+
+* Sharing data across multiple and commonly specialized processes.
+* IPC methods:
+  * File – record stored on disk, or a record synthesized on demand by a file server, which can be accessed by multiple processes.
+  * Signal – system message sent from one process to another, not usually used to transfer data but instead used to remotely command the partnered process.
+  * Socket – data stream sent over a network interface, either to a different process on the same computer or to another computer on the network.
+  * Pipe – two-way data stream between two processes interfaced through standard input and output and read in one character at a time.
+  * Named pipe – pipe implemented through a file on the file system instead of standard input and output.
+  * Semaphore – A simple structure that synchronizes multiple processes acting on shared resources.
+  * Shared memory – Multiple processes are given access to the same block of memory which creates a shared buffer for the processes to communicate with each other.
 
 ## Deadlocks, Livelocks, Starvation
 
@@ -90,12 +115,6 @@ Implementing a semaphore.
   * Husband and wife eating dinner with 1 spoon, and keep passing the spoon to the other spouse
 * How to avoid live-locking – try to add some randomness.
 * **Starvation** describes a situation where a thread is unable to gain regular access to shared resources and is unable to make progress. This happens when shared resources are made unavailable for long periods by "greedy" threads. For example, suppose an object provides a synchronized method that often takes a long time to return. If one thread invokes this method frequently, other threads that also need frequent synchronized access to the same object will often be blocked.
-
-## Race Conditions
-
-* A race condition occurs when 2 or more threads are able to access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any point, you don't know the order at which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are 'racing' to access/change the data.
-* Often problems occur when one thread does a "check-then-act" \(e.g. "check" if the value is X, and then "act" to do something that depends on the value being X\) and another thread does something to the value in between the "check" and the "act".
-* In order to prevent race conditions occurring, typically you would put a lock around the shared data to ensure that only one thread can access the data at a time.
 
 ## Thread Scheduler
 
@@ -117,37 +136,6 @@ Implementing a semaphore.
 * At these decision points, the scheduler's job is essentially to decide, of all the runnable threads, which are the most appropriate to actually be running on the available CPUs.
 * Priorities differ between OS, and can be partially set by the user.
 * Great article on [CPU Clocks and Clock Interrupts, and Their Effects on Schedulers](http://accu.org/index.php/journals/2185).
-
-### IPC \(Inter-Process Communication\)
-
-* Sharing data across multiple and commonly specialized processes.
-* IPC methods:
-  * File – record stored on disk, or a record synthesized on demand by a file server, which can be accessed by multiple processes.
-  * Signal – system message sent from one process to another, not usually used to transfer data but instead used to remotely command the partnered process.
-  * Socket – data stream sent over a network interface, either to a different process on the same computer or to another computer on the network.
-  * Pipe – two-way data stream between two processes interfaced through standard input and output and read in one character at a time.
-  * Named pipe – pipe implemented through a file on the file system instead of standard input and output.
-  * Semaphore – A simple structure that synchronizes multiple processes acting on shared resources.
-  * Shared memory – Multiple processes are given access to the same block of memory which creates a shared buffer for the processes to communicate with each other.
-
-### Process Signaling
-
-* Signals are a limited form of inter-process communication used in Unix, Unix-like, and other POSIX-compliant operating systems.
-* A signal is an asynchronous notification sent to a process.
-* If the process has previously registered a signal handler, that routine is executed. Otherwise, the default signal handler is executed.
-* Some signals may be ignored by an application \(like `SIGTERM`\).
-* The kernel can generate signals to notify processes of events.
-* For example, `SIGPIPE` will be generated when a process writes to a pipe which has been closed by the reader.
-* There are two signals which cannot be intercepted and handled: `SIGKILL` \(terminate immediately, no cleanup\) and `SIGSTOP`.
-* Pressing `Ctrl+C` in the terminal sends `SIGINT` \(interrupt\) to the process; by default, this causes the process to terminate.
-* `$ kill -9` will send a `SIGKILL`.
-* Notable signals:
-  * `SIGINT` \(2\) – Terminal interrupt
-  * `SIGQUIT` \(3\) – Terminal quit signal
-  * `SIGKILL` \(9\) – Kill \(cannot be caught or ignored\)
-  * `SIGTERM` \(15\) – Termination
-  * `SIGSTOP` \(na\) – Stop executing \(cannot be caught or ignored\)
-* In the JVM we can register for `SIGTERM`/`SIGINT` by: `Runtime.getRuntime().addShutdownHook(new Thread(...));`
 
 
 
