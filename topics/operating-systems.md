@@ -129,6 +129,7 @@
 * Each thread has a quantum, which is effectively how long it is allowed to keep hold of the CPU. Kept in the TCB.
 
 * Priorities differ between OS, and can be partially set by the user.
+
 * Thread quanta are generally defined in terms of some number of clock ticks.
 * When an interrupt happens, the scheduler's job is to decide which thread on the ready queue is most appropriate to run on the CPU.
 * A clock tick is typically 1ms under Linux.

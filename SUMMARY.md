@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [C++ Details](c.md)
+* [C++](c-details.md)[[ ](c-details.md)](/topics/c-details.md)[Details](c-details.md)
 * [Complexity](topics/complexity.md)
 * [Data Structures](topics/data-structures.md)
 * [Data Structures Examples](topics/data-structures-examples.md)
@@ -14,6 +14,6 @@
 * [System Architecture Examples](topics/system-architecture-examples.md)
 * [Networking](topics/networking.md)
 * [Strings](topics/strings.md)
-* [Java](topics/java.md)
-* [Java Examples](topics/java-examples.md)
+
+
 
