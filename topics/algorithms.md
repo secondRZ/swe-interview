@@ -15,10 +15,39 @@
 4. Write the code and optimize the solution with your interviewers.
    1. Can the code be cleaner by refactoring?
 
+## Analysis
+
+* The analysis of an algorithm is compared against itself. Not other algorithms. So even if it takes 1000 steps, if it does that every time, it's constant.
+* Notation \(In order of efficiency\):
+  * **O\(1\)**: Constant: Same number of iterations, no matter how many elements you're dealing with.
+  * **O\(log n\)**: Logarithmic : You don't have to go through every element to find your solution.
+  * **O\(n\)**: Linear: You only have to go through the elements once.
+  * **O\(n log n\)**: n log n: Happens when you do something logarithmic, but you also have to do something for every element. \(Ex: Logarithmic sort, then a linear solution. Or a solution that compares elements in a logarithmic way, but has to repeat that check for every element.\)
+  * **O\(**$$n^2$$**\):** Quadratic: Usually a loop within a loop.
+
 ## Types of Alogorithms
 
 * Dynamic programming – compute solutions for smaller instances of a given problem and use these solutions to construct a solution to the problem. For example: adding a cache to recursive Fibonacci calculation.
 * Greedy algorithms – compute a solution in stages, making choices that are locally optimum at each step; these choices are never undone.
+
+## Quick and Dirty Rules
+
+* Set an upper limit on an incrementing variable w/ modulo by the upper limit from the variable. So `hour % = 24` will never increment higher than 24.
+
+* Reset to that upper limit with a decrementing variable with `(variable + upper_limit) % upper_limit`. Then if it goes to -1, it'll be 1 minus the upper limit.
+
+* To get the last digit of an int, modulo by 10. To chop off that last digit, divide by 10.
+
+* Convert from decimal to any base: 
+
+* To get the number of a char in the alphabet, convert it to uppercase, then to an int, then subtract it from 64 \(1 under the char 'A', which is 65\).
+
+* For n characters, there are n! \(n factorial\) permutations of their arrangement. Unless they can be both upper and lower case, then it's $$2^n*(n!)$$
+
+## Math
+
+* **Euclidean Algo \(Find the greatest common divisor\)**: The GCD of two numbers does not change when one is replaced by the difference between the two. Therefore if you repeatedly replace the larger number with the difference between the two numbers, the numbers will eventually be equal to each other. This is the GCD. Since this can take very long if the larger number is much greater than the smaller, the algo becomes more efficient if you use the modulo of the two numbers until you get 0 \(making the larger number the GCD\), instead of subtraction.
+* **Reverse and Integer**: To get the last digit of any int, just run mod 10 \(remainder of 10 is always the last digit\). Now the current reversed number is the previous reversed number \(originally set to 0\), times 10 \(to give a blank digit\), plus the last digit you just got. Divide the int by 10, which simply erases the last digit since ints don't have any decimals, and save that to the new original number. This will eventually become 0 \(since ints don't have decimals\). That's when the loop stops.
 
 ## Divide-and-Conquer
 
