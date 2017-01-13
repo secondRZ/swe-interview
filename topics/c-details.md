@@ -2,7 +2,7 @@
 
 ## Data Types
 
-* **int vs unsigned int**: An unsigned int is good for when you know you won't need negative numbers. Same byte size, but no negatives means that you double the possible positive size \(say from ~-32K - ~32K to 0 - ~64K\)
+* **int vs unsigned int**: An unsigned int is good for when you know you won't need negative numbers. Same byte size, but no negatives means that you double the possible positive size \(say from ~-32.5K - ~32.5K to 0 - ~65K\)
 
 ## STL Classes
 
