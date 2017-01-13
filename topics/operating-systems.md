@@ -46,6 +46,7 @@
 * Every time the thread running on a CPU actually changes there'll be some negative impact due to the interruption of the instruction pipeline.
 * Switching between threads of different processes will carry a higher cost, since the address-to-memory mappings must be changed, and the contents of the cache almost certainly will be irrelevant to the next process.
 * Imagine you go to deposit $1,000 into an ATM at the same time your wife is depositing $10 into the same shared account at another ATM. The loop for `Deposit(dep_amount)` is  `curBal = GetBalance()` \(Blocks on I/0, control is passed to another thread\) -&gt; `UpdateAmount(dep_amount + curBal)`. The CPU returns a current amount of $0 to your ATM and $0 to your wife's. It updates with $1,000, the updates with $10. You now have $10 in your account instead of $1,010. That code block should have been **atomic**, meaning it always runs to completion or not at all.
+* A **race condition** is what just happened. Two or more threads access shared data and try to change it at the same time.
 
 ## Locks, Mutexes, Semaphores
 
@@ -122,10 +123,11 @@
 
 * The scheduler is responsible for allocating the available CPU time among the competing threads.
 * On multiprocessor systems, there is generally some kind of scheduler per processor, which then need to be coordinated in some way.
-* A thread can be in states:
+* A thread can be in states:  
   ![](/assets/Screen Shot 2017-01-12 at 4.58.27 PM.png)
 
 * Each thread has a quantum, which is effectively how long it is allowed to keep hold of the CPU. Kept in the TCB.
+
 * Priorities differ between OS, and can be partially set by the user.
 * Thread quanta are generally defined in terms of some number of clock ticks.
 * When an interrupt happens, the scheduler's job is to decide which thread on the ready queue is most appropriate to run on the CPU.
