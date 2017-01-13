@@ -14,7 +14,6 @@
 * The size of the stack is set when a thread is created. The size of the heap is set on application startup, but can grow as space is needed \(the allocator requests more memory from the operating system\).
 * The stack is faster because the access pattern makes it trivial to allocate and deallocate memory from it \(a pointer/integer is simply incremented or decremented\), while the heap has much more complex bookkeeping involved in an allocation or memory freeing. Also, each byte in the stack tends to be reused very frequently which means it tends to be mapped to the processor's cache, making it very fast.
 * _Virtual memory_ technique virtualizes the main storage available to a process or task, as a contiguous address space which is unique to each running process, or virtualizes the main storage available to all processes or tasks on the system as a contiguous global address space.
-* [Virtual memory illustrated](http://en.wikipedia.org/wiki/File:Virtual_memory.svg)
 
 ## Processes
 
@@ -83,12 +82,6 @@
 
 ![](/assets/Screen Shot 2017-01-12 at 6.54.44 PM.png)
 
-## Race Conditions
-
-* A race condition occurs when 2 or more threads are able to access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any point, you don't know the order at which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are 'racing' to access/change the data.
-* Often problems occur when one thread does a "check-then-act" \(e.g. "check" if the value is X, and then "act" to do something that depends on the value being X\) and another thread does something to the value in between the "check" and the "act".
-* In order to prevent race conditions occurring, typically you would put a lock around the shared data to ensure that only one thread can access the data at a time.
-
 ### IPC \(Inter-Process Communication\)
 
 * Sharing data across multiple and commonly specialized processes.
@@ -131,6 +124,7 @@
 * Priorities differ between OS, and can be partially set by the user.
 
 * Thread quanta are generally defined in terms of some number of clock ticks.
+
 * When an interrupt happens, the scheduler's job is to decide which thread on the ready queue is most appropriate to run on the CPU.
 * A clock tick is typically 1ms under Linux.
 * A quantum is usually a small number of clock ticks, between 10-100 clock ticks \(i.e. 10-100 ms\) under Linux. If its too big, response time suffers. Too small: too much overhead.
