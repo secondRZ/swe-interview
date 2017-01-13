@@ -97,45 +97,36 @@
   * Semaphore – A simple structure that synchronizes multiple processes acting on shared resources.
   * Shared memory – Multiple processes are given access to the same block of memory which creates a shared buffer for the processes to communicate with each other.
 
-## Deadlocks, Livelocks, Starvation
+## Starvation & Deadlocks
 
-* **Deadlock** describes a situation where two or more threads are blocked forever, waiting for each other.
-* Deadlock is the phenomenon when, typically, two threads each hold an exclusive lock that the other thread needs in order to continue.
-* In principle, there could actually be more threads and locks involved.
-* Deadlock examples:
-  * Locking on two different bank account with two threads, in an opposite order.
-  * Two friends bowing to each other, and each one only gets up when the other one gets up.
-* How to avoid – make locking order fixed \(e.g: always lock on the smaller bank account first, sort by identity hash code, etc.\).
-* **Livelock** – A thread often acts in response to the action of another thread. If the other thread's action is also a response to the action of another thread, then livelock may result. As with deadlock, livelocked threads are unable to make further progress. However, the threads are not blocked – they are simply too busy responding to each other to resume work.
-* This is comparable to two people attempting to pass each other in a corridor: Alphonse moves to his left to let Gaston pass, while Gaston moves to his right to let Alphonse pass. Seeing that they are still blocking each other, Alphonse moves to his right, while Gaston moves to his left. They're still blocking each other, so...
-* Two thread can communicate with `wait();` and `notifyAll();` \(see Java ITC\)
-* Livelock examples:
-  * Two people passing in the corridor
-  * Two threads trying to simultaneously avoid a deadlock
-  * Husband and wife eating dinner with 1 spoon, and keep passing the spoon to the other spouse
-* How to avoid live-locking – try to add some randomness.
 * **Starvation** describes a situation where a thread is unable to gain regular access to shared resources and is unable to make progress. This happens when shared resources are made unavailable for long periods by "greedy" threads. For example, suppose an object provides a synchronized method that often takes a long time to return. If one thread invokes this method frequently, other threads that also need frequent synchronized access to the same object will often be blocked.
+* **Deadlock** is a specific type of starvation where two or more threads are blocked forever, waiting for each other.
+* Thread A owns Resource 1 \(say, the only cup\) and is waiting for Resource 2 \(say, the only straw\). Thread B owns Resource 2 and is waiting for Resource 3 \(say, the only faucet\). Thread C owns Resource 3 and is waiting for Resource 1.
+* How to avoid – make locking order fixed. \(\)
+* What to do if it happens
+  * Terminate thread and force it to give up its resources.
 
 ## Thread Scheduler
 
-* Responsible for sharing out the available CPUs in some way among the competing threads.
+* The scheduler is responsible for allocating the available CPU time among the competing threads.
 * On multiprocessor systems, there is generally some kind of scheduler per processor, which then need to be coordinated in some way.
 * Most systems use priority-based round-robin scheduling to some extent:
   * A thread of higher priority \(which is a function of base and local priorities\) will preempt a thread of lower priority.
-  * Otherwise, threads of equal priority will essentially take turns at getting an allocated slice or quantum of CPU.
+  * Otherwise, threads of equal priority take turns getting CPU time.
 * A thread can be in states:
   * `New` – created and waiting to create needed resources
-  * `Runnable` – waiting for CPU allotment
+  * `Runnable/Ready` – waiting for CPU allotment
   * `Waiting` – cannot continue, waiting for a resource like lock/IO/memory to be paged/sleep to finish/etc.
   * `Terminated` – finished by waiting to clear resources
-* Each thread has a quantum, which is effectively how long it is allowed to keep hold of the CPU.
+
+![](/assets/Screen Shot 2017-01-12 at 4.58.27 PM.png)
+
+* Each thread has a quantum, which is effectively how long it is allowed to keep hold of the CPU. Kept in the TCB.
 * Thread quanta are generally defined in terms of some number of clock ticks.
 * A clock tick is typically 1ms under Linux.
 * A quantum is usually a small number of clock ticks, between 10-200 clock ticks \(i.e. 10-200 ms\) under Linux.
-* At key moments, the thread scheduler considers whether to switch the thread that is currently running on a CPU. These key moments are usually: periodically, if a thread ceases to be runnable, when some other attribute of the thread changes.
-* At these decision points, the scheduler's job is essentially to decide, of all the runnable threads, which are the most appropriate to actually be running on the available CPUs.
+* When an interrupt happens, the scheduler's job is to decide which thread on the ready queue is most appropriate to run on the CPU.
 * Priorities differ between OS, and can be partially set by the user.
-* Great article on [CPU Clocks and Clock Interrupts, and Their Effects on Schedulers](http://accu.org/index.php/journals/2185).
 
 
 
