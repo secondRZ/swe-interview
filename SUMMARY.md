@@ -11,10 +11,10 @@
 * [Bit Operators](topics/bit-operators.md)
 * [OOP](topics/oop.md)
 * [Numbers](topics/numbers.md)
+* [Networking](/topics/networking.md)
 * [Operating Systems](topics/operating-systems.md)
 * [System Architecture](topics/system-architecture.md)
-* [System Architecture Examples](topics/system-architecture-examples.md)
-* [[Accepting an Offer](accepting-an-offer.md)](/topics/accepting-an-offer.md)
+* [Accepting an Offer](topics/accepting-an-offer.md)
 
 
 

@@ -11,8 +11,8 @@ class Rectangle {
   public: 
     Rectangle(int, int);
 }
-  
-Rectangle::Rectangle(int a, int b) { width_ = a; height_ = b; } 
+
+Rectangle::Rectangle(int a, int b) { width_ = a; height_ = b; }
 ```
 
 * Then `Rectangle my_rect(5, 9);` If your constructor allocates any resources using dynamic memory, your destructor should delete them. Destructor is written like the constructor except with a tilde in front of it.
@@ -80,7 +80,7 @@ class Son : public Mother {
 int main () {
   Daughter kelly(0); // Mother: no parameters -> Daughter: int parameter
   Son bud(0); // Mother: int parameter -> Son: int parameter
-  
+
   return 0;
 }
 ```
@@ -142,7 +142,15 @@ int main () {
 * Once you've designed and implemented a class, test it. Either manually by calling all methods and watching for the correct actions, or by writing unit tests.
 * A static variable of a class is shared by all objects of the class. This can be useful for things like getting how many objects of the class there are.
 
+## Object Oriented Design
 
+1. Gather/create all requirements, user stories, and UI design.
+2. Use CRC cards to map each task from each story to a class. Common classes may enclude:
+   1. GUI class to be an interface between the system and the user.
+   2. A controller object that carries out the use cases in response to interaction with the user. \(The controller has methods that can reach different classes. This allows for a programmer to simply use the controller instead of creating different types of classes to accomplish common tasks.\)
+3. Use a sequence diagram to illustrate how each use case is realized by the interaction of objects.
+4. Create a class diagram to show how the classes are related to one another.
+5. Use a UML diagram to create a detailed picture of each class.
 
 
 
