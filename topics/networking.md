@@ -4,8 +4,8 @@
 
 * Say you wanted to send a file from one computer to another. The file would be broken up into packets \(about 1 KB in size\). \(Remember that data is simply organized bytes. 0s and 1s. So a packet of organized binary code\) Each packet contains a from" field, a "to" field designating the address of the receiving computer, the bytes, and the checksum.
 * Ethernet:
-  * The sender waits for a silence on the wire \(maybe other computers on the network are communicating\) then broadcasts the message.
-  * The packets are translated to the wire via voltage and sent through like a train. \(Say for a 1 the point in the wire has 3volts, and for a 0 it has 0volts\). These translated volts simply travel along the wire.
+  * The sender waits for a silence on the wire \(maybe other computers on the network are communicating\) then broadcasts the message to the **switch**.
+  * The packets are translated to the wire via voltage and sent through like a train. \(Say for a 1 that point in the wire has 3volts, and for a 0 it has 0volts\). These translated volts simply travel along the wire.
   * If two computers felt the same silence and sent a packet at the same time, then a "collision" occurs. When this happens, the packet is destroyed. The two computers create a random amount of time to wait, and send the packet again.
   * All computers on the network are listening and can sort of "see" the packet go by, but only receive packets addressed to them. The receiving computer simply reads this data as it comes in.
   * The sender also sends a "checksum" at the end of each packet. Which states what the total number of 1s should have been in the packet. If that number is wrong, then the receiver can request that packet be sent again.
@@ -63,9 +63,8 @@
 * Hides all complexities of packets and unreliability.
 * Sends an ack for every packet received.
 * Queues up data until there's enough to send as a packet.
-* TCP tends to induce packet loss for UDP packets whenever they share a bottleneck node \(same LAN/WAN\).
 * Pathway:
-  * You press enter on a browser
+* * You press enter on a browser
   * Browser parses the url with the protocol, the domain, port, path, etc. \(parameters \(?id=\), anchors \(\#section\)\) \(Default port 80 for Http\)
   * Browser performs DNS lookup to attain the IP of the destination server.
   * Browser opens a socket to begin the game of hot potato between routers. TCP \(destination port added to header. 3 way handshake initiated\) -&gt; IP \(ip of destination server and of current machine added to the packet\) -&gt; Link layer \(machine address added to the packet\).
@@ -80,11 +79,9 @@
 * _User Datagram Protocol_
 * Built on-top of IP, very thin layer over it.
 * Unreliable protocol, usually around 1-5% packet loss.
+* Faster than TCP because there is no connection involved.
 * No guarantee of ordering.
-* Minimizes transmission delay.
-* Send a packet to destination IP address and port; the packet will get passed from computer to computer and arrive at destination or get lost.
-* Receiver simply listens on specific port and gets notified when a packet arrives, with the sender address:port, and packet size.
-* One guarantee over IP – a packet will either arrive as a whole \(all of it\) at destination or not at all \(no partial delivery\).
+* Receiver simply listens on specific port and gets notified when a packet arrives.
 * You need to manually break your data up into packets and send them.
 * You need to make sure you don't send data too fast for your Internet connection to handle.
 * Good for when you want data to get as quickly as possible from client to server without having to wait for lost data to be resent, usually real-time data.
