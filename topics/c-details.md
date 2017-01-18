@@ -5,9 +5,11 @@
 * **int vs unsigned int**: An unsigned int is good for when you know you won't need negative numbers. Same byte size, but no negatives means that you double the possible positive size \(say from ~-32.5K - ~32.5K to 0 - ~65K\)
 * **String**
   * `toupper('c')` and `tolower('C')` return an int representing a character from ascii. You can cast it like `(char)toupper('a')`
+  * `replace(pos, num, "str");` works like splice. Or use iterators: `replace(str.begin(), str.begin() + 2, "str");`
   * `str.append("appended string")` appends one piece of a string to another. Changes the actual string.
   * Convert from char to string like this: `std::string str(1, char);`
   * You can initiate a string with repeating characters like this `std::string str(5, 'a'); // aaaaa`
+  * Check if one string is a rotation of another: Strings must be the same length, and one string must be a substring of the concatenation of the other.
 * **Number**
 
 `Print Every Digit:`
@@ -58,7 +60,7 @@ cout << limited_str.str();
 * **Deque** \(pronounced "deck"\): A double-ended queue class. Same methods and initialization as a list. Unlike a list inserting in the middle is linear time, but accessing is constant because of random access.
 * **Map**: Key value pair of data with unique keys. Also called an associative array. All keys must be the same type, and all values must be the same type. Search, removal, and insertion all have logarithmic complexity as they are implemented with red-black trees. `#include <map`&gt; and then `map <string, int> my_map;`Then you create key value pairs with bracket notation.
 * **Set**: Container that stores unique elements. Sorted after every entry, not the order that you enter the elements. Logarithmic time for insertion, deletion, and search. A multiset is a set that allows duplicates. Same time complexities. Implemented with a Red Black Tree.
-* **Unordered** **Set**: Implemented as a Hashset. Like a map, but no need for a key, only a value. Constant speed for "contains". Best if you need random access for a value instead of an index. Add and remove are also constant.
+* **Unordered** **Set**: Implemented as a Hashset. Like a map, but no need for a key, only a value. Constant speed for "contains". Best if you need random access for a value instead of an index or a key. Add and remove are also constant. `unordered_set<int> set_name;`
 * **Stack**: Implements LIFO \(last in first out\) .
 * **Queue**: Implements FIFO \(first in first out\).
 * **Algorithms**:

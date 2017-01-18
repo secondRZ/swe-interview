@@ -29,10 +29,12 @@
 * Stacks – LIFO \(push, pop\)
   * Very efficient, good to use when retrieval order doesn't matter at all \(like for batch jobs\).
   * LIFO usually happens in recursive algorithms.
+  * Good for checking symmetry.
 * Queues – FIFO \(enqueue, dequeue\)
   * Average "waiting time" for jobs is identical for FIFO and LIFO. Maximum time varies \(FIFO minimizes max waiting time\).
   * Harder to implement, appropriate when order is important.
   * Used for searches in graphs.
+  * Good for checking repeating.
 * Stacks and Queues can be effectively implemented by dynamic arrays or linked lists. If upper bound of size is known, static arrays can also be used.
 
 ## Dictionary Structures
