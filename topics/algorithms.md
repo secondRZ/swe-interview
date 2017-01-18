@@ -15,7 +15,7 @@
 4. Write the code and optimize the solution with your interviewers.
    1. Can the code be cleaner by refactoring?
 
-## Analysis
+## Complexity / Analysis
 
 * The analysis of an algorithm is compared against itself. Not other algorithms. So even if it takes 1000 steps, if it does that every time, it's constant.
 * Notation \(In order of efficiency\):
@@ -23,7 +23,7 @@
   * **O\(log n\)**: Logarithmic : You don't have to go through every element to find your solution.
   * **O\(n\)**: Linear: You only have to go through the elements once.
   * **O\(n log n\)**: n log n: Happens when you do something logarithmic, but you also have to do something for every element. \(Ex: Logarithmic sort, then a linear solution. Or a solution that compares elements in a logarithmic way, but has to repeat that check for every element.\)
-  * **O\(**$$n^2$$**\):** Quadratic: Usually a loop within a loop.
+  * **O\(**$$$$**n^2\):** Quadratic: Usually a loop within a loop.
 
 ## Types of Alogorithms
 
