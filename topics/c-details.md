@@ -9,7 +9,6 @@
   * `str.append("appended string")` appends one piece of a string to another. Changes the actual string.
   * Convert from char to string like this: `std::string str(1, char);`
   * You can initiate a string with repeating characters like this `std::string str(5, 'a'); // aaaaa`
-  * Check if one string is a rotation of another: Strings must be the same length, and one string must be a substring of the concatenation of the other.
 * **Number**
 
 `Print Every Digit:`
