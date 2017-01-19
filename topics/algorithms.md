@@ -18,12 +18,16 @@
 ## Complexity / Analysis
 
 * The analysis of an algorithm is compared against itself. Not other algorithms. So even if it takes 1000 steps, if it does that every time, it's constant.
-* Notation \(In order of efficiency\):
+* The purpose of **asymptotic notation** \(getting rid of everything around the _n_ that become insignificant at infinite\) is to give you an idea for the rate of growth on any machine, since assuming each operation takes 1 unit of time is overly presumptuous. \(Machines differ with number of cores, read/write speed, etc.\)
+* Big O is the worst case, and most common that we care about. Omega \(As in, Ω\(1\)\) is the **best** case. Theta is for when the best and worst case are the same. Like if you store a `len` variable to check the length of a sequence. That's theta of 1. Or constant.
+* Big O \(In order of efficiency\):
   * **O\(1\)**: Constant: Same number of iterations, no matter how many elements you're dealing with.
-  * **O\(log n\)**: Logarithmic : You don't have to go through every element to find your solution.
+  * **O\(log n\)**: Logarithmic : Possible iterations cuts in half every run of the loop.
   * **O\(n\)**: Linear: You only have to go through the elements once.
-  * **O\(n log n\)**: n log n: Happens when you do something logarithmic, but you also have to do something for every element. \(Ex: Logarithmic sort, then a linear solution. Or a solution that compares elements in a logarithmic way, but has to repeat that check for every element.\)
-  * **O\(**$$$$**n^2\):** Quadratic: Usually a loop within a loop.
+  * **O\(n log n\)**: n log n or "linearithmic": Happens when you do something logarithmic, but you also have to do something for every element. \(Ex: Logarithmic sort, then a linear solution. Or a solution that compares elements in a logarithmic way, but has to repeat that check for every element.\)
+  * **O\(n^2\):** Quadratic: Usually a loop within a loop, unless the inner loop's counter is not initialized every time the outer loop resets.
+  * **O\(2^n\)**: Exponential.
+* Space complexity works the same way. If your function take a collection of n elements, and creates an exact copy of that collection, then your function is linear in its space complexity. Even if you erase it later.
 
 ## Types of Alogorithms
 

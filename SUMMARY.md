@@ -6,7 +6,6 @@
 * [Algorithms](topics/algorithms.md)
 * [Algorithms Examples](topics/algorithms-examples.md)
 * [Data Structures](topics/data-structures.md)
-* [Data Structures Examples](topics/data-structures-examples.md)
 * [Bit Operators](topics/bit-operators.md)
 * [OOP](topics/oop.md)
 * [Numbers](topics/numbers.md)
