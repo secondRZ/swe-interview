@@ -31,15 +31,14 @@ array<array<int, 3>, 2> my_arr = {{{1, 2, 3}, {4, 5, 6}}};
 ## Stacks and Queues
 
 * Stacks – LIFO \(push, pop\)
-  * Very efficient, good to use when retrieval order doesn't matter at all \(like for batch jobs\).
-  * LIFO usually happens in recursive algorithms.
   * Good for checking symmetry.
-* Queues – FIFO \(enqueue, dequeue\)
-  * Average "waiting time" for jobs is identical for FIFO and LIFO. Maximum time varies \(FIFO minimizes max waiting time\).
-  * Harder to implement, appropriate when order is important.
-  * Used for searches in graphs.
+  * Can only see the `top()` of it. Think real life. If standing directly over a stack of plates, you couldn't see any other plates.
+  * Constant time for `push`, `pop`, `top`, `size`, and `empty`.
+* Queues – FIFO \(push = enqueue, pop = dequeue in C++\)
   * Good for checking repeating.
-* Stacks and Queues can be effectively implemented by dynamic arrays or linked lists. If upper bound of size is known, static arrays can also be used.
+  * Can see `front()` and `back()`.
+  * Constant time for `push`, `pop`, `front`, `back`, `size`, and `empty`.
+* No iterating over these. Just accessing and modifying the edges.
 
 ## Dictionary Structures
 
