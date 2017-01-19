@@ -10,6 +10,12 @@
 * Easy to iterate over quickly, because of memory locality.
 * Cannot adjust their size in the middle of a program's execution.
 * _Dynamic arrays_ double in size whenever insert index is out of bound.
+* Multi-dimensional STL arrays need an extra set of braces around them: 
+
+```cpp
+array<int, 5> num_arr = {1, 2, 3, 4, 5};
+array<array<int, 3>, 2> my_arr = {{{1, 2, 3}, {4, 5, 6}}};
+```
 
 ## Linked Lists
 
@@ -254,8 +260,6 @@ Use BST over hash table for:
 * False positive matches **are possible**, but false negatives are not.
 * A query returns either "possibly in set" or "definitely not in set".
 
-
-
 # Data Structures Examples
 
 ## Stack
@@ -436,8 +440,6 @@ public class BitSet {
     }
 }
 ```
-
-
 
 
 
