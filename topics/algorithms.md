@@ -29,11 +29,6 @@
   * **O\(2^n\)**: Exponential.
 * Space complexity works the same way. If your function take a collection of n elements, and creates an exact copy of that collection, then your function is linear in its space complexity. Even if you erase it later.
 
-## Types of Alogorithms
-
-* Dynamic programming – compute solutions for smaller instances of a given problem and use these solutions to construct a solution to the problem. For example: adding a cache to recursive Fibonacci calculation.
-* Greedy algorithms – compute a solution in stages, making choices that are locally optimum at each step; these choices are never undone.
-
 ## Quick and Dirty Rules
 
 * Set an upper limit on an incrementing variable w/ modulo by the upper limit from the variable. So `hour % = 24` will never increment higher than 24.
@@ -42,18 +37,8 @@
 * Convert from decimal to any base:
 * To get the number of a char in the alphabet, convert it to uppercase, then to an int, then subtract it from 64 \(1 under the char 'A', which is 65\).
 * For n characters, there are n! \(n factorial\) permutations of their arrangement. Unless they can be both upper and lower case, then it's $$2^n*(n!)$$
-
-## Math
-
 * **Euclidean Algo \(Find the greatest common divisor\)**: The GCD of two numbers does not change when one is replaced by the difference between the two. Therefore if you repeatedly replace the larger number with the difference between the two numbers, the numbers will eventually be equal to each other. This is the GCD. Since this can take very long if the larger number is much greater than the smaller, the algo becomes more efficient if you use the modulo of the two numbers until you get 0 \(making the larger number the GCD\), instead of subtraction.
 * **Reverse and Integer**: To get the last digit of any int, just run mod 10 \(remainder of 10 is always the last digit\). Now the current reversed number is the previous reversed number \(originally set to 0\), times 10 \(to give a blank digit\), plus the last digit you just got. Divide the int by 10, which simply erases the last digit since ints don't have any decimals, and save that to the new original number. This will eventually become 0 \(since ints don't have decimals\). That's when the loop stops.
-
-## Divide-and-Conquer
-
-* Break a complex algorithm into small, often recursive parts.
-* Allow better parallelization.
-* To use divide-and-conquer as an algorithm design technique, we must divide the problem into two smaller subproblems, solve each of them recursively, and then meld the two partial solutions into one solution to the full problem. Whenever the merging takes less time than solving the two subproblems, we get an efficient algorithm.
-* Mergesort is a classic example of divide and conquer \(the merge operation is linear\).
 
 ## Sorting
 
@@ -258,8 +243,6 @@
 * For `NP`-complete problems, no polynomial-time algorithms are known for solving them \(although they can be verified in polynomial time\).
 * The most notable characteristic of `NP`-complete problems is that no fast solution to them is known.
 * `NP`-hard: non-deterministic polynomial time.
-
-
 
 # Algorithms Code Examples
 
@@ -698,8 +681,6 @@ public void dijkstra(Graph graph, Vertex source) {
     }
 }
 ```
-
-
 
 
 
