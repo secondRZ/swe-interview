@@ -132,32 +132,27 @@ Used when your sort must be stable \(can't use quicksort or heapsort\), or must 
 
 ##### Quicksort: Average: `O(n log n)`, worst `O(n^2)`
 
-```java
-public void sort(int[] a) {
-    sort(a, 0, a.length - 1);
-}
-
-private void sort(int[] a, int low, int high) {
-    if (low >= high) return;
-    int pivot = partition(a, low, high);
-    sort(a, low, pivot - 1);
-    sort(a, pivot + 1, high);
-}
-
-private int partition(int[] a, int low, int high) {
-    int pivot = low;
-    int rand = new Random().nextInt(high - low + 1) + low;
-    swap(a, low, rand);
-
-    for (int i = low + 1; i <= high; i++) {
-        if (a[i] < a[pivot]) {
-            swap(a, i, pivot + 1);
-            swap(a, pivot, pivot + 1);
-            pivot++;
+```cpp
+int partition(int * array, int start, int end) {
+    int pivot = array[end];
+    int p_index = start;
+    for (int i = start; i < end; i++) {
+        if (array[i] <= pivot) {
+            swap(array[i], array[p_index]);
+            p_index++;
         }
     }
+    swap(array[p_index], array[end]);
+    return p_index;
+}
 
-    return pivot;
+void QuickSort(int * array, int start, int end) {
+    if (start >= end)
+        return;
+    
+    int p_index = partition(array, start, end);
+    QuickSort(array, start, p_index - 1);
+    QuickSort(array, p_index + 1, end);
 }
 ```
 
