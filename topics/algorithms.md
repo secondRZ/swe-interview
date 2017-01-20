@@ -45,13 +45,90 @@
 * "Naive" sorting algorithms run in `O(n^2)` while enumerating all pairs.
 * "Sophisticated" sorting algorithms run on `O(nlog(n))`.
 * An important algorithm design technique is to use sorting as a basic building block, because many other problems become easy once a set of items is sorted, like: searching, finding closest pair, finding unique elements, frequency distribution, selection by order, set of numbers intersection, etc.
-* _Selection Sort_ – each time find the minimum item, remove it from the list, and continue to find the next minimum; takes `O(n^2)`.
-* _Insertion Sort_ – iterate thru `i = 2 to n`, `j = i to 1` and swap needed items; takes `O(n^2)`.
-* Insertion sort is a little more efficient than selection, because the inner `j` loop uses a while, only scanning until the right place in the sorted part of the array is found for the new item. Selection sort scans all items to always find the minimum item.
+
+##### Selection Sort
+
+```java
+public void sort(int[] a) {
+    for (int i = 0; i < a.length; i++)
+        swap(a, i, min(a, i));
+}
+
+private int min(int[] a, int start) {
+    int smallest = start;
+
+    for (int i = start + 1; i < a.length; i++)
+        if (a[i] < a[smallest])
+            smallest = i;
+
+    return smallest;
+}
+```
+
+* Each time find the minimum item, remove it from the list, and continue to find the next minimum; takes `O(n^2)`.
 * Selection and Insertion are very similar, with a difference that after `k` iterations Selection will have the `k` smallest elements in the input, and Insertion will have the arbitrary first `k` elements in the input that it processed.
 * Selection Sort _writes_ less to memory \(Insertion writes every step because of swapping\), so it may be preferable in cases where writing to memory is significantly more expensive than reading.
 
-### Mergesort
+##### Insertion Sort
+
+```java
+public void sort(int[] a) {
+    for (int j = 1; j < a.length; j++) {
+        int key = a[j];
+        int i = j - 1;
+
+        while (i >= 0 && a[i] > key) {
+            a[i + 1] = a[i];
+            i--;
+        }
+
+        a[i + 1] = key;
+    }
+}
+```
+
+* Iterate thru `i = 2 to n`, `j = i to 1` and swap needed items; takes `O(n^2)`.
+* Insertion sort is a little more efficient than selection, because the inner `j` loop uses a while, only scanning until the right place in the sorted part of the array is found for the new item. Selection sort scans all items to always find the minimum item.
+
+##### Mergesort
+
+```java
+public int[] sort(int[] a) {
+    if (a.length <= 1) return a;
+    return sort(a, 0, a.length - 1);
+}
+
+private int[] sort(int[] a, int low, int high) {
+    if (low == high)
+        return new int[]{a[low]};
+
+    int mid = (low + high) / 2;
+    int[] sorted1 = sort(a, low, mid);
+    int[] sorted2 = sort(a, mid + 1, high);
+
+    return merge(sorted1, sorted2);
+}
+
+private int[] merge(int[] a, int[] b) {
+    int[] res = new int[a.length + b.length];
+    int i = 0, j = 0;
+
+    while (i < a.length && j < b.length) {
+        if (a[i] < b[j])
+            res[i + j] = a[i++];
+        else
+            res[i + j] = b[j++];
+    }
+
+    while (i < a.length)
+        res[i + j] = a[i++];
+
+    while (j < b.length)
+        res[i + j] = b[j++];
+
+    return res;
+}
+```
 
 * A recursive approach to sorting involves partitioning the elements into two groups, sorting each of the smaller problems recursively, and then interleaving \(merging\) the two sorted lists to totally order the elements.
 * The efficiency of mergesort depends upon how efficiently we combine the two sorted halves into a single sorted list.
@@ -61,7 +138,36 @@
 * When sorting arrays with mergesort an additional 3rd array buffer is _required_ for the merging operation \(can be implemented in-place tho without an additional buffer, but requires complicated buffer manipulation\).
 * Classic _divide-and-conquer_ algorithm, the key is in the merge implementation.
 
-### Quicksort
+##### Quicksort
+
+```java
+public void sort(int[] a) {
+    sort(a, 0, a.length - 1);
+}
+
+private void sort(int[] a, int low, int high) {
+    if (low >= high) return;
+    int pivot = partition(a, low, high);
+    sort(a, low, pivot - 1);
+    sort(a, pivot + 1, high);
+}
+
+private int partition(int[] a, int low, int high) {
+    int pivot = low;
+    int rand = new Random().nextInt(high - low + 1) + low;
+    swap(a, low, rand);
+
+    for (int i = low + 1; i <= high; i++) {
+        if (a[i] < a[pivot]) {
+            swap(a, i, pivot + 1);
+            swap(a, pivot, pivot + 1);
+            pivot++;
+        }
+    }
+
+    return pivot;
+}
+```
 
 * Can be done in-place \(using swaps\), doesn't require an additional buffer.
 * Select a random item `p` from the items we want to sort, and split the remaining `n-1` items to two groups, those that are above `p` and below `p`. Now sort each group in itself. This leaves `p` in its exact place in the sorted array.
@@ -76,9 +182,41 @@
 * Quicksort can be applied to real world problems – like the _Nuts and Bolts_ problem \(first find a match between a random nut and bolt, then split the rest into two groups: bigger and smaller. Repeat in each group\).
 * Experiments show that a well implemented quicksort in typically 2-3 times faster than mergesort or heapsort. The reason is the innermost loop operations are simpler. This could change on specific real world problems, because of system behavior and implementation. They have the same asymptotic behavior after all. Best way to know is to implement both and test.
 
-### Heapsort
+##### Heapsort
 
 \(See also [Heap in Data Structures](topics/data-structures.md#heap)\)
+
+```java
+public void sort(int[] a) {
+    // build a max-heap
+    for (int i = a.length - 1; i >= 0; i--)
+        heapify(a, i, a.length);
+
+    // extract max element from the head to the end and shrink the size of the heap
+    for (int last = a.length - 1; last >= 0; last--) {
+        swap(a, 0, last);
+        heapify(a, 0, last);
+    }
+}
+
+// heapify for a max-heap:
+private void heapify(int[] a, int root, int length) {
+    int left = 2 * root + 1;
+    int right = 2 * root + 2;
+    int largest = root;
+
+    if (left < length && a[largest] < a[left])
+        largest = left;
+
+    if (right < length && a[largest] < a[right])
+        largest = right;
+
+    if (largest != root) {
+        swap(a, root, largest);
+        heapify(a, largest, length);
+    }
+}
+```
 
 * An implementation of selection sort, but with a priority queue \(implemented by a balanced binary tree\) as the underlying data structure, and not a linked list.
 * It's an in-place sort, meaning it uses no extra memory besides the array containing the elements to be sorted.
@@ -87,13 +225,13 @@
 * Continue until we're done with the entire heap.
 * Time complexity is `O(nlog(n))`.
 
-### Distribution Sort
+##### Distribution Sort
 
 * Split a big problem into sub \(ordered\) "buckets" which need to be sorted themselves, but then all results can just be concatenated. An example: a phone book. Split names into buckets for the starting letter of the last name, sort each bucket, and then combine all strings to one big sorted phone book. We can further split each pile based on the second letter of the last name, reducing the problem even further.
 * Bucketing is effective if we are confident that the distribution of data will be **roughly uniform** \(much like hash tables\).
 * Performance can be terrible if data distribution is not like we thought it is.
 
-### External Sort
+##### External Sort
 
 * Allows sorting more data then can fit into memory.
 * For example, assume we have 900MB file, 100MB RAM.
@@ -106,7 +244,7 @@
 * Total runtime is `nlog(n)`.
 * If we have a lot of data and limited RAM, we can run the whole process in two passes: split to chunks \(500 files\), combine 25 chunks at a time resulting in 20 larger chunks, run second merge pass to merge the 20 larger sorted chunks.
 
-### Linear Sorting Algorithms
+##### Linear Sorting Algorithms
 
 * Counting sort – `O(n)`, stable, assuming input is integers between `0...k` and that `k = O(n)` – create a new array that first stores the number of appearances for each index, and then accumulate each of the cells to know how many total elements were before each index.
 * Radix sort – use counting sort multiple times to sort on the least significant digit, then the next one, etc.
@@ -114,7 +252,7 @@
 
 ## Searching
 
-### Binary Search
+##### Binary Search
 
 * Fast algorithm for searching in a **sorted** array of keys.
 * To search for key `q`, we compare `q` to the middle key `S[n/2]`. If `q` appears before `S[n/2]`, it must reside in the top half of `S`; if not, it must reside in the bottom half of `S`. Repeat recursively.
@@ -124,7 +262,7 @@
   * One-sided binary search: if we don't know the size of the array, we can test repeatedly at larger intervals \(`A[1]`, `A[2]`, `A[4]`, `A[8]`, `A[16]`, `...`\) until we find an item larger than our search term, and then narrow in using regular binary search. This results in `2*log(p)` \(where `p` is the index we're after\), regardless how large the array is. This is most useful when `p` is relatively close to our start position.
 * Binary search can be used to find the roots of continuous functions, assuming that we have two points where `f(x) > 0` and `f(x) < 0` \(there are better algorithms which use interpolation to find the root faster, but binary search still works well\).
 
-## Randomization
+##### Randomization
 
 * Randomize array \(`O(nlogn)`\) – create a new array with "priorities", which are random numbers between `1 - n^3`, then sort the original array based on new priorities array as the keys.
 * Randomize array in place \(`O(n)`\) – swap `a[i]` with `a[rand(i, n)]`.
@@ -142,9 +280,9 @@
   * The algorithm divides the array to groups of size 5 \(the last group can be of any size &lt;= 5\) and then calculates the median of each group by sorting and selecting the middle element.
   * It then finds the median of these medians by recursively calling itself, and selects the median of medians as the pivot for partition.
 
-## Graph Algorithms
+## Graphs
 
-### BFS Graph Traversal
+##### BFS Graph Traversal
 
 * Breadth-first search usually serves to find shortest-path distances from a given source in terms of _number of edges_ \(not weight\).
 * Start exploring the graph from the given root \(can be any vertex\) and slowly progress out, while processing the oldest-encountered vertices first.
@@ -174,7 +312,7 @@
     * Such a graph can be validated with BFS: start with the root, and keep coloring each new vertex the opposite color of it's parent. Then make sure that no non-discovered edge links two vertices of the same color. If no conflicts are found – problem solved. Otherwise, it isn't a bipartite graph.
     * BFS allows us to separate vertices into two groups after running this algorithm, which we can't do just from the structure of the graph.
 
-### DFS Graph Traversal
+##### DFS Graph Traversal
 
 * Depth-first search is often a subroutine in another algorithm.
 * Starts exploring the graph from the root, but immediately expanding as far as possible \(in contrast to BFS: breadth vs depth\). Retraction back is only done when all neighboring vertices have already been processed.
@@ -191,11 +329,7 @@
   * Finding articulation vertices \(articulation or cut-node is a vertex that removing it disconnects a connected component, causing loss of connectivity\). Finding articulation vertices by brute-force is `O(n(n + m))`.
   * Strongly connected components – in a SCC of a directed graph, every pair of vertices `u` and `v` are reachable from each other.
 
-### Minimum Spanning Tree
-
-* Convert a weighted graph to a tree reaching all nodes \(_spanning_\), while having the minimal weight \(_minimum_\).
-
-### Shortest-Paths
+##### Shortest-Paths
 
 * Find the path with minimal edge _weights_ between a source vertex and every other vertex in the graph.
 * Similarly, BFS finds a shortest-path for an _unweighted_ graph in terms of number of edges.
@@ -207,18 +341,18 @@
 * There may be more than one shortest-path between two vertices and more than one shortest-paths tree for a source vertex.
 * Each vertex `v` maintains an attribute `v.distance` which is an upper bound on the weight of a shortest-path \(_"shortest-path estimate"_\) from source `source` to `v`; `v.distance` is initialized to `Integer.MAX_VALUE` and `source.distance` is initialized to `0`.
 * The action of _relaxing_ an edge `(from, to)` tests whether we can improve the shortest-path to `to` found so far by going through `from`, and if so updating `to.parent` and `to.distance` \(and the priority queue\).
+* **Dijkstra's Algorithm**
+  * Algorithm for finding the shortest-paths between nodes in a graph, which may represent, for example, road networks.
+  * Assumes that edge weight is nonnegative.
+  * Fixes a single node as the _source_ node and finds shortest-paths from the source to all other nodes in the graph, producing a shortest-path tree.
+  * The algorithm uses a min-priority queue for vertices based on their `.distance` value \(shortest-path estimate\)
+  * It also maintains a set of vertices whose final shortest-path weights from the source have already been determined.
+* **A\***
+  * An extension of Dijkstra which achieves better time performance by using heuristics.
 
-#### Dijkstra's Algorithm
+##### Minimum Spanning Tree
 
-* Algorithm for finding the shortest-paths between nodes in a graph, which may represent, for example, road networks.
-* Assumes that edge weight is nonnegative.
-* Fixes a single node as the _source_ node and finds shortest-paths from the source to all other nodes in the graph, producing a shortest-path tree.
-* The algorithm uses a min-priority queue for vertices based on their `.distance` value \(shortest-path estimate\).
-* It also maintains a set of vertices whose final shortest-path weights from the source have already been determined.
-
-#### A\*
-
-* An extension of Dijkstra which achieves better time performance by using heuristics.
+* Convert a weighted graph to a tree reaching all nodes \(_spanning_\), while having the minimal weight \(_minimum_\).
 
 ## Backtracking
 
@@ -245,18 +379,6 @@
 * `NP`-hard: non-deterministic polynomial time.
 
 # Algorithms Code Examples
-
-All examples can use the utility function `swap`:
-
-```java
-private void swap(int[] a, int i, int j) {
-    int tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-}
-```
-
-## Tree Traversal
 
 ### In-Order
 
@@ -356,148 +478,6 @@ public void postOrder(Tree tree) {
 ```
 
 ## Sorting
-
-### Insertion Sort
-
-```java
-public void sort(int[] a) {
-    for (int j = 1; j < a.length; j++) {
-        int key = a[j];
-        int i = j - 1;
-
-        while (i >= 0 && a[i] > key) {
-            a[i + 1] = a[i];
-            i--;
-        }
-
-        a[i + 1] = key;
-    }
-}
-```
-
-### Selection Sort
-
-```java
-public void sort(int[] a) {
-    for (int i = 0; i < a.length; i++)
-        swap(a, i, min(a, i));
-}
-
-private int min(int[] a, int start) {
-    int smallest = start;
-
-    for (int i = start + 1; i < a.length; i++)
-        if (a[i] < a[smallest])
-            smallest = i;
-
-    return smallest;
-}
-```
-
-### Mergesort
-
-```java
-public int[] sort(int[] a) {
-    if (a.length <= 1) return a;
-    return sort(a, 0, a.length - 1);
-}
-
-private int[] sort(int[] a, int low, int high) {
-    if (low == high)
-        return new int[]{a[low]};
-
-    int mid = (low + high) / 2;
-    int[] sorted1 = sort(a, low, mid);
-    int[] sorted2 = sort(a, mid + 1, high);
-
-    return merge(sorted1, sorted2);
-}
-
-private int[] merge(int[] a, int[] b) {
-    int[] res = new int[a.length + b.length];
-    int i = 0, j = 0;
-
-    while (i < a.length && j < b.length) {
-        if (a[i] < b[j])
-            res[i + j] = a[i++];
-        else
-            res[i + j] = b[j++];
-    }
-
-    while (i < a.length)
-        res[i + j] = a[i++];
-
-    while (j < b.length)
-        res[i + j] = b[j++];
-
-    return res;
-}
-```
-
-### Quicksort
-
-```java
-public void sort(int[] a) {
-    sort(a, 0, a.length - 1);
-}
-
-private void sort(int[] a, int low, int high) {
-    if (low >= high) return;
-    int pivot = partition(a, low, high);
-    sort(a, low, pivot - 1);
-    sort(a, pivot + 1, high);
-}
-
-private int partition(int[] a, int low, int high) {
-    int pivot = low;
-    int rand = new Random().nextInt(high - low + 1) + low;
-    swap(a, low, rand);
-
-    for (int i = low + 1; i <= high; i++) {
-        if (a[i] < a[pivot]) {
-            swap(a, i, pivot + 1);
-            swap(a, pivot, pivot + 1);
-            pivot++;
-        }
-    }
-
-    return pivot;
-}
-```
-
-### Heapsort
-
-```java
-public void sort(int[] a) {
-    // build a max-heap
-    for (int i = a.length - 1; i >= 0; i--)
-        heapify(a, i, a.length);
-
-    // extract max element from the head to the end and shrink the size of the heap
-    for (int last = a.length - 1; last >= 0; last--) {
-        swap(a, 0, last);
-        heapify(a, 0, last);
-    }
-}
-
-// heapify for a max-heap:
-private void heapify(int[] a, int root, int length) {
-    int left = 2 * root + 1;
-    int right = 2 * root + 2;
-    int largest = root;
-
-    if (left < length && a[largest] < a[left])
-        largest = left;
-
-    if (right < length && a[largest] < a[right])
-        largest = right;
-
-    if (largest != root) {
-        swap(a, root, largest);
-        heapify(a, largest, length);
-    }
-}
-```
 
 ### Counting Sort
 
