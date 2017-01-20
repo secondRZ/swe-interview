@@ -167,12 +167,12 @@ Almost always faster than mergesort and heapsort, even with its `n^2` worst case
 
 1. The function takes an `array`, a `start` index, and an `end` index that needs to be sorted. These mark the boundaries of the segment you're sorting. \(Initial parameters are `start = 0`, and `end = array.length - 1`\).
 2. If `start >= end`, then the segment is already sorted. This is the stop condition. 
-3. Call the `partition` function, which selects and returns a random element from the list.  `p_index = partition(array, start, end)`. and places all elements less than the pivot to the left of the index, and all elements greater to the right, modifying the actual array. Partition:
+3. Call the `partition` function, which returns the partition index.  `p_index = partition(array, start, end)`. and places all elements less than the pivot to the left of the index, and all elements greater to the right, modifying the actual array. Partition:
    1. Select a `pivot`. One implementation always selects the last element of the segment. So `pivot = array[end]`.
    2. Set the `p_index` initially to `start` . 
-   3. Run a loop from `start` to `end - 1`.  Inside the loop, if the current element is less than **or** equal to your pivot \(currently the last element\), then swap the current element with the element at `p_index`,  currently the 0. Then `p_index++`.
+   3. Run a loop from `start` to `< end`.  Inside the loop, if the current element is less than **or** equal to your pivot \(currently the last element\), then swap the current element with the element at `p_index`,  currently the 0. Then `p_index++`.
    4. After the loop, swap the element at `p_index` with `array[end]`, which was you comparative `pivot`.
-4. Now call the sort function from within itself **twice**. Once for the left side `QuickSort(array, start, p_index - 1) `and the other for the right side `QuickSort(array, p_index + 1, end)`.
+4. Now call the sort function from within itself **twice**. Once for the left side `QuickSort(array, start, p_index - 1)`and the other for the right side `QuickSort(array, p_index + 1, end)`.
 
 ##### Heapsort `O(n log n)`
 
@@ -191,7 +191,7 @@ Use when you don't need a stable sort \(meaning you don't need mergesort\), but 
 * Total runtime is nlog\(n\).
 * If we have a lot of data and limited RAM, we can run the whole process in two passes: split to chunks \(500 files\), combine 25 chunks at a time resulting in 20 larger chunks, run second merge pass to merge the 20 larger sorted chunks.
 
-##### Counting Sort `O(n) `
+##### Counting Sort `O(n)`
 
 Used when you have a lot of elements, but a limited range of values. \(Ex: A university has 200K students, all between the age of 18 and 22. Sort them by age.
 
