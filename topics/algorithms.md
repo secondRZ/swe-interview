@@ -425,6 +425,36 @@ public void bfs(Graph graph, Vertex source) {
 
 ##### DFS Graph Traversal
 
+```java
+public void dfs(Graph graph) {
+    reset(graph);
+
+    for (Vertex v : graph.vertices.values()) {
+        if (!v.discovered)
+            dfs(graph, v);
+    }
+}
+
+private void dfs(Graph graph, Vertex v) {
+    v.discovered = true;
+    // TODO: insert application of DFS here
+
+    for (Edge e : v.edges) {
+        Vertex to = graph.vertices.get(e.to);
+
+        if (to.discovered) {
+            // cycle found (back edge)! What should we do? depends on the application...
+        } else {
+            to.parent = v;
+            dfs(graph, to);
+        }
+    }
+
+    // TODO: insert application of DFS here. For example: if we're doing topological sorting
+    //       then add v to head of a linked list at this point
+}
+```
+
 * Depth-first search is often a subroutine in another algorithm.
 * Starts exploring the graph from the root, but immediately expanding as far as possible \(in contrast to BFS: breadth vs depth\). Retraction back is only done when all neighboring vertices have already been processed.
 * While BFS relied on a queue \(FIFO\) for new discovered vertices to be processed, DFS relies on stack \(LIFO\) \(not really uses a stack but recursion, which functions as a stack\).
@@ -452,8 +482,33 @@ public void bfs(Graph graph, Vertex source) {
 * There may be more than one shortest-path between two vertices and more than one shortest-paths tree for a source vertex.
 * Each vertex `v` maintains an attribute `v.distance` which is an upper bound on the weight of a shortest-path \(_"shortest-path estimate"_\) from source `source` to `v`; `v.distance` is initialized to `Integer.MAX_VALUE` and `source.distance` is initialized to `0`.
 * The action of _relaxing_ an edge `(from, to)` tests whether we can improve the shortest-path to `to` found so far by going through `from`, and if so updating `to.parent` and `to.distance` \(and the priority queue\).
-* **Dijkstra's Algorithm**
-  * Algorithm for finding the shortest-paths between nodes in a graph, which may represent, for example, road networks.
+* **Dijkstra's**
+
+```java
+public void dijkstra(Graph graph, Vertex source) {
+    reset(graph);
+    source.distance = 0;
+    PriorityQueue<Vertex> q = new PriorityQueue<>(graph.vertices.values());
+
+    while (!q.isEmpty()) {
+        Vertex from = q.remove();
+
+        for (Edge edge : from.edges) {
+            Vertex to = graph.vertices.get(edge.to);
+            int newDistance = from.distance + edge.weight;
+
+            if (newDistance < to.distance) {
+                to.distance = newDistance;
+                to.parent = from;
+                q.remove(to);
+                q.add(to);
+            }
+        }
+    }
+}
+```
+
+* * Algorithm for finding the shortest-paths between nodes in a graph, which may represent, for example, road networks.
   * Assumes that edge weight is nonnegative.
   * Fixes a single node as the _source_ node and finds shortest-paths from the source to all other nodes in the graph, producing a shortest-path tree.
   * The algorithm uses a min-priority queue for vertices based on their `.distance` value \(shortest-path estimate\)
@@ -584,72 +639,6 @@ public void postOrder(Tree tree) {
     while (!all.isEmpty()) {
         curr = all.pop();
         // process curr.value
-    }
-}
-```
-
-## Sorting
-
-### Searching
-
-### Selection
-
-### Graph Algorithms
-
-DFS
-
-```java
-public void dfs(Graph graph) {
-    reset(graph);
-
-    for (Vertex v : graph.vertices.values()) {
-        if (!v.discovered)
-            dfs(graph, v);
-    }
-}
-
-private void dfs(Graph graph, Vertex v) {
-    v.discovered = true;
-    // TODO: insert application of DFS here
-
-    for (Edge e : v.edges) {
-        Vertex to = graph.vertices.get(e.to);
-
-        if (to.discovered) {
-            // cycle found (back edge)! What should we do? depends on the application...
-        } else {
-            to.parent = v;
-            dfs(graph, to);
-        }
-    }
-
-    // TODO: insert application of DFS here. For example: if we're doing topological sorting
-    //       then add v to head of a linked list at this point
-}
-```
-
-### Dijkstra
-
-```java
-public void dijkstra(Graph graph, Vertex source) {
-    reset(graph);
-    source.distance = 0;
-    PriorityQueue<Vertex> q = new PriorityQueue<>(graph.vertices.values());
-
-    while (!q.isEmpty()) {
-        Vertex from = q.remove();
-
-        for (Edge edge : from.edges) {
-            Vertex to = graph.vertices.get(edge.to);
-            int newDistance = from.distance + edge.weight;
-
-            if (newDistance < to.distance) {
-                to.distance = newDistance;
-                to.parent = from;
-                q.remove(to);
-                q.add(to);
-            }
-        }
     }
 }
 ```
