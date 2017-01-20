@@ -244,11 +244,42 @@ private void heapify(int[] a, int root, int length) {
 * Total runtime is `nlog(n)`.
 * If we have a lot of data and limited RAM, we can run the whole process in two passes: split to chunks \(500 files\), combine 25 chunks at a time resulting in 20 larger chunks, run second merge pass to merge the 20 larger sorted chunks.
 
-##### Linear Sorting Algorithms
+##### Counting / Radix Sort \(Linear\)
+
+```java
+public int[] sort(int[] a) {
+    int max = findMax(a);
+    int[] sorted = new int[a.length];
+    int[] counts = new int[max + 1];
+
+    for (int i = 0; i < a.length; i++)
+        counts[a[i]]++;
+
+    for (int i = 1; i < counts.length; i++)
+        counts[i] += counts[i - 1];
+
+    for (int i = 0; i < a.length; i++) {
+        sorted[counts[a[i]] - 1] = a[i];
+        counts[a[i]]--;
+    }
+
+    return sorted;
+}
+
+private int findMax(int[] a) {
+    if (a.length == 0) return 0;
+
+    int max = Integer.MIN_VALUE;
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] > max)
+            max = a[i];
+    }
+    return max;
+}
+```
 
 * Counting sort – `O(n)`, stable, assuming input is integers between `0...k` and that `k = O(n)` – create a new array that first stores the number of appearances for each index, and then accumulate each of the cells to know how many total elements were before each index.
 * Radix sort – use counting sort multiple times to sort on the least significant digit, then the next one, etc.
-* Bucket \(Bin\) sort – `O(n)`, sorts `n` _uniformly_ spread real numbers between `[0,M)`, by dividing the elements into `M/n` buckets, then sorting each bucket. Uniform distribution will yield linear time; non-uniform will be `O(nlogn)`.
 
 ## Searching
 
@@ -479,41 +510,7 @@ public void postOrder(Tree tree) {
 
 ## Sorting
 
-### Counting Sort
-
-```java
-public int[] sort(int[] a) {
-    int max = findMax(a);
-    int[] sorted = new int[a.length];
-    int[] counts = new int[max + 1];
-
-    for (int i = 0; i < a.length; i++)
-        counts[a[i]]++;
-
-    for (int i = 1; i < counts.length; i++)
-        counts[i] += counts[i - 1];
-
-    for (int i = 0; i < a.length; i++) {
-        sorted[counts[a[i]] - 1] = a[i];
-        counts[a[i]]--;
-    }
-
-    return sorted;
-}
-
-private int findMax(int[] a) {
-    if (a.length == 0) return 0;
-
-    int max = Integer.MIN_VALUE;
-    for (int i = 0; i < a.length; i++) {
-        if (a[i] > max)
-            max = a[i];
-    }
-    return max;
-}
-```
-
-## Searching
+### Searching
 
 ### Binary Search
 
