@@ -285,6 +285,21 @@ private int findMax(int[] a) {
 
 ##### Binary Search
 
+```java
+public int search(int[] a, int x) {
+    return search(a, x, 0, a.length - 1);
+}
+
+private int search(int[] a, int x, int low, int high) {
+    if (low > high) return -1;
+    int mid = (low + high) / 2;
+
+    if (a[mid] == x) return mid;
+    else if (a[mid] > x) return search(a, x, low, mid - 1);
+    else return search(a, x, mid + 1, high);
+}
+```
+
 * Fast algorithm for searching in a **sorted** array of keys.
 * To search for key `q`, we compare `q` to the middle key `S[n/2]`. If `q` appears before `S[n/2]`, it must reside in the top half of `S`; if not, it must reside in the bottom half of `S`. Repeat recursively.
 * Efficiency is `O(logn)`.
@@ -302,6 +317,36 @@ private int findMax(int[] a) {
 
 * Sort array and return `k`-th element, `O(nlogn)`.
 * Quickselect – `O(n)` expected, `O(n^2)` worst – like quicksort with the partition method, but only recurses into one of the parts \(where `k` is\).
+
+```java
+public int quickselect(int[] a, int k) {
+    return quickselect(a, k, 0, a.length - 1);
+}
+
+private int quickselect(int[] a, int k, int low, int high) {
+    int pivot = partition(a, low, high);
+    if (pivot == k) return a[pivot];
+    else if (k < pivot) return quickselect(a, k, low, pivot - 1);
+    else return quickselect(a, k, pivot + 1, high);
+}
+
+private int partition(int[] a, int low, int high) {
+    int pivot = low;
+    int rand = new Random().nextInt(high - low + 1) + low;
+    swap(a, low, rand);
+
+    for (int i = low + 1; i <= high; i++) {
+        if (a[i] < a[pivot]) {
+            swap(a, i, pivot + 1);
+            swap(a, pivot, pivot + 1);
+            pivot++;
+        }
+    }
+
+    return pivot;
+}
+```
+
 * Median of medians select, `O(n)`:
   * Based on quickselect.
   * Finds an approximate median in linear time – this is the _key_ step – which is then used as a pivot in quickselect.
@@ -313,7 +358,42 @@ private int findMax(int[] a) {
 
 ## Graphs
 
+##### Utility Function
+
+```java
+private void reset(Graph graph) {
+    for (Vertex v : graph.vertices.values()) {
+        v.parent = null;
+        v.discovered = false;
+        v.distance = Integer.MAX_VALUE;
+    }
+}
+```
+
 ##### BFS Graph Traversal
+
+```java
+public void bfs(Graph graph, Vertex source) {
+    reset(graph);
+    Queue<Vertex> q = new LinkedList<>();
+    q.add(source);
+    source.discovered = true;
+
+    while (!q.isEmpty()) {
+        Vertex from = q.remove();
+
+        for (Edge e : from.edges) {
+            Vertex to = graph.vertices.get(e.to);
+
+            if (!to.discovered) {
+                to.parent = from;
+                to.discovered = true;
+                q.add(to);
+            }
+        }
+    }
+}
+```
 
 * Breadth-first search usually serves to find shortest-path distances from a given source in terms of _number of edges_ \(not weight\).
 * Start exploring the graph from the given root \(can be any vertex\) and slowly progress out, while processing the oldest-encountered vertices first.
@@ -512,96 +592,11 @@ public void postOrder(Tree tree) {
 
 ### Searching
 
-### Binary Search
+### Selection
 
-```java
-public int search(int[] a, int x) {
-    return search(a, x, 0, a.length - 1);
-}
+### Graph Algorithms
 
-private int search(int[] a, int x, int low, int high) {
-    if (low > high) return -1;
-    int mid = (low + high) / 2;
-
-    if (a[mid] == x) return mid;
-    else if (a[mid] > x) return search(a, x, low, mid - 1);
-    else return search(a, x, mid + 1, high);
-}
-```
-
-## Selection
-
-### Quickselect
-
-```java
-public int quickselect(int[] a, int k) {
-    return quickselect(a, k, 0, a.length - 1);
-}
-
-private int quickselect(int[] a, int k, int low, int high) {
-    int pivot = partition(a, low, high);
-    if (pivot == k) return a[pivot];
-    else if (k < pivot) return quickselect(a, k, low, pivot - 1);
-    else return quickselect(a, k, pivot + 1, high);
-}
-
-private int partition(int[] a, int low, int high) {
-    int pivot = low;
-    int rand = new Random().nextInt(high - low + 1) + low;
-    swap(a, low, rand);
-
-    for (int i = low + 1; i <= high; i++) {
-        if (a[i] < a[pivot]) {
-            swap(a, i, pivot + 1);
-            swap(a, pivot, pivot + 1);
-            pivot++;
-        }
-    }
-
-    return pivot;
-}
-```
-
-## Graph Algorithms
-
-Utility function:
-
-```java
-private void reset(Graph graph) {
-    for (Vertex v : graph.vertices.values()) {
-        v.parent = null;
-        v.discovered = false;
-        v.distance = Integer.MAX_VALUE;
-    }
-}
-```
-
-### BFS
-
-```java
-public void bfs(Graph graph, Vertex source) {
-    reset(graph);
-    Queue<Vertex> q = new LinkedList<>();
-    q.add(source);
-    source.discovered = true;
-
-    while (!q.isEmpty()) {
-        Vertex from = q.remove();
-
-        for (Edge e : from.edges) {
-            Vertex to = graph.vertices.get(e.to);
-
-            if (!to.discovered) {
-                to.parent = from;
-                to.discovered = true;
-                q.add(to);
-            }
-        }
-    }
-}
-```
-
-### DFS
+DFS
 
 ```java
 public void dfs(Graph graph) {
