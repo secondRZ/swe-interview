@@ -63,7 +63,7 @@ void InsertionSort(array<int, 10> &arr) {
 }
 ```
 
-* Used when you have limited time to implement a sort. Simply the easiest to write.
+Used when you have limited time to implement a sort. Simply the easiest to write.
 
 1. Start looping through the array. i will serve as a `marker` to the elements already sorted, so start the loop at 1.
 2. Set the comparison `value` to a variable \(`array[i]`\).
@@ -115,7 +115,7 @@ void MergeSort(vector<int> &arr) {
 }
 ```
 
-* Used when your sort must be stable \(can't use quicksort or heapsort\), or must use a linked-list due to interview constraints \(doesn't need random access like heapsort and quicksort\), and memory is not an issue \(this sort uses the worst memory\).
+Used when your sort must be stable \(can't use quicksort or heapsort\), or must use a linked-list due to interview constraints \(doesn't need random access like heapsort and quicksort\), and memory is not an issue \(this sort uses the worst memory\).
 
 1. Make sure you pass the array as a **reference** in both functions.
 2. If the array only has one element then it is already sorted. Exit the function. This is the stop condition for the recursion.
