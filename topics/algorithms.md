@@ -44,32 +44,9 @@
 
 * "Naive" sorting algorithms run in `O(n^2)` while enumerating all pairs.
 * "Sophisticated" sorting algorithms run on `O(nlog(n))`.
-* An important algorithm design technique is to use sorting as a basic building block, because many other problems become easy once a set of items is sorted, like: searching, finding closest pair, finding unique elements, frequency distribution, selection by order, set of numbers intersection, etc.
+* **Stable** sorting algorithms keep the same order for secondary properties of elements as the were before the sort. 
 
-##### Selection Sort
-
-```java
-public void sort(int[] a) {
-    for (int i = 0; i < a.length; i++)
-        swap(a, i, min(a, i));
-}
-
-private int min(int[] a, int start) {
-    int smallest = start;
-
-    for (int i = start + 1; i < a.length; i++)
-        if (a[i] < a[smallest])
-            smallest = i;
-
-    return smallest;
-}
-```
-
-* Each time find the minimum item, remove it from the list, and continue to find the next minimum; takes `O(n^2)`.
-* Selection and Insertion are very similar, with a difference that after `k` iterations Selection will have the `k` smallest elements in the input, and Insertion will have the arbitrary first `k` elements in the input that it processed.
-* Selection Sort _writes_ less to memory \(Insertion writes every step because of swapping\), so it may be preferable in cases where writing to memory is significantly more expensive than reading.
-
-##### Insertion Sort
+##### Insertion Sort `O(n^2)`
 
 ```java
 public void sort(int[] a) {
@@ -88,9 +65,9 @@ public void sort(int[] a) {
 ```
 
 * Iterate thru `i = 2 to n`, `j = i to 1` and swap needed items; takes `O(n^2)`.
-* Insertion sort is a little more efficient than selection, because the inner `j` loop uses a while, only scanning until the right place in the sorted part of the array is found for the new item. Selection sort scans all items to always find the minimum item.
+* Insertion sort is a little more efficient than selection, because the inner `j` loop uses a while, only scanning until the right place in the sorted part of the array is found for the new item. Though both are `O(n^2)`.
 
-##### Mergesort
+##### Mergesort `O(n log n)`
 
 ```java
 public int[] sort(int[] a) {
@@ -138,7 +115,7 @@ private int[] merge(int[] a, int[] b) {
 * When sorting arrays with mergesort an additional 3rd array buffer is _required_ for the merging operation \(can be implemented in-place tho without an additional buffer, but requires complicated buffer manipulation\).
 * Classic _divide-and-conquer_ algorithm, the key is in the merge implementation.
 
-##### Quicksort
+##### Quicksort: Average: `O(n log n)`, worst `O(n^2)`
 
 ```java
 public void sort(int[] a) {
@@ -182,7 +159,7 @@ private int partition(int[] a, int low, int high) {
 * Quicksort can be applied to real world problems – like the _Nuts and Bolts_ problem \(first find a match between a random nut and bolt, then split the rest into two groups: bigger and smaller. Repeat in each group\).
 * Experiments show that a well implemented quicksort in typically 2-3 times faster than mergesort or heapsort. The reason is the innermost loop operations are simpler. This could change on specific real world problems, because of system behavior and implementation. They have the same asymptotic behavior after all. Best way to know is to implement both and test.
 
-##### Heapsort
+##### Heapsort `O(n log n)`
 
 \(See also [Heap in Data Structures](topics/data-structures.md#heap)\)
 
@@ -233,7 +210,7 @@ private void heapify(int[] a, int root, int length) {
 
 ##### External Sort
 
-* Allows sorting more data then can fit into memory.
+* Allows sorting more data then can fit into memory, usually by using disk.
 * For example, assume we have 900MB file, 100MB RAM.
 * Read 100MB chunks of the data to memory and sort \(quicksort, mergesort, etc.\) then save to file, until all 900MB is sorted in chunks.
 * Read the first 10MB of each sorted chunk to input buffers \(=90MB\) + allocate an output buffer \(10MB\) – sizes can be adjusted.
