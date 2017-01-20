@@ -33,11 +33,11 @@ array<array<int, 3>, 2> my_arr = {{{1, 2, 3}, {4, 5, 6}}};
 * Stacks – LIFO \(push, pop\)
   * Good for checking symmetry.
   * Can only see the `top()` of it. Think real life. If standing directly over a stack of plates, you couldn't see any other plates.
-  * Constant time for `push`, `pop`, `top`, `size`, and `empty`.
+  * `O(1)` for `push`, `pop`, `top`, `size`, and `empty`.
 * Queues – FIFO \(push = enqueue, pop = dequeue in C++\)
   * Good for checking repeating.
   * Can see `front()` and `back()`.
-  * Constant time for `push`, `pop`, `front`, `back`, `size`, and `empty`.
+  * `O(1)` for `push`, `pop`, `front`, `back`, `size`, and `empty`.
 * No iterating over these. Just accessing and modifying the edges.
 
 ## Dictionary Structures

@@ -48,72 +48,87 @@
 
 ##### Insertion Sort `O(n^2)`
 
-```java
-public void sort(int[] a) {
-    for (int j = 1; j < a.length; j++) {
-        int key = a[j];
-        int i = j - 1;
-
-        while (i >= 0 && a[i] > key) {
-            a[i + 1] = a[i];
-            i--;
+```cpp
+void InsertionSort(array<int, 10> &arr) {
+    for (int i = 1; i < arr.size(); i++) {
+        int value = arr[i],
+            hole = i;
+        
+        while (hole > 0 && arr[hole - 1] > value) {
+            arr[hole] = arr[hole - 1];
+            hole--;
         }
-
-        a[i + 1] = key;
+        arr[hole] = value;
     }
 }
 ```
 
-* Iterate thru `i = 2 to n`, `j = i to 1` and swap needed items; takes `O(n^2)`.
-* Insertion sort is a little more efficient than selection, because the inner `j` loop uses a while, only scanning until the right place in the sorted part of the array is found for the new item. Though both are `O(n^2)`.
+* Used when you have limited time to implement a sort. Simply the easiest to write.
+
+1. Start looping through the array. i will serve as a `marker` to the elements already sorted, so start the loop at 1.
+2. Set the comparison `value` to a variable \(`array[i]`\).
+3. Set `hole` to `i` \(It resets automatically at every stage at every stage\).
+4. Start the comparison `while` loop, which continues only while you haven't shifted all of the sorted elements \(`marker > 0`\), **and** the next sorted element is still smaller than the comparison variable.
+5. Within the loop, set `array[hole]` to the next comparison element \(`[hole - 1]`\) \(the one that was checked in the while condition\), and decrement `hole`.
+6. Once the `while` loop is over \(you've shifted all of the elements, or the next element that you would have shifted is not smaller than the comparison value\) set `array[hole]` to the value.
 
 ##### Mergesort `O(n log n)`
 
-```java
-public int[] sort(int[] a) {
-    if (a.length <= 1) return a;
-    return sort(a, 0, a.length - 1);
-}
-
-private int[] sort(int[] a, int low, int high) {
-    if (low == high)
-        return new int[]{a[low]};
-
-    int mid = (low + high) / 2;
-    int[] sorted1 = sort(a, low, mid);
-    int[] sorted2 = sort(a, mid + 1, high);
-
-    return merge(sorted1, sorted2);
-}
-
-private int[] merge(int[] a, int[] b) {
-    int[] res = new int[a.length + b.length];
+```cpp
+void Merge(vector<int> &base_array, vector<int> left, vector<int> right) {
     int i = 0, j = 0;
-
-    while (i < a.length && j < b.length) {
-        if (a[i] < b[j])
-            res[i + j] = a[i++];
-        else
-            res[i + j] = b[j++];
+    while (i < left.size() && j < right.size()) {
+        if (left[i] < right[j]) {
+            base_array[i + j] = left[i];
+            i++;
+        } else {
+            base_array[i + j] = right[j];
+            j++;
+        }
     }
+    
+    while (i < left.size()) {
+        base_array[i + j] = left[i];
+        i++;
+    }
+    while (j < right.size()) {
+        base_array[i + j] = right[j];
+        j++;
+    }
+}
 
-    while (i < a.length)
-        res[i + j] = a[i++];
-
-    while (j < b.length)
-        res[i + j] = b[j++];
-
-    return res;
+void MergeSort(vector<int> &arr) {
+    if (arr.size() == 1)
+        return;
+    
+    int half = arr.size() / 2;
+    vector<int> left, right;
+    
+    for (int i = 0; i < half; i++)
+        left.push_back(arr[i]);
+    for (int i = half; i < arr.size(); i++)
+        right.push_back(arr[i]);
+    
+    MergeSort(left);
+    MergeSort(right);
+    Merge(arr, left, right);
 }
 ```
 
-* A recursive approach to sorting involves partitioning the elements into two groups, sorting each of the smaller problems recursively, and then interleaving \(merging\) the two sorted lists to totally order the elements.
-* The efficiency of mergesort depends upon how efficiently we combine the two sorted halves into a single sorted list.
-* Merging on each level is done by examining the first elements in the two merged lists. The smallest element must be the head of either of the lists. Removing it, the next element must again be the head of either of the lists, and so on. So the merge operation in each level is linear.
-* This yields an efficiency of `O(nlog(n))`.
-* Mergesort is **great** for sorting **linked lists** because it does not access random elements directly \(like heapsort or quicksort\), but **DON'T** try to sort linked lists in an interview.
-* When sorting arrays with mergesort an additional 3rd array buffer is _required_ for the merging operation \(can be implemented in-place tho without an additional buffer, but requires complicated buffer manipulation\).
-* Classic _divide-and-conquer_ algorithm, the key is in the merge implementation.
+* Used when your sort must be stable \(can't use quicksort or heapsort\), or must use a linked-list due to interview constraints \(doesn't need random access like heapsort and quicksort\), and memory is not an issue \(this sort uses the worst memory\).
+
+1. Make sure you pass the array as a **reference** in both functions.
+2. If the array only has one element then it is already sorted. Exit the function. This is the stop condition for the recursion.
+3. Split the list in half. \(If the list has an odd number of elements, one side just has one more\) by dividing the length by 2 \(in an `int` so we get no floating numbers\). `left` will be of size half, `right` will be of size `length - half`.
+4. Then run two separate `for` loops. One is` i = 0; i < half;` setting `left[i] = base_array[i]` and the other is` i = half; i < length;` setting `right[i] = base_array[i]`
+5. Now call the function from within itself for **both** the left **and** the right. \(The entire left sub-arrays will finish first if called first, then the right\)
+6. Because this is a recursive call, it will continue until there is only one element in a sub-array \(when a split hits the stop condition.\).
+7. At the end of the recursion, the sub-arrays are sorted \(an array with one element is already sorted\), call the merge function and pass `left`, `right`, and the `base_array`. The base\_array will be overwritten, so pass it as a **reference**.
+   1. Create two `markers`. One for your position in both sub-arrays. `i` and `j`
+   2. Enter into a loop that goes `while` you haven't run out of elements to check in either array.
+   3. Compare the two smallest elements of each sub-array, and overwrite the next element of the base array with the smaller of the two. \(Which is `array[i + j]`\)
+   4. Move the `marker` up on the sub-array that you just used an element from.
+   5. One of the sub-arrays will finish before the other. So you enter a `while` loop for the unfinished one. While there are still elements to check, overwrite the next element of the base array, which is still `array[i + j]`. Increment the `marker` every time.
 
 ##### Quicksort: Average: `O(n log n)`, worst `O(n^2)`
 
@@ -146,18 +161,9 @@ private int partition(int[] a, int low, int high) {
 }
 ```
 
-* Can be done in-place \(using swaps\), doesn't require an additional buffer.
-* Select a random item `p` from the items we want to sort, and split the remaining `n-1` items to two groups, those that are above `p` and below `p`. Now sort each group in itself. This leaves `p` in its exact place in the sorted array.
-* Partitioning the remaining `n-1` items is linear \(this step is equivalent to the "merge" part in merge sort; merge =&gt; partition\).
-* Total time is `O(n * h)` where `h` = height of the recursion tree \(number of recursions\).
-* If we pick the median element as the pivot in each step, `h = log(n)`; this is the best case of quicksort.
-* If we pick the left- or right-most element as the pivotal element each time \(biggest or smallest value\), `h = n` \(worst case\).
-* On average quicksort will produce good pivots and have `nlog(n)` efficiency \(like binary search trees insertion\).
-* If we are most unlucky, and select the extreme values, quicksort becomes selection sort and runs `O(n^2)`.
-* For the best case to work, we need to actually select the pivot randomly, or always select a specific index and randomize the input array beforehand.
-* Randomization is a powerful tool to improve algorithms with bad worst-case but good average-case complexity.
-* Quicksort can be applied to real world problems – like the _Nuts and Bolts_ problem \(first find a match between a random nut and bolt, then split the rest into two groups: bigger and smaller. Repeat in each group\).
-* Experiments show that a well implemented quicksort in typically 2-3 times faster than mergesort or heapsort. The reason is the innermost loop operations are simpler. This could change on specific real world problems, because of system behavior and implementation. They have the same asymptotic behavior after all. Best way to know is to implement both and test.
+* Used when you don't need a stable sort \(meaning you don't need mergesort\), and you care more about average case than worst case \(meaning you don't need heapsort\).
+* Almost always faster than mergesort and heapsort, even with its n^2 worst case \(which rarely happens\). This is because it uses much less swaps than both of them, which are costly.
+* It also uses less space than merge sort.
 
 ##### Heapsort `O(n log n)`
 
@@ -195,68 +201,22 @@ private void heapify(int[] a, int root, int length) {
 }
 ```
 
-* An implementation of selection sort, but with a priority queue \(implemented by a balanced binary tree\) as the underlying data structure, and not a linked list.
-* It's an in-place sort, meaning it uses no extra memory besides the array containing the elements to be sorted.
-* The first stage of the algorithm builds a max-heap from the input array \(in-place\) by iterating elements from last to first and calling _heapify_ on each \(cost: `O(n)`\).
-* Next, the largest element of the heap is the root; we "extract" it \(swap the root with the last element\) _reducing_ the size of the heap \(this is important\), and calling _heapify_ again for the new root of the smaller heap.
-* Continue until we're done with the entire heap.
-* Time complexity is `O(nlog(n))`.
-
-##### Distribution Sort
-
-* Split a big problem into sub \(ordered\) "buckets" which need to be sorted themselves, but then all results can just be concatenated. An example: a phone book. Split names into buckets for the starting letter of the last name, sort each bucket, and then combine all strings to one big sorted phone book. We can further split each pile based on the second letter of the last name, reducing the problem even further.
-* Bucketing is effective if we are confident that the distribution of data will be **roughly uniform** \(much like hash tables\).
-* Performance can be terrible if data distribution is not like we thought it is.
+* Use when you don't need a stable sort \(meaning you don't need mergesort\), but under no circumstances can you have less than O\(n log n\). \(Meaning quicksort is not an option\).
 
 ##### External Sort
 
-* Allows sorting more data then can fit into memory, usually by using disk.
+* Used when we need to sort more data then can fit into memory, usually by using disk.
 * For example, assume we have 900MB file, 100MB RAM.
-* Read 100MB chunks of the data to memory and sort \(quicksort, mergesort, etc.\) then save to file, until all 900MB is sorted in chunks.
+* Read 100MB chunks of the data to memory and sort \(mergesort\) then save to file, until all 900MB is sorted in chunks.
 * Read the first 10MB of each sorted chunk to input buffers \(=90MB\) + allocate an output buffer \(10MB\) – sizes can be adjusted.
 * Perform a 9-way merge \(mergesort is 2-way by default\) and store the result in the output buffer.
 * Once the output buffer is full, write it to disk to the sorted destination file, empty it, and continue merging the input buffers.
 * If any of the input buffers gets empty, fill it with the next 10MB from its chunk.
 * Continue until all chunks are processed.
-* Total runtime is `nlog(n)`.
+* Total runtime is nlog\(n\).
 * If we have a lot of data and limited RAM, we can run the whole process in two passes: split to chunks \(500 files\), combine 25 chunks at a time resulting in 20 larger chunks, run second merge pass to merge the 20 larger sorted chunks.
 
-##### Counting / Radix Sort \(Linear\)
-
-```java
-public int[] sort(int[] a) {
-    int max = findMax(a);
-    int[] sorted = new int[a.length];
-    int[] counts = new int[max + 1];
-
-    for (int i = 0; i < a.length; i++)
-        counts[a[i]]++;
-
-    for (int i = 1; i < counts.length; i++)
-        counts[i] += counts[i - 1];
-
-    for (int i = 0; i < a.length; i++) {
-        sorted[counts[a[i]] - 1] = a[i];
-        counts[a[i]]--;
-    }
-
-    return sorted;
-}
-
-private int findMax(int[] a) {
-    if (a.length == 0) return 0;
-
-    int max = Integer.MIN_VALUE;
-    for (int i = 0; i < a.length; i++) {
-        if (a[i] > max)
-            max = a[i];
-    }
-    return max;
-}
-```
-
-* Counting sort – `O(n)`, stable, assuming input is integers between `0...k` and that `k = O(n)` – create a new array that first stores the number of appearances for each index, and then accumulate each of the cells to know how many total elements were before each index.
-* Radix sort – use counting sort multiple times to sort on the least significant digit, then the next one, etc.
+##### Counting Sort: Used when you have a lot of elements, but a limited range of values. \(Ex: A university has 200K students, all between the age of 18 and 22. Sort them by age.
 
 ## Searching
 
