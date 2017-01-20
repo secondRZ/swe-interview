@@ -161,47 +161,22 @@ private int partition(int[] a, int low, int high) {
 }
 ```
 
-* Used when you don't need a stable sort \(meaning you don't need mergesort\), and you care more about average case than worst case \(meaning you don't need heapsort\).
-* Almost always faster than mergesort and heapsort, even with its n^2 worst case \(which rarely happens\). This is because it uses much less swaps than both of them, which are costly.
-* It also uses less space than merge sort.
+Used when you don't need a stable sort \(meaning you don't need mergesort\), and you care more about average case than worst case \(meaning you don't need heapsort\).
+
+Almost always faster than mergesort and heapsort, even with its `n^2` worst case \(which rarely happens\). This is because it uses much less swaps than both of them, which are costly. Randomized version makes `n log n` highly probably. It also uses much less **space** `O(log n)` than mergesort `O(n)`.
+
+1. The function takes an `array`, a `start` index, and an `end` index that needs to be sorted. These mark the boundaries of the segment you're sorting. \(Initial parameters are `start = 0`, and `end = array.length - 1`\).
+2. If `start >= end`, then the segment is already sorted. This is the stop condition. 
+3. Call the `partition` function, which selects and returns a random element from the list.  `p_index = partition(array, start, end)`. and places all elements less than the pivot to the left of the index, and all elements greater to the right, modifying the actual array. Partition:
+   1. Select a `pivot`. One implementation always selects the last element of the segment. So `pivot = array[end]`.
+   2. Set the `p_index` initially to `start` . 
+   3. Run a loop from `start` to `end - 1`.  Inside the loop, if the current element is less than **or** equal to your pivot \(currently the last element\), then swap the current element with the element at `p_index`,  currently the 0. Then `p_index++`.
+   4. After the loop, swap the element at `p_index` with `array[end]`, which was you comparative `pivot`.
+4. Now call the sort function from within itself **twice**. Once for the left side `QuickSort(array, start, p_index - 1) `and the other for the right side `QuickSort(array, p_index + 1, end)`.
 
 ##### Heapsort `O(n log n)`
 
-\(See also [Heap in Data Structures](topics/data-structures.md#heap)\)
-
-```java
-public void sort(int[] a) {
-    // build a max-heap
-    for (int i = a.length - 1; i >= 0; i--)
-        heapify(a, i, a.length);
-
-    // extract max element from the head to the end and shrink the size of the heap
-    for (int last = a.length - 1; last >= 0; last--) {
-        swap(a, 0, last);
-        heapify(a, 0, last);
-    }
-}
-
-// heapify for a max-heap:
-private void heapify(int[] a, int root, int length) {
-    int left = 2 * root + 1;
-    int right = 2 * root + 2;
-    int largest = root;
-
-    if (left < length && a[largest] < a[left])
-        largest = left;
-
-    if (right < length && a[largest] < a[right])
-        largest = right;
-
-    if (largest != root) {
-        swap(a, root, largest);
-        heapify(a, largest, length);
-    }
-}
-```
-
-* Use when you don't need a stable sort \(meaning you don't need mergesort\), but under no circumstances can you have less than O\(n log n\). \(Meaning quicksort is not an option\).
+Use when you don't need a stable sort \(meaning you don't need mergesort\), but under no circumstances can you have less than `O(n log n)`. \(Meaning quicksort is not an option\).
 
 ##### External Sort
 
@@ -216,7 +191,9 @@ private void heapify(int[] a, int root, int length) {
 * Total runtime is nlog\(n\).
 * If we have a lot of data and limited RAM, we can run the whole process in two passes: split to chunks \(500 files\), combine 25 chunks at a time resulting in 20 larger chunks, run second merge pass to merge the 20 larger sorted chunks.
 
-##### Counting Sort: Used when you have a lot of elements, but a limited range of values. \(Ex: A university has 200K students, all between the age of 18 and 22. Sort them by age.
+##### Counting Sort `O(n) `
+
+Used when you have a lot of elements, but a limited range of values. \(Ex: A university has 200K students, all between the age of 18 and 22. Sort them by age.
 
 ## Searching
 
