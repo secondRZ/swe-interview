@@ -53,7 +53,7 @@ void InsertionSort(array<int, 10> &arr) {
     for (int i = 1; i < arr.size(); i++) {
         int value = arr[i],
             hole = i;
-        
+
         while (hole > 0 && arr[hole - 1] > value) {
             arr[hole] = arr[hole - 1];
             hole--;
@@ -65,12 +65,13 @@ void InsertionSort(array<int, 10> &arr) {
 
 * Used when you have limited time to implement a sort. Simply the easiest to write.
 
-1. Start looping through the array. i will serve as a `marker` to the elements already sorted, so start the loop at 1.
-2. Set the comparison `value` to a variable \(`array[i]`\).
-3. Set `hole` to `i` \(It resets automatically at every stage at every stage\).
-4. Start the comparison `while` loop, which continues only while you haven't shifted all of the sorted elements \(`marker > 0`\), **and** the next sorted element is still smaller than the comparison variable.
-5. Within the loop, set `array[hole]` to the next comparison element \(`[hole - 1]`\) \(the one that was checked in the while condition\), and decrement `hole`.
-6. Once the `while` loop is over \(you've shifted all of the elements, or the next element that you would have shifted is not smaller than the comparison value\) set `array[hole]` to the value.
+* Start looping through the array. i will serve as a `marker` to the elements already sorted, so start the loop at 1.
+
+* Set the comparison `value` to a variable \(`array[i]`\).
+* Set `hole` to `i` \(It resets automatically at every stage at every stage\).
+* Start the comparison `while` loop, which continues only while you haven't shifted all of the sorted elements \(`marker > 0`\), **and** the next sorted element is still smaller than the comparison variable.
+* Within the loop, set `array[hole]` to the next comparison element \(`[hole - 1]`\) \(the one that was checked in the while condition\), and decrement `hole`.
+* Once the `while` loop is over \(you've shifted all of the elements, or the next element that you would have shifted is not smaller than the comparison value\) set `array[hole]` to the value.
 
 ##### Mergesort `O(n log n)`
 
@@ -86,7 +87,7 @@ void Merge(vector<int> &base_array, vector<int> left, vector<int> right) {
             j++;
         }
     }
-    
+
     while (i < left.size()) {
         base_array[i + j] = left[i];
         i++;
@@ -100,15 +101,15 @@ void Merge(vector<int> &base_array, vector<int> left, vector<int> right) {
 void MergeSort(vector<int> &arr) {
     if (arr.size() == 1)
         return;
-    
+
     int half = arr.size() / 2;
     vector<int> left, right;
-    
+
     for (int i = 0; i < half; i++)
         left.push_back(arr[i]);
     for (int i = half; i < arr.size(); i++)
         right.push_back(arr[i]);
-    
+
     MergeSort(left);
     MergeSort(right);
     Merge(arr, left, right);
@@ -117,18 +118,19 @@ void MergeSort(vector<int> &arr) {
 
 * Used when your sort must be stable \(can't use quicksort or heapsort\), or must use a linked-list due to interview constraints \(doesn't need random access like heapsort and quicksort\), and memory is not an issue \(this sort uses the worst memory\).
 
-1. Make sure you pass the array as a **reference** in both functions.
-2. If the array only has one element then it is already sorted. Exit the function. This is the stop condition for the recursion.
-3. Split the list in half. \(If the list has an odd number of elements, one side just has one more\) by dividing the length by 2 \(in an `int` so we get no floating numbers\). `left` will be of size half, `right` will be of size `length - half`.
-4. Then run two separate `for` loops. One is` i = 0; i < half;` setting `left[i] = base_array[i]` and the other is` i = half; i < length;` setting `right[i] = base_array[i]`
-5. Now call the function from within itself for **both** the left **and** the right. \(The entire left sub-arrays will finish first if called first, then the right\)
-6. Because this is a recursive call, it will continue until there is only one element in a sub-array \(when a split hits the stop condition.\).
-7. At the end of the recursion, the sub-arrays are sorted \(an array with one element is already sorted\), call the merge function and pass `left`, `right`, and the `base_array`. The base\_array will be overwritten, so pass it as a **reference**.
-   1. Create two `markers`. One for your position in both sub-arrays. `i` and `j`
-   2. Enter into a loop that goes `while` you haven't run out of elements to check in either array.
-   3. Compare the two smallest elements of each sub-array, and overwrite the next element of the base array with the smaller of the two. \(Which is `array[i + j]`\)
-   4. Move the `marker` up on the sub-array that you just used an element from.
-   5. One of the sub-arrays will finish before the other. So you enter a `while` loop for the unfinished one. While there are still elements to check, overwrite the next element of the base array, which is still `array[i + j]`. Increment the `marker` every time.
+* Make sure you pass the array as a **reference** in both functions.
+
+* If the array only has one element then it is already sorted. Exit the function. This is the stop condition for the recursion.
+* Split the list in half. \(If the list has an odd number of elements, one side just has one more\) by dividing the length by 2 \(in an `int` so we get no floating numbers\). `left` will be of size half, `right` will be of size `length - half`.
+* Then run two separate `for` loops. One is`i = 0; i < half;` setting `left[i] = base_array[i]` and the other is`i = half; i < length;` setting `right[i] = base_array[i]`
+* Now call the function from within itself for **both** the left **and** the right. \(The entire left sub-arrays will finish first if called first, then the right\)
+* Because this is a recursive call, it will continue until there is only one element in a sub-array \(when a split hits the stop condition.\).
+* At the end of the recursion, the sub-arrays are sorted \(an array with one element is already sorted\), call the merge function and pass `left`, `right`, and the `base_array`. The base\_array will be overwritten, so pass it as a **reference**.
+  1. Create two `markers`. One for your position in both sub-arrays. `i` and `j`
+  2. Enter into a loop that goes `while` you haven't run out of elements to check in either array.
+  3. Compare the two smallest elements of each sub-array, and overwrite the next element of the base array with the smaller of the two. \(Which is `array[i + j]`\)
+  4. Move the `marker` up on the sub-array that you just used an element from.
+  5. One of the sub-arrays will finish before the other. So you enter a `while` loop for the unfinished one. While there are still elements to check, overwrite the next element of the base array, which is still `array[i + j]`. Increment the `marker` every time.
 
 ##### Quicksort: Average: `O(n log n)`, worst `O(n^2)`
 
