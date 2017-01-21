@@ -9,6 +9,7 @@
   * `str.append("appended string")` appends one piece of a string to another. Changes the actual string.
   * Convert from char to string like this: `std::string str(1, char);`
   * You can initiate a string with repeating characters like this `std::string str(5, 'a'); // aaaaa`
+  * Convert a char back to a number with `digit - '0'` or a string to an int with `stoi(str)`
 * **Number**
 
 `Print Every Digit:`
