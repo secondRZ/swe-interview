@@ -10,6 +10,7 @@
   * Convert from char to string like this: `std::string str(1, char);`
   * You can initiate a string with repeating characters like this `std::string str(5, 'a'); // aaaaa`
   * Convert a char back to a number with `digit - '0'` or a string to an int with `stoi(str)`
+  * `str1.compare(str2)` returns 0 if the strings are the same.
 * **Number**
 
 `Print Every Digit:`
