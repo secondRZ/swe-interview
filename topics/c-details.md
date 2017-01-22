@@ -6,7 +6,7 @@
 * **String**
   * `toupper('c')` and `tolower('C')` return an int representing a character from ascii. You can cast it like `(char)toupper('a')`
   * `replace(pos, num, "str");` works like splice. Or use iterators: `replace(str.begin(), str.begin() + 2, "str");`
-  * `str.append("appended string")` appends one piece of a string to another. Changes the actual string.
+  * `str.append("appended string")` appends one piece of a string to another. Changes the actual string. `O(n)` time. So is concatenation.
   * Convert from char to string like this: `std::string str(1, char);`
   * You can initiate a string with repeating characters like this `std::string str(5, 'a'); // aaaaa`
   * Convert a char back to a number with `digit - '0'` or a string to an int with `stoi(str)`
