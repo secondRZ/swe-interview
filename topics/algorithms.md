@@ -41,6 +41,13 @@
 * **Reverse and Integer**: To get the last digit of any int, just run mod 10 \(remainder of 10 is always the last digit\). Now the current reversed number is the previous reversed number \(originally set to 0\), times 10 \(to give a blank digit\), plus the last digit you just got. Divide the int by 10, which simply erases the last digit since ints don't have any decimals, and save that to the new original number. This will eventually become 0 \(since ints don't have decimals\). That's when the loop stops.
 * **Largest Possible Number from joining array elements**: Turn them into a string, Then using the `sort` algorithm, pass a comparison function that  appends string `B` to string `A`. Then appends string `A` to string `B`. And finally run `stoi(str1) > stoi(str2)`.
 
+## Math
+
+* **Find All Factors**: If you find that a number `n` % another number `d == 0`, then you have found 2 factors of `n`. `d` and `n / d`. The upper limit to finding all `d` values is `sqrt(n)`, so you loop only has to go that far \(**all the way to** `<=`, not just `<`\), and add both `d` and` n / d` every iteration, unless `d == sqrt(n)`, then you only enter it for itself, not for `n / d`.
+* **Verify prime number**: 2 is the lowest prime number. 1 is not prime. Same thing as finding all factors. You only need to go to the square root of the number.
+* **Decimal to nary**: Modulo by n. Add the remainder to the vector. Divide by n. Loop again. Loop only while num &gt; 0.
+* **Nary to Decimal**: n to the power of the level of the digit you're at \(starting at 0\) \* whatever the digit represents in decimal.
+
 ## Sorting
 
 * "Naive" sorting algorithms run in `O(n^2)` while enumerating all pairs.
