@@ -4,13 +4,15 @@
 
 * **int vs unsigned int**: An unsigned int is good for when you know you won't need negative numbers. Same byte size, but no negatives means that you double the possible positive size \(say from ~-32.5K - ~32.5K to 0 - ~65K\)
 * **String**
-  * `toupper('c')` and `tolower('C')` return an int representing a character from ascii. You can cast it like `(char)toupper('a')`
+  * `toupper('c')` and `tolower('C')` **return** an int representing a character from ascii. You can cast it like `(char)toupper('a')`. If it's in a string, it'll be casted automatically with `str[i] = toupper(str[i])`
   * `replace(pos, num, "str");` works like splice. Or use iterators: `replace(str.begin(), str.begin() + 2, "str");`
   * `str.append("appended string")` appends one piece of a string to another. Changes the actual string. `O(n)` time. So is concatenation.
   * Convert from char to string like this: `std::string str(1, char);`
   * You can initiate a string with repeating characters like this `std::string str(5, 'a'); // aaaaa`
   * Convert a char back to a number with `digit - '0'` or a string to an int with `stoi(str)`
   * `str1.compare(str2)` returns 0 if the strings are the same.
+  * Erase items with `str.erase(remove_if(str.begin(), str.end(), removeFunction), str.end());`.
+  * Build your own `find` function: A `while` loop within a `for` loop. Inside the `while` loop just increment `j`, and go while `j < needle.length() && haystack[i + j] = needle[j].` Then if `j` matches `needle` length after the `while` loop, you found a match. Else you just keep looping in the for loop.
 * **Number**
 
 `Print Every Digit:`
