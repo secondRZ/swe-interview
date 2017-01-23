@@ -202,17 +202,22 @@ Used when you have a lot of elements, but a limited range of values. \(Ex: A uni
 ##### Binary Search
 
 ```java
-public int search(int[] a, int x) {
-    return search(a, x, 0, a.length - 1);
+int search(const vector<int> &haystack, const int &needle, const int &low, const int &high) {
+    if (low > high)
+        return -1;
+    
+    int mid = (low + high)/2;
+    if (haystack[mid] == needle)
+        return mid;
+    else if (haystack[mid] < needle)
+        return search(haystack, needle, mid + 1, high);
+    else
+        return search(haystack, needle, low, mid - 1);
+    
 }
 
-private int search(int[] a, int x, int low, int high) {
-    if (low > high) return -1;
-    int mid = (low + high) / 2;
-
-    if (a[mid] == x) return mid;
-    else if (a[mid] > x) return search(a, x, low, mid - 1);
-    else return search(a, x, mid + 1, high);
+int b_search(const vector<int> &haystack, const int &needle) {
+    return search(haystack, needle, 0, haystack.size() - 1);
 }
 ```
 
