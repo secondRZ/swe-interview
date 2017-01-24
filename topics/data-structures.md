@@ -25,12 +25,12 @@ vec.push_back(6);
 
 ## Stacks and Queues
 
-* Stacks – LIFO \(push, pop\)
-  * Good for checking even numbered symmetry.
+* **Stacks** – LIFO \(push, pop\)
+  * Good for checking even numbered symmetry. and walking backwards to check your actions \(function calls, CTRL+Z methods, etc\).
   * Can only see the `top()` of it. Think real life. If standing directly over a stack of plates, you couldn't see any other plates.
   * **O\(1\)** for `push`, `pop`, `top`, `size`, and `empty`.
-* Queues – FIFO \(push = enqueue, pop = dequeue in C++\)
-  * Good for checking repeating.
+* **Queues** – FIFO \(push = enqueue, pop = dequeue in C++\)
+  * Good for checking repitition.
   * Can see `front()` and `back()`.
   * **O\(1\)** for `push`, `pop`, `front`, `back`, `size`, and `empty`.
 * No iterating over these. Just accessing and modifying the edges.
