@@ -9,7 +9,7 @@
 2. "Obviously I could do " {some brute force solution} ". Which is a " {time complexity of solution} " solution."
 3. Talk your way to an optimized solution until you both agree that it is a good solution. Don't stop until at least a linear solution is reached, but keep thinking until you can't think of anything better or they tell you to go ahead.
    1. Is this a permutation of an algorithm you already know?
-   2. Less looping: Can I loop through my structure only once and get my answer? What about not looping through the entire thing at all? \(Binary search\)
+   2. Less looping: Can I loop through my structure only once and get my answer? What about not looping through the entire thing at all? \(Binary search, sqrt for factors and prime, two pointer approach where the inner loop can not be reset every time the outer loop runs and decrease instead of increasing, etc.\)
    3. Did you use the best data structure for the job? What's important/unimportant? Access by value? Access by index? Inserting and removing? Etc.
    4. Can you do it in place?
 4. Write the code and optimize the solution with your interviewers.
@@ -205,7 +205,7 @@ Used when you have a lot of elements, but a limited range of values. \(Ex: A uni
 int search(const vector<int> &haystack, const int &needle, const int &low, const int &high) {
     if (low > high)
         return -1;
-    
+
     int mid = (low + high)/2;
     if (haystack[mid] == needle)
         return mid;
@@ -213,7 +213,7 @@ int search(const vector<int> &haystack, const int &needle, const int &low, const
         return search(haystack, needle, mid + 1, high);
     else
         return search(haystack, needle, low, mid - 1);
-    
+
 }
 
 int b_search(const vector<int> &haystack, const int &needle) {
