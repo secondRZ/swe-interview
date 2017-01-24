@@ -5,28 +5,30 @@
 
 ## Arrays
 
-* Built from fixed-size records, therefore access and modification is O\(1\) because you just need a pointer to the base address, and add the access number to the pointer address \* the amount of space each element takes \(All elements are the same type\).
-* Space efficient – arrays consist only of the data, so no space is wasted with links or formatting info.
-* Easy to iterate over quickly, because of memory locality.
-* Cannot adjust their size in the middle of a program's execution.
-* _Dynamic arrays_ double in size whenever insert index is out of bound.
-* Multi-dimensional STL arrays need an extra set of braces around them: 
-
 ```cpp
 array<int, 5> num_arr = {1, 2, 3, 4, 5};
 array<array<int, 3>, 2> my_arr = {{{1, 2, 3}, {4, 5, 6}}};
+
+vector<int> vec = {1, 2, 3, 4, 5};
+vec.push_back(6);
 ```
+
+* Use when: You're required to. Typically use STL `vector` instead. Use when you want to access elements by their position often, and you don't need to modify anywhere other the end of the list.
+* Access: **O\(1\)**
+* Insertion/Deletion: **O\(1\)** at the end, **O\(n\)** anywhere else \(even the beginning, because you have to shift\).
 
 ## Linked Lists
 
-* Singly-linked – each elements links to the next one.
-* Doubly-linked – each elements links to the next and previous elements \(Java's `LinkedList` is doubly-linked\).
-* Operations supported: search, insert, delete.
-* Cannot overflow \(as opposed to static arrays which have a finite length\).
-* Simpler insertion/deletion than arrays.
-* Requires extra memory for pointers than arrays.
-* Not efficient for random access to items.
-* Worse memory locality than arrays.
+```cpp
+struct Node {
+    int value;
+    Node * next;
+}
+```
+
+* Use when: You need to do a lot of inserting and deleting anywhere but the edges of the list. **And** you don't need constant access. Not contiguous \(could lead to fragmentation issues, or could be an advantage if you're already having fragmentation issues\). And extra memory used for pointers.
+* Access: **O\(n\)**
+* Insertion/Deletion: **O\(n\) **anywhere but the beginning \(No random access\). **O\(1\)** for the first element. \(No shifting. Just change pointers.\)
 
 ## Stacks and Queues
 
