@@ -19,56 +19,28 @@ vec.push_back(6);
 
 ## Linked Lists
 
-```cpp
-#include <list> // doubly linked list
-#include <forward_list> // singly linked list
-
-// one node
-struct Node {
-    int value;
-    Node * next;
-}
-
-list<int> my_list;
-forward_list<int> my_f_list;
-
-my_list.push_front(2);
-my_list.push_front(1);
-my_list.push_back(3); // doubly linked list only.
-
-
-list<int>::iterator itr = ++my_list.begin(); // memory is not contiguous -> "+ n" does not work. Only ++.
-my_list.insert(itr, 3);
-
-list<int>::iterator lst_itr = --my_list.end();
-my_list.erase(lst_itr);
-```
-
-* Use when: You have to. Usually for an interview questions or competition problem.
+* Use when: You have to. Usually for an interview questions or competition problem. `Vector` typically a better use.
 * Access: **O\(n\)**
 * Insertion/Deletion: **O\(n\) **anywhere but the beginning unless you have the iterator \(which is linear to achieve\) \(No random access\). **O\(1\)** for `push_front`. \(No shifting. Just change pointers.\)  .
 
 ## Stacks and Queues
 
 * Stacks – LIFO \(push, pop\)
-  * Good for checking symmetry.
+  * Good for checking even numbered symmetry.
   * Can only see the `top()` of it. Think real life. If standing directly over a stack of plates, you couldn't see any other plates.
-  * `O(1)` for `push`, `pop`, `top`, `size`, and `empty`.
+  * **O\(1\)** for `push`, `pop`, `top`, `size`, and `empty`.
 * Queues – FIFO \(push = enqueue, pop = dequeue in C++\)
   * Good for checking repeating.
   * Can see `front()` and `back()`.
-  * `O(1)` for `push`, `pop`, `front`, `back`, `size`, and `empty`.
+  * **O\(1\)** for `push`, `pop`, `front`, `back`, `size`, and `empty`.
 * No iterating over these. Just accessing and modifying the edges.
 
-## Hashset \(Unordered\_set\)
+## Special Structures
 
-* Count\(\) = contains. 
-
-## Dictionary Structures
-
-* Enable access to data items by content \(key\).
-* Operations: search, insert, delete, max, min, predecessor/successor \(next or previous element in sorted order\).
-* Implementations include: **hash tables**, **\(binary\) search trees**.
+* **Set**: When you want the elements to be unique. **O\(1\)** insert/erase only if you give the hint. Else **O\(log n\)** since they're implemented with binary search trees. Search always logarithmic.
+* **Map**: When you want **O\(1\)** for key/value lookup.
+* **Hashset**: When you want **O\(1\)** for `contains`, which is done with `count()`. Insert and delete also **O\(1\)** for one element.
+* **Priority Queue** / **Heap**: When you want **O\(1\)** for the maximum element in a collection.
 
 ## Binary Search Trees
 
