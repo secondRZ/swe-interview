@@ -13,7 +13,7 @@ vector<int> vec = {1, 2, 3, 4, 5};
 vec.push_back(6);
 ```
 
-* Use when: You're required to. Typically use STL `vector` instead. Use when you want to access elements by their position often, and you don't need to modify anywhere other the end of the list.
+* Use when: You're required to. Typically use `vector` instead. Use pretty much whenever you need a sequence container, but especially when you want random access.
 * Access: **O\(1\)**
 * Insertion/Deletion: **O\(n\)** anywhere other than the end. `push_back` is **O\(1\) **for the end.
 
@@ -44,7 +44,7 @@ list<int>::iterator lst_itr = --my_list.end();
 my_list.erase(lst_itr);
 ```
 
-* Use when: You need to do a lot of inserting and deleting anywhere but the edges of the list. **And** you don't need constant access.
+* Use when: You have to. Usually for an interview questions or competition problem.
 * Access: **O\(n\)**
 * Insertion/Deletion: **O\(n\) **anywhere but the beginning unless you have the iterator \(which is linear to achieve\) \(No random access\). **O\(1\)** for `push_front`. \(No shifting. Just change pointers.\)  .
 
@@ -193,6 +193,7 @@ Use BST over hash table for:
 
 ## Graphs
 
+* Go [here](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-1/), [here](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-2/), and [here](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-3/).
 * A Graph is comprised of vertices `V` \(the points\) and edges `E` \(the lines connecting the points\).
 * Assume `n` is the number of vertices and `m` is the number of edges.
 * Directed graphs: inner city streets \(one-way\), program execution flows.
