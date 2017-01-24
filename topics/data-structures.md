@@ -15,20 +15,38 @@ vec.push_back(6);
 
 * Use when: You're required to. Typically use STL `vector` instead. Use when you want to access elements by their position often, and you don't need to modify anywhere other the end of the list.
 * Access: **O\(1\)**
-* Insertion/Deletion: **O\(1\)** at the end, **O\(n\)** anywhere else \(even the beginning, because you have to shift\).
+* Insertion/Deletion: **O\(n\)** anywhere other than the end. `push_back` is **O\(1\) **for the end.
 
 ## Linked Lists
 
 ```cpp
+#include <list> // doubly linked list
+#include <forward_list> // singly linked list
+
+// one node
 struct Node {
     int value;
     Node * next;
 }
+
+list<int> my_list;
+forward_list<int> my_f_list;
+
+my_list.push_front(2);
+my_list.push_front(1);
+my_list.push_back(3); // doubly linked list only.
+
+
+list<int>::iterator itr = ++my_list.begin(); // memory is not contiguous -> "+ n" does not work. Only ++.
+my_list.insert(itr, 3);
+
+list<int>::iterator lst_itr = --my_list.end();
+my_list.erase(lst_itr);
 ```
 
-* Use when: You need to do a lot of inserting and deleting anywhere but the edges of the list. **And** you don't need constant access. Not contiguous \(could lead to fragmentation issues, or could be an advantage if you're already having fragmentation issues\). And extra memory used for pointers.
+* Use when: You need to do a lot of inserting and deleting anywhere but the edges of the list. **And** you don't need constant access.
 * Access: **O\(n\)**
-* Insertion/Deletion: **O\(n\) **anywhere but the beginning \(No random access\). **O\(1\)** for the first element. \(No shifting. Just change pointers.\)
+* Insertion/Deletion: **O\(n\) **anywhere but the beginning unless you have the iterator \(which is linear to achieve\) \(No random access\). **O\(1\)** for `push_front`. \(No shifting. Just change pointers.\)  .
 
 ## Stacks and Queues
 
@@ -41,6 +59,10 @@ struct Node {
   * Can see `front()` and `back()`.
   * `O(1)` for `push`, `pop`, `front`, `back`, `size`, and `empty`.
 * No iterating over these. Just accessing and modifying the edges.
+
+## Hashset \(Unordered\_set\)
+
+* Count\(\) = contains. 
 
 ## Dictionary Structures
 
