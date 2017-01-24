@@ -231,7 +231,6 @@ int b_search(const vector<int> &haystack, const int &needle) {
 
 ##### Randomization
 
-* Randomize array \(`O(nlogn)`\) – create a new array with "priorities", which are random numbers between `1 - n^3`, then sort the original array based on new priorities array as the keys.
 * Randomize array in place \(`O(n)`\) – swap `a[i]` with `a[rand(i, n)]`.
 
 ## Selection \(`k`-th smallest element\)
