@@ -38,7 +38,8 @@
 * **Permutations**: For n elements in a fixed set, there are `n!` \(n factorial\) permutations of their arrangement. Unless they can be both upper and lower case, then it's $$$$`2^n * (n!)`. If they can be any character then it's `k^n` where `k` is the amount of available characters, and `n` is the length of the collection. 
 * **Euclidean Algo \(Find the greatest common divisor\)**: The GCD of two numbers does not change when one is replaced by the difference between the two. Therefore if you repeatedly replace the larger number with the difference between the two numbers, the numbers will eventually be equal to each other. This is the GCD. Since this can take very long if the larger number is much greater than the smaller, the algo becomes more efficient if you use the modulo of the two numbers until you get 0 \(making the larger number the GCD\), instead of subtraction. If you continuously swap the first number for the second, then you don't have to worry about min and max. Like `tmp = A; A = B % A; B = A;`
 * **Reverse and Integer**: To get the last digit of any int, just run mod 10 \(remainder of 10 is always the last digit\). Now the current reversed number is the previous reversed number \(originally set to 0\), times 10 \(to give a blank digit\), plus the last digit you just got. Divide the int by 10, which simply erases the last digit since ints don't have any decimals, and save that to the new original number. This will eventually become 0 \(since ints don't have decimals\). That's when the loop stops.
-* **Largest Possible Number from joining array elements**: Turn them into a string, Then using the `sort` algorithm, pass a comparison function that  appends string `B` to string `A`. Then appends string `A` to string `B`. And finally run `stoi(str1) > stoi(str2)`.
+* **Largest Possible Number from joining array elements into a string**: Turn them into a string, Then using the `sort` algorithm, pass a comparison function that  appends string `B` to string `A`. Then appends string `A` to string `B`. And finally run `stoi(str1) > stoi(str2)`.
+* **Fibonacci**: `a[i] = a[i - 2] + a[i - 1]`. To find nth element in the sequence,  Always iterative. Never recursively.
 
 ## Math
 
@@ -232,6 +233,31 @@ int b_search(const vector<int> &haystack, const int &needle) {
 ##### Randomization
 
 * Randomize array in place \(`O(n)`\) – swap `a[i]` with `a[rand(i, n)]`.
+
+## Backtracking
+
+* Backtracking is trying out all possibilities using recursion \(think brute force\). Example: Given a maze, determine whether there is a path from start to finish. At each intersection you can go straight, left, or right. 
+* Characterized by three traits:
+  * You don't have enough info in the beginning, 
+  * Each decision leads to another set of decisions.
+  * Any path of choices may lead to a solution.
+
+```cpp
+// pseudocode for the maze question
+
+boolean pathFound(Position p) {
+    if (p is finish) 
+        return true;
+    
+    foreach option O from p {
+        boolean isThereAPath = pathFound(O);
+        if (isThereAPath) return true; // We found a path using option O
+    }
+    // We have tried all options from this position and none of the options lead to finish. 
+    // Hence there is no solution possible to finish
+    return false;
+}
+```
 
 ## Selection \(`k`-th smallest element\)
 
