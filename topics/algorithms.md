@@ -257,8 +257,6 @@ boolean pathFound(Position p) {
     // Hence there is no solution possible to finish
     return false;
 }
-
-
 ```
 
 ## Hashing
@@ -471,18 +469,6 @@ public void dijkstra(Graph graph, Vertex source) {
 ##### Minimum Spanning Tree
 
 * Convert a weighted graph to a tree reaching all nodes \(_spanning_\), while having the minimal weight \(_minimum_\).
-
-## Backtracking
-
-* General algorithm for finding all \(or some\) solutions to a problem, that incrementally builds candidates to the solution, and abandons \("backtracks"\) each partial candidate as soon as it determines that it cannot possibly be completed to a valid solution.
-* The classic textbook example of the use of backtracking is the eight queens puzzle; another one is the knapsack problem.
-* Backtracking can be applied only for problems which admit the concept of a "partial candidate solution" and a relatively quick test of whether it can possibly be completed to a valid solution.
-* When it is applicable, however, backtracking is often much faster than brute force enumeration of all complete candidates, since it can eliminate a large number of candidates with a single test.
-
-## Lavenshtein Distance
-
-* A string metric for measuring the difference between two sequences.
-* The Levenshtein distance between two words is the minimum number of single-character edits \(i.e. insertions, deletions or substitutions\) required to change one word into the other.
 
 ## P, NP, NP-complete
 
