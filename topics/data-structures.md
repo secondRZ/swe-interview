@@ -61,6 +61,107 @@ vec.push_back(6);
   * Visit all nodes at current level, advance to next level \(doesn't use recursion\). Also called "level-order traversal". 
   * First you place a node into a queue, handle it, then enqueue both children \(left first\). **O\(n\)** time and space complexity.
 
+### Pre-Order
+
+```cpp
+void preOrder(Node * node) {
+    if (node == NULL) return;
+    
+    cout << node->value << endl;
+    preOrder(node->left);
+    preOrder(node->right);
+}
+```
+
+Without recursion \(Level-order / BFS looks the same as this, except you use a `queue` and `.front()`\):
+
+```cpp
+void preOrder2(Node * node) {
+    stack<Node*> stack;
+    stack.push(node);
+    Node * curr;
+    
+    while (!stack.empty()) {
+        curr = stack.top();
+        cout << curr->value << endl;
+        
+        stack.pop();
+        
+        if (curr->right != NULL) stack.push(curr->right);
+        if (curr->left != NULL) stack.push(curr->left);
+    }
+}
+```
+
+### In-Order
+
+```cpp
+void preOrder(Node * node) {
+    if (node == NULL) return;
+    
+    cout << node->value << endl;
+    preOrder(node->left);
+    cout << node->value << endl;
+    preOrder(node->right);
+}
+```
+
+Without recursion:
+
+```cpp
+void inOrder(Tree tree) {
+    Stack<Tree> stack = new Stack<>();
+    Tree curr = tree;
+
+    while (curr != null || !stack.isEmpty()) {
+        while (curr != null) {
+            stack.push(curr);
+            curr = curr.left;
+        }
+
+        curr = stack.pop();
+        // process curr.value
+        curr = curr.right;
+    }
+}
+```
+
+### Post-Order
+
+```cpp
+void preOrder(Node * node) {
+    if (node == NULL) return;
+    
+    preOrder(node->left);
+    cout << node->value << endl;
+    preOrder(node->right);
+    cout << node->value << endl;
+}
+```
+
+Without recursion:
+
+```cpp
+void postOrder(Tree tree) {
+    Stack<Tree> tmp = new Stack<>();
+    Stack<Tree> all = new Stack<>();
+    tmp.push(tree);
+    Tree curr;
+
+    while (!tmp.isEmpty()) {
+        curr = tmp.pop();
+        all.push(curr);
+        if (curr.left != null) tmp.push(curr.left);
+        if (curr.right != null) tmp.push(curr.right);
+    }
+
+    while (!all.isEmpty()) {
+        curr = all.pop();
+        // process curr.value
+    }
+}
+```
+
 ### Balanced BST
 
 * A self-balancing binary search tree is any node-based binary search tree that automatically keeps its height small in the face of arbitrary item insertions and deletions.
