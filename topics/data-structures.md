@@ -1,8 +1,5 @@
 # Data Structures
 
-* Contiguously-allocated structures are composed of single slabs of memory, and include arrays, matrices, heaps, and hash tables.
-* Linked data structures are composed of distinct chunks of memory bound together by _pointers_, and include lists, trees, and graph adjacency lists.
-
 ## Arrays
 
 ```cpp

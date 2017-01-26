@@ -248,7 +248,7 @@ int b_search(const vector<int> &haystack, const int &needle) {
 boolean pathFound(Position p) {
     if (p is finish) 
         return true;
-    
+
     foreach option O from p {
         boolean isThereAPath = pathFound(O);
         if (isThereAPath) return true; // We found a path using option O
@@ -257,7 +257,13 @@ boolean pathFound(Position p) {
     // Hence there is no solution possible to finish
     return false;
 }
+
+
 ```
+
+## Hashing
+
+* The process of placing items into their own buckets, being sure to deal with collisions. You want the hash function to spread entries as evenly as possible among the buckets.
 
 ## Selection \(`k`-th smallest element\)
 
