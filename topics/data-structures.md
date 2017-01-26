@@ -1,5 +1,7 @@
 # Data Structures
 
+* Choose the data structure based on what needs to be stored, and what the most frequent operations are.
+
 ## Arrays
 
 ```cpp
@@ -32,18 +34,21 @@ vec.push_back(6);
   * **O\(1\)** for `push`, `pop`, `front`, `back`, `size`, and `empty`.
 * No iterating over these. Just accessing and modifying the edges.
 
-## Special Structures
+## Associative Structures
 
 * **Set**: When you want the elements to be unique. **O\(1\)** insert/erase only if you give the hint. Else **O\(log n\)** since they're implemented with binary search trees. Search always logarithmic.
-* **Map**: When you want **O\(1\)** for key/value lookup.
+* **Map**: When you want **O\(1\)** for key/value lookup. Can also get first element in a map \(which is ordered\): `(A.begin())->first`
 * **Hashset**: When you want **O\(1\)** for `contains`, which is done with `count()`. Insert and delete also **O\(1\)** for one element.
 * **Priority Queue** / **Heap**: When you want **O\(1\)** for the maximum element in a collection.
 
 ## Binary Search Trees
 
+* A hierarchical structure used for storing naturally hierarchical data \(DOM, File system\), data to be organized \(numbers\), Tries for dictionaries, etc.
+* Depth of a node = length from root to itself. Height = length from itself to it furthest leaf.
+* A binary tree is a tree with at most two children. Each node has 3 properties. Value, left child, and right child. Children both of type node.
+* A binary _search_ tree is a binary tree that has every element greater than a node on its right, and every element less than a node on its left. The same must be true for both the root tree and every subtree.
 * Each node has a key, and _all_ keys in the left subtree are smaller than the node's key, _all_ those in the right are bigger.
-* Operations: search, traversal, insert, delete.
-* Searching is `O(log(n)) = O(h)`, where `h = height` of the tree \(`log(n)` for 2 child nodes in each tree root, if tree is perfectly balanced\).
+* Search: `O(log(n)) = O(h)`, where `h = height` of the tree \(`log(n)` for 2 child nodes in each tree root, if tree is perfectly balanced\).
 * The min element is the leftmost descendant of the root, the max is the rightmost.
 * Traversal in `O(n)`, by traversing the left node, processing the item and traversing the right node, recursively \("in-order traversal"\).
 * Insertion is `O(log(n))` and requires recursion.
