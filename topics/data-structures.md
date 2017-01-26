@@ -47,13 +47,14 @@ vec.push_back(6);
 * Depth of a node = length from root to itself. Height = length from itself to it furthest leaf. **Find the total** height of a tree by recursively calculating the height of the left, and the height of the right subtree, and returning the max among that. **O\(n\)**
 * A binary tree is a tree with at most two children. Each node has 3 properties. Value, left child, and right child. Children both of type node.
 * A binary _search_ tree is a binary tree where _every_ element greater than a node on its right, and every element less than a node on its left. The same must be true for both the root tree and every subtree. This also means that the min element is the leftmost descendant of the root, and the max is the rightmost.
+* You can **check whether** a tree is a BST by visiting a node checking whether it's value is within a certain range \(start with int min - int max for root\), then with two recursive calls that it's true for both of its children, setting the new max = root for the left child, and min = root for the right child. This is **O\(n\)**. You could also print in-order and check at each step that it's sorted.
 * **Balanced** means that the difference between the height of the left and right subtrees from `root` isn't greater than 1. It is generally good to rebalance after each insertion / deletion.
 * Search, insertion, and deletion are **O\(log n\) **if tree is balanced.
 
 ### Tree Traversal
 
 * DFS \(depth first, using a stack.\)
-  * Left always before right. Root means you can read the data. 
+  * Left always before right. Root means you can read the data.  All three are **O\(n\)**.
 * * Pre-order: Root -&gt; left -&gt; right \(Root is before \(pre\) children\). Used for pretty print.
   * In-order: Left -&gt; root -&gt; right \(Root is within \(in\) children\). Used for printing the sorted list of elements.
   * Post-order: left -&gt; right -&gt; root \(Root is after \(post\) children\).
@@ -66,27 +67,27 @@ vec.push_back(6);
 ```cpp
 void preOrder(Node * node) {
     if (node == NULL) return;
-    
+
     cout << node->value << endl;
     preOrder(node->left);
     preOrder(node->right);
 }
 ```
 
-Without recursion \(Level-order / BFS looks the same as this, except you use a `queue` and `.front()`\):
+Without recursion \(Level-order / BFS looks the same as this, except you use a `queue` , `.front()`, and the left goes in first.\):
 
 ```cpp
 void preOrder2(Node * node) {
     stack<Node*> stack;
     stack.push(node);
     Node * curr;
-    
+
     while (!stack.empty()) {
         curr = stack.top();
         cout << curr->value << endl;
-        
+
         stack.pop();
-        
+
         if (curr->right != NULL) stack.push(curr->right);
         if (curr->left != NULL) stack.push(curr->left);
     }
@@ -96,10 +97,9 @@ void preOrder2(Node * node) {
 ### In-Order
 
 ```cpp
-void preOrder(Node * node) {
+void inOrder(Node * node) {
     if (node == NULL) return;
-    
-    cout << node->value << endl;
+
     preOrder(node->left);
     cout << node->value << endl;
     preOrder(node->right);
@@ -109,19 +109,20 @@ void preOrder(Node * node) {
 Without recursion:
 
 ```cpp
-void inOrder(Tree tree) {
-    Stack<Tree> stack = new Stack<>();
-    Tree curr = tree;
-
-    while (curr != null || !stack.isEmpty()) {
-        while (curr != null) {
-            stack.push(curr);
-            curr = curr.left;
+void inOrder2(Node * tree) {
+    stack<Node*> my_stack;
+    Node * curr = tree;
+    
+    while (curr != NULL || !my_stack.empty()) {
+        while (curr != NULL) {
+            my_stack.push(curr);
+            curr = curr->left;
         }
-
-        curr = stack.pop();
-        // process curr.value
-        curr = curr.right;
+        
+        curr = my_stack.top();
+        my_stack.pop();
+        cout << curr->value << endl;
+        curr = curr->right;
     }
 }
 ```
@@ -129,11 +130,10 @@ void inOrder(Tree tree) {
 ### Post-Order
 
 ```cpp
-void preOrder(Node * node) {
+void postOrder(Node * node) {
     if (node == NULL) return;
-    
+
     preOrder(node->left);
-    cout << node->value << endl;
     preOrder(node->right);
     cout << node->value << endl;
 }
@@ -142,22 +142,25 @@ void preOrder(Node * node) {
 Without recursion:
 
 ```cpp
-void postOrder(Tree tree) {
-    Stack<Tree> tmp = new Stack<>();
-    Stack<Tree> all = new Stack<>();
-    tmp.push(tree);
-    Tree curr;
-
-    while (!tmp.isEmpty()) {
-        curr = tmp.pop();
+void postOrder2(Node * node) {
+    stack<Node*> tmp;
+    stack<Node*> all;
+    tmp.push(node);
+    Node * curr;
+    
+    while (!tmp.empty()) {
+        curr = tmp.top();
+        tmp.pop();
+        
         all.push(curr);
-        if (curr.left != null) tmp.push(curr.left);
-        if (curr.right != null) tmp.push(curr.right);
+        if (curr->left != NULL) tmp.push(curr->left);
+        if (curr->right != NULL) tmp.push(curr->right);
     }
-
-    while (!all.isEmpty()) {
-        curr = all.pop();
-        // process curr.value
+    
+    while (!all.empty()) {
+        curr = all.top();
+        all.pop();
+        cout << curr->value << endl;
     }
 }
 ```
