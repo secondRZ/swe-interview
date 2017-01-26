@@ -5,14 +5,13 @@
 1. Confirm your assumptions out loud:
    1. What does the function do exactly? \(Ex: Produce two times the given number.\)
    2. What type of data does the function receive, and what type of data does the function produce. \(Ex: int-&gt; bool\)
-   3. What can I assume about: null/empty cases, range cases \(positive/negative\), edge cases
-2. "Obviously I could do " {some brute force solution} ". Which is a " {time complexity of solution} " solution."
-3. Talk your way to an optimized solution until you both agree that it is a good solution. Don't stop until at least a linear solution is reached, but keep thinking until you can't think of anything better or they tell you to go ahead.
+   3. What can I assume about: null/empty cases, range cases \(positive/negative\), edge cases.
+2. Talk your way to an optimized solution until you both agree that it is a good solution. Don't stop until at least a linear solution is reached, but keep thinking until you can't think of anything better or they tell you to go ahead.
    1. Is this a permutation of an algorithm you already know?
    2. Less looping: Can I loop through my structure only once and get my answer? What about not looping through the entire thing at all? \(Binary search, sqrt for factors and prime, two pointer approach where the inner loop can not be reset every time the outer loop runs and decrease instead of increasing, etc.\)
    3. Did you use the best data structure for the job? What's important/unimportant? Access by value? Access by index? Inserting and removing? Etc.
    4. Can you do it in place?
-4. Write the code and optimize the solution with your interviewers.
+3. Write the code and optimize the solution with your interviewers.
    1. Can the code be cleaner by refactoring?
 
 ## Complexity / Analysis
@@ -29,24 +28,24 @@
   * **O\(2^n\)**: Exponential.
 * Space complexity works the same way. If your function take a collection of n elements, and creates an exact copy of that collection, then your function is linear in its space complexity. Even if you erase it later.
 
-## Quick and Dirty Rules
-
-* Set an upper limit on an incrementing variable w/ modulo by the upper limit from the variable. So `hour % = 24` will never increment higher than 24.
-* Reset to that upper limit with a decrementing variable with `(variable + upper_limit) % upper_limit`. Then if it goes to -1, it'll be 1 minus the upper limit.
-* To get the last digit of an int, modulo by 10. To chop off that last digit, divide by 10. To get the first, **divide** by the 1 \* however many digits are in the number. To chop off the first digit, **modulo** by that number. Notice they're reversed.
-* To get the number of a char in the alphabet, convert it to uppercase, then to an int, then subtract 64 from it \(1 under the char 'A', which is 65\).
-* **Permutations**: For n elements in a fixed set, there are `n!` \(n factorial\) permutations of their arrangement. Unless they can be both upper and lower case, then it's $$$$`2^n * (n!)`. If they can be any character then it's `k^n` where `k` is the amount of available characters, and `n` is the length of the collection. 
-* **Euclidean Algo \(Find the greatest common divisor\)**: The GCD of two numbers does not change when one is replaced by the difference between the two. Therefore if you repeatedly replace the larger number with the difference between the two numbers, the numbers will eventually be equal to each other. This is the GCD. Since this can take very long if the larger number is much greater than the smaller, the algo becomes more efficient if you use the modulo of the two numbers until you get 0 \(making the larger number the GCD\), instead of subtraction. If you continuously swap the first number for the second, then you don't have to worry about min and max. Like `tmp = A; A = B % A; B = A;`
-* **Reverse and Integer**: To get the last digit of any int, just run mod 10 \(remainder of 10 is always the last digit\). Now the current reversed number is the previous reversed number \(originally set to 0\), times 10 \(to give a blank digit\), plus the last digit you just got. Divide the int by 10, which simply erases the last digit since ints don't have any decimals, and save that to the new original number. This will eventually become 0 \(since ints don't have decimals\). That's when the loop stops.
-* **Largest Possible Number from joining array elements into a string**: Turn them into a string, Then using the `sort` algorithm, pass a comparison function that  appends string `B` to string `A`. Then appends string `A` to string `B`. And finally run `stoi(str1) > stoi(str2)`.
-* **Fibonacci**: `a[i] = a[i - 2] + a[i - 1]`. To find nth element in the sequence,  Always iterative. Never recursively.
-
 ## Math
 
 * **Find All Factors**: If you find that a number `n` % another number `d == 0`, then you have found 2 factors of `n`. `d` and `n / d`. The upper limit to finding all `d` values is `sqrt(n)`, so you loop only has to go that far \(**all the way to** `<=`, not just `<`\), and add both `d` and`n / d` every iteration, unless `d == sqrt(n)`, then you only enter it for itself, not for `n / d`.
 * **Verify prime number**: 2 is the lowest prime number. 1 is not prime. Same thing as finding all factors. You only need to go to the square root of the number.
 * **Decimal to nary**: Modulo by n. Add the remainder to the vector. Divide by n. Loop again. Loop only while num &gt; 0.
 * **Nary to Decimal**: n to the power of the level of the digit you're at \(starting at 0\) \* whatever the digit represents in decimal.
+* **Permutations**: For n elements in a fixed set, there are `n!` \(n factorial\) permutations of their arrangement. Unless they can be both upper and lower case, then it's $$$$`2^n * (n!)`. If they can be any character then it's `k^n` where `k` is the amount of available characters, and `n` is the length of the collection. 
+* **Euclidean Algo \(Find the greatest common divisor\)**: The GCD of two numbers does not change when one is replaced by the difference between the two. Therefore if you repeatedly replace the larger number with the difference between the two numbers, the numbers will eventually be equal to each other. This is the GCD. Since this can take very long if the larger number is much greater than the smaller, the algo becomes more efficient if you use the modulo of the two numbers until you get 0 \(making the larger number the GCD\), instead of subtraction. If you continuously swap the first number for the second, then you don't have to worry about min and max. Like `tmp = A; A = B % A; B = A;`
+* **Reverse and Integer**: To get the last digit of any int, just run mod 10 \(remainder of 10 is always the last digit\). Now the current reversed number is the previous reversed number \(originally set to 0\), times 10 \(to give a blank digit\), plus the last digit you just got. Divide the int by 10, which simply erases the last digit since ints don't have any decimals, and save that to the new original number. This will eventually become 0 \(since ints don't have decimals\). That's when the loop stops.
+* **Fibonacci**: `a[i] = a[i - 2] + a[i - 1]`. To find nth element in the sequence,  Always iterative. Never recursively.
+* Set an upper limit on an incrementing variable w/ modulo by the upper limit from the variable. So `hour % = 24` will never increment higher than 24.
+* Reset to that upper limit with a decrementing variable with `(variable + upper_limit) % upper_limit`. Then if it goes to -1, it'll be 1 minus the upper limit.
+* To get the last digit of an int, modulo by 10. To chop off that last digit, divide by 10. To get the first, **divide** by the 1 \* however many digits are in the number. To chop off the first digit, **modulo** by that number. Notice they're reversed.
+
+## Strings
+
+* To get the number of a char in the alphabet, convert it to uppercase, then to an int, then subtract 64 from it \(1 under the char 'A', which is 65\).
+* **Largest Possible Number from joining array elements into a string**: Turn them into a string, Then using the `sort` algorithm, pass a comparison function that  appends string `B` to string `A`. Then appends string `A` to string `B`. And finally run `stoi(str1) > stoi(str2)`.
 
 ## Sorting
 
@@ -481,105 +480,6 @@ public void dijkstra(Graph graph, Vertex source) {
 * For `NP`-complete problems, no polynomial-time algorithms are known for solving them \(although they can be verified in polynomial time\).
 * The most notable characteristic of `NP`-complete problems is that no fast solution to them is known.
 * `NP`-hard: non-deterministic polynomial time.
-
-# Algorithms Code Examples
-
-### In-Order
-
-```java
-public void inOrder(Tree tree) {
-    if (tree == null) return;
-
-    inOrder(tree.left);
-    // process tree.value
-    inOrder(tree.right);
-}
-```
-
-Without recursion:
-
-```java
-public void inOrder(Tree tree) {
-    Stack<Tree> stack = new Stack<>();
-    Tree curr = tree;
-
-    while (curr != null || !stack.isEmpty()) {
-        while (curr != null) {
-            stack.push(curr);
-            curr = curr.left;
-        }
-
-        curr = stack.pop();
-        // process curr.value
-        curr = curr.right;
-    }
-}
-```
-
-### Pre-Order
-
-```java
-public void preOrder(Tree tree) {
-    if (tree == null) return;
-
-    // process tree.value
-    preOrder(tree.left);
-    preOrder(tree.right);
-}
-```
-
-Without recursion:
-
-```java
-public void preOrder2(Tree tree) {
-    Stack<Tree> stack = new Stack<>();
-    stack.push(tree);
-    Tree curr;
-
-    while (!stack.isEmpty()) {
-        curr = stack.pop();
-
-        // process curr.value
-        if (curr.right != null) stack.push(curr.right);
-        if (curr.left != null) stack.push(curr.left);
-    }
-}
-```
-
-### Post-Order
-
-```java
-public void postOrder(Tree tree) {
-    if (tree == null) return;
-
-    postOrder(tree.left);
-    postOrder(tree.right);
-    // process tree.value
-}
-```
-
-Without recursion:
-
-```java
-public void postOrder(Tree tree) {
-    Stack<Tree> tmp = new Stack<>();
-    Stack<Tree> all = new Stack<>();
-    tmp.push(tree);
-    Tree curr;
-
-    while (!tmp.isEmpty()) {
-        curr = tmp.pop();
-        all.push(curr);
-        if (curr.left != null) tmp.push(curr.left);
-        if (curr.right != null) tmp.push(curr.right);
-    }
-
-    while (!all.isEmpty()) {
-        curr = all.pop();
-        // process curr.value
-    }
-}
-```
 
 
 
