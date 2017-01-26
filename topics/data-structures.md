@@ -54,7 +54,7 @@ vec.push_back(6);
 
 * DFS \(depth first, using a stack.
   * Left always before right. Root means you can read the data. 
-* * Pre-order: Root -&gt; left -&gt; right \(Root is before \(pre\) children\).
+* * Pre-order: Root -&gt; left -&gt; right \(Root is before \(pre\) children\). Used for pretty print.
   * In-order: Left -&gt; root -&gt; right \(Root is within \(in\) children\). Used for printing the sorted list of elements.
   * Post-order: left -&gt; right -&gt; root \(Root is after \(post\) children\).
 * BFS \(breadth first, using a queue\)
