@@ -112,13 +112,13 @@ Without recursion:
 void inOrder2(Node * tree) {
     stack<Node*> my_stack;
     Node * curr = tree;
-    
+
     while (curr != NULL || !my_stack.empty()) {
         while (curr != NULL) {
             my_stack.push(curr);
             curr = curr->left;
         }
-        
+
         curr = my_stack.top();
         my_stack.pop();
         cout << curr->value << endl;
@@ -147,16 +147,16 @@ void postOrder2(Node * node) {
     stack<Node*> all;
     tmp.push(node);
     Node * curr;
-    
+
     while (!tmp.empty()) {
         curr = tmp.top();
         tmp.pop();
-        
+
         all.push(curr);
         if (curr->left != NULL) tmp.push(curr->left);
         if (curr->right != NULL) tmp.push(curr->right);
     }
-    
+
     while (!all.empty()) {
         curr = all.top();
         all.pop();
@@ -182,21 +182,18 @@ void postOrder2(Node * node) {
 
 ## Graphs
 
-* Go [here](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-1/), [here](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-2/), and [here](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-3/).
-* A Graph is comprised of vertices `V` \(the points\) and edges `E` \(the lines connecting the points\).
-* Assume `n` is the number of vertices and `m` is the number of edges.
-* Directed graphs: inner city streets \(one-way\), program execution flows.
-* Undirected graphs: family hierarchy, large roads between cities.
-* Data structures:
-  * **Adjacency Matrix**: we can represent a graph using an `n * n` matrix, where element `[i,j] = 1` if `(i, j)` is an edge \(an edge from point `i` to point `j`\), and `0` otherwise.
-  * The matrix representation allows rapid updates for edges \(insertion, deletion\) or to tell if an edge is connecting two vertices, but uses a lot of space for graphs with many vertices but relatively few edges.
-  * **Adjacency Lists**: we can represent a sparse graph by using linked lists to store the neighbors adjacent to each vertex.
-  * Lists make it harder to tell if an edge is in the graph, since it requires searching the appropriate list, but this can be avoided.
-  * The parent list represents each of the vertices, and a vertex's inner list represents all the vertices the vertex is connected to \(the edges for that vertex\).
-  * Each vertex appears at least twice in the structure – once as a vertex with a list of connected vertices, and at least once in the list of vertex for the vertices it's connected to \(in undirected graphs\).
-* We'll mainly use adjacency lists as a graph's data structure.
-* Traversing a graph \(breadth or depth\) uses 3 states for vertices: undiscovered, discovered, processed \(all edges have been explored\).
-* Most fundamental graph operation is traversal.
+* **Directed** graphs / Digraph: the web \(web page is a node, links are the edges\), program execution flows. Edges are represented as an ordered pair. `(a, b)` where `a` is always the origin and `b` the destination.
+* **Undirected** graphs: social network \(A user is a node, friendship is the edge\), large roads between cities. Edges are represented as an unordered pair.
+* **Weighted** graph: Each edge has different weights. \(Giving different numbers to different path lengths, etc.\)
+* In a simple \(no self loops or multi-edges\) directed graph, maximum `m = n(n-1)`. In an undirected graph, it's half that number. 0 is the minimum. This is only if the graph is simple. A denser graph is a graph with more edges. Sparse is the opposite. The list of nodes is always stored in a map, to avoid linear lookup if you're given a node value instead of an index. You use different structures based on whether the graph is dense or sparse to store the edges:
+  * **Adjacency Matrix**: Used for _dense_ graphs. Use a matrix \(2d array\) with a size of `|V| * |V|` . Set element `[i,j] = 1` if an edge exists from point `i` to point `j`\), and `0` otherwise. 
+    * There are two positions for each edge. If `A[i][j]` exists, so does `A[j][i]`. For an undirected graph, you only need to go half way.
+    * To see if two nodes directly _connected_, you simply go to one node's row, and the column of the other `A[i][j]`. To see all adjacent nodes, just look for all indices with `1` as a value in its row.
+    * For **weighted**
+  * **Adjacency Lists**: Used for _sparse_ graphs. Use linked lists to store the neighbors adjacent to each vertex.
+    * Lists make it harder to tell if an edge is in the graph, since it requires searching the appropriate list, but this can be avoided.
+    * Each vertex appears at least twice in the structure – once as a vertex with a list of connected vertices, and at least once in the list of vertex for the vertices it's connected to \(in undirected graphs\).
+    * The parent list represents each of the vertices, and a vertex's inner list represents all the vertices the vertex is connected to \(the edges for that vertex\).
 
 
 
