@@ -305,6 +305,14 @@ private int partition(int[] a, int low, int high) {
   * The algorithm divides the array to groups of size 5 \(the last group can be of any size &lt;= 5\) and then calculates the median of each group by sorting and selecting the middle element.
   * It then finds the median of these medians by recursively calling itself, and selects the median of medians as the pivot for partition.
 
+## Dynamic Programming
+
+* Dynamic programming is remembering information about past iterations for quicker processing. "Remember your past". Typically accomplished by saving a variable of past results.
+
+## Greedy Algo
+
+* A greedy algorithm is taking the best guess given the information you have at the time.
+
 ## Graphs
 
 ##### Utility Function
