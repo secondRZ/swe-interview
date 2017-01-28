@@ -300,65 +300,6 @@ private int partition(int[] a, int low, int high) {
 
 ## Graphs
 
-##### Utility Function
-
-```java
-private void reset(Graph graph) {
-    for (Vertex v : graph.vertices.values()) {
-        v.parent = null;
-        v.discovered = false;
-        v.distance = Integer.MAX_VALUE;
-    }
-}
-```
-
-##### BFS Graph Traversal
-
-```java
-public void bfs(Graph graph, Vertex source) {
-    reset(graph);
-    Queue<Vertex> q = new LinkedList<>();
-    q.add(source);
-    source.discovered = true;
-
-    while (!q.isEmpty()) {
-        Vertex from = q.remove();
-
-        for (Edge e : from.edges) {
-            Vertex to = graph.vertices.get(e.to);
-
-            if (!to.discovered) {
-                to.parent = from;
-                to.discovered = true;
-                q.add(to);
-            }
-        }
-    }
-}
-```
-
-##### DFS Graph Traversal
-
-```cpp
-void dfs(Graph graph) {
-    stack<Vertex> s;
-    s.push(graph.root_vertex);
-    cout << graph.root_vertex.value << ' ';
-    graph.root_vertex.visited = true;
-    while (!s.empty()) {
-        Vertex v = s.top();
-        Vertex connected_v = getUnvisitedAdjacentVertex(v); // Goes through the neighbors of v, and finds the one with vertex.visited = false
-        if (child != null) {
-            s.push(child);
-            cout << child.value << ' ';
-            child.visited = true;
-        } else {
-            s.pop();
-        }
-    }
-}
-```
-
 ##### Shortest-Paths
 
 * Find the path with minimal edge _weights_ between a source vertex and every other vertex in the graph.
