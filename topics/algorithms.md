@@ -221,15 +221,9 @@ int b_search(const vector<int> &haystack, const int &needle) {
 }
 ```
 
-* Fast algorithm for searching in a **sorted** array of keys.
-* To search for key `q`, we compare `q` to the middle key `S[n/2]`. If `q` appears before `S[n/2]`, it must reside in the top half of `S`; if not, it must reside in the bottom half of `S`. Repeat recursively.
-* Efficiency is `O(logn)`.
-* Several interesting algorithms follow from simple variants of binary search:
-  * Eliminating the "equals check" in the algorithm \(keeping the bigger/smaller checks\) we can find the boundary of a block of identical occurrences of a search term. Repeating the search with the smaller/bigger checks swapped, we find the other boundary of the block.
-  * One-sided binary search: if we don't know the size of the array, we can test repeatedly at larger intervals \(`A[1]`, `A[2]`, `A[4]`, `A[8]`, `A[16]`, `...`\) until we find an item larger than our search term, and then narrow in using regular binary search. This results in `2*log(p)` \(where `p` is the index we're after\), regardless how large the array is. This is most useful when `p` is relatively close to our start position.
-* Binary search can be used to find the roots of continuous functions, assuming that we have two points where `f(x) > 0` and `f(x) < 0` \(there are better algorithms which use interpolation to find the root faster, but binary search still works well\).
+* Efficiency is **O\(logn\)**.
 
-##### Randomization
+## Randomization
 
 * Randomize array in place \(`O(n)`\) – swap `a[i]` with `a[rand(i, n)]`.
 
@@ -296,15 +290,6 @@ private int partition(int[] a, int low, int high) {
 }
 ```
 
-* Median of medians select, `O(n)`:
-  * Based on quickselect.
-  * Finds an approximate median in linear time – this is the _key_ step – which is then used as a pivot in quickselect.
-  * It uses an \(asymptotically\) optimal approximate median-selection algorithm to build an \(asymptotically\) optimal general selection algorithm.
-  * Can also be used as pivot strategy in with quicksort, yielding an optimal algorithm, with worst-case complexity `O(nlogn)`.
-  * In practice, this algorithm is typically outperformed by instead choosing random pivots, which has average linear time for selection and average log-linear time for sorting, and avoids the overhead of computing the pivot.
-  * The algorithm divides the array to groups of size 5 \(the last group can be of any size &lt;= 5\) and then calculates the median of each group by sorting and selecting the middle element.
-  * It then finds the median of these medians by recursively calling itself, and selects the median of medians as the pivot for partition.
-
 ## Dynamic Programming
 
 * Dynamic programming is remembering information about past iterations for quicker processing. "Remember your past". Typically accomplished by saving a variable of past results.
@@ -330,6 +315,8 @@ private void reset(Graph graph) {
 ##### BFS Graph Traversal
 
 ```java
+
+
 public void bfs(Graph graph, Vertex source) {
     reset(graph);
     Queue<Vertex> q = new LinkedList<>();
@@ -352,80 +339,27 @@ public void bfs(Graph graph, Vertex source) {
 }
 ```
 
-* Breadth-first search usually serves to find shortest-path distances from a given source in terms of _number of edges_ \(not weight\).
-* Start exploring the graph from the given root \(can be any vertex\) and slowly progress out, while processing the oldest-encountered vertices first.
-* We assign a direction to each edge, from the discoverer `(u)` to the discovered `(v)` \(`u` is the parent of `v`\).
-* This defines \(results in\) a tree of the vertices starting with the root \(breadth-first tree\).
-* The tree defines the shortest-path from the root to every other node in the tree, making this technique useful in shortest-path problems.
-* Once a vertex is discovered, it is placed in a queue. Since we process these vertices in first-in, first-out order, the oldest vertices are expanded first, which are exactly those closest to the root.
-* During the traversal, each vertex discovered has a parent that led to it. Because vertices are discovered in order of increasing distance from the root, the unique path from the root to each node uses the smallest number of edges on any root to node path in the graph.
-* This path has to be constructed backwards, from the destination node to the root.
-* BFS can have any node as the root – depends on what paths we want to find.
-* BFS returns the shortest-path in terms of _number of edges_ \(for both directed and undirected graphs\), not in terms of weight \(see shortest-paths below\).
-* Traversal is `O(n + m)` where `n` = num of vertex and `m` = total num of edges.
-* Applications:
-  * Find shortest-path in terms of number of edges
-  * Garbage collection scanning
-  * Connected components
-    * "Connected graph" = there is a path between _any_ two vertices.
-    * "Connected component" = set of vertices such that there is a path between every pair of vertices; there must not be a connection between two components \(otherwise they would be the same component\).
-    * Many problems can be reduced to finding or counting connected components \(like solving a Rubik's cube – is the graph of legal configurations connected?\).
-    * A connected component can be found with BFS – every node found in the tree is in the same connected component. Repeat the search from any undiscovered vertex to define the next component, until all vertices have been found.
-  * Vertex-colorings \(testing a graph for bipartite-ness\)
-    * Assigning colors to vertices \(as few colors as possible\), such that no edge connects two vertices with the same color.
-    * Such problems arise in scheduling applications \(like register allocation in compilers\).
-    * A graph is "bipartite" if it can be colored without conflicts with only two colors.
-    * Such graphs arise in many applications, like: had-sex-with graph for heterosexuals \(men only have sex with women\), that is male vertices are only connected to female vertices, and vice-versa.
-    * The problem – find the separation between the vertices for the two colors.
-    * Such a graph can be validated with BFS: start with the root, and keep coloring each new vertex the opposite color of it's parent. Then make sure that no non-discovered edge links two vertices of the same color. If no conflicts are found – problem solved. Otherwise, it isn't a bipartite graph.
-    * BFS allows us to separate vertices into two groups after running this algorithm, which we can't do just from the structure of the graph.
-
 ##### DFS Graph Traversal
 
-```java
-public void dfs(Graph graph) {
-    reset(graph);
-
-    for (Vertex v : graph.vertices.values()) {
-        if (!v.discovered)
-            dfs(graph, v);
-    }
-}
-
-private void dfs(Graph graph, Vertex v) {
-    v.discovered = true;
-    // TODO: insert application of DFS here
-
-    for (Edge e : v.edges) {
-        Vertex to = graph.vertices.get(e.to);
-
-        if (to.discovered) {
-            // cycle found (back edge)! What should we do? depends on the application...
+```cpp
+void dfs(Graph graph) {
+    stack<Vertex> s;
+    s.push(graph.root_vertex);
+    cout << graph.root_vertex.value << ' ';
+    graph.root_vertex.visited = true;
+    while (!s.empty()) {
+        Vertex v = s.top();
+        Vertex connected_v = getUnvisitedAdjacentVertex(v); // Goes through the neighbors of v, and finds the one with vertex.visited = false
+        if (child != null) {
+            s.push(child);
+            cout << child.value << ' ';
+            child.visited = true;
         } else {
-            to.parent = v;
-            dfs(graph, to);
+            s.pop();
         }
     }
-
-    // TODO: insert application of DFS here. For example: if we're doing topological sorting
-    //       then add v to head of a linked list at this point
 }
 ```
-
-* Depth-first search is often a subroutine in another algorithm.
-* Starts exploring the graph from the root, but immediately expanding as far as possible \(in contrast to BFS: breadth vs depth\). Retraction back is only done when all neighboring vertices have already been processed.
-* While BFS relied on a queue \(FIFO\) for new discovered vertices to be processed, DFS relies on stack \(LIFO\) \(not really uses a stack but recursion, which functions as a stack\).
-* DFS classifies all edges into 2 categories: tree edges and back edges. Tree edges progress you down the tree to next vertices. Back edges take you back into some earlier part on the tree, to some ancestor.
-* Start with the root, find the first child, process it, and run DFS on it recursively.
-* After processing all reachable vertices, if any undiscovered vertices remain, depth-first search selects one of them as a new root and repeats from that root. The algorithm is repeated until it has discovered every vertex.
-* Each vertex is timestamped \(by incremented int\): once when it's discovered and once when a vertex's edges have been examined.
-* This defines \(results in\) a depth-first forest, comprising of several depth-first trees.
-* Traversal is `O(n + m)` where `n` = num of vertices and `m` = total num of edges.
-* Applications:
-  * Topological sort – create a linear ordering of a DAG \(directed acyclic graph\), such that for edge `(u, v)` then `u` appears before `v` in the ordering; computed by DFS and adding each "visited" vertex into the _front_ of a linked list.
-  * Finding cycles – any back edge means that we've found a cycle. If we only have tree edges then there are no cycles \(to detect a back edge, when you process the edge `(x,y)` check if `parent[x] != y`\).
-  * Finding articulation vertices \(articulation or cut-node is a vertex that removing it disconnects a connected component, causing loss of connectivity\). Finding articulation vertices by brute-force is `O(n(n + m))`.
-  * Strongly connected components – in a SCC of a directed graph, every pair of vertices `u` and `v` are reachable from each other.
 
 ##### Shortest-Paths
 
