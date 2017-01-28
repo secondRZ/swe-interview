@@ -148,5 +148,53 @@ void postOrder(Node * node) {
     * Each vertex appears at least twice in the structure – once as a vertex with a list of connected vertices, and at least once in the list of vertex for the vertices it's connected to \(in undirected graphs\).
     * The parent list represents each of the vertices, and a vertex's inner list represents all the vertices the vertex is connected to \(the edges for that vertex\).
 
+### Graph Traversal
+
+##### DFS
+
+```java
+void dfs(Graph graph) {
+    stack<Vertex> s;
+    s.push(graph.root_vertex);
+    cout << graph.root_vertex.value << ' ';
+    graph.root_vertex.visited = true;
+    while (!s.empty()) {
+        Vertex v = s.top();
+        Vertex connected_v = getUnvisitedAdjacentVertex(v); // Goes through the neighbors of v, and finds the one with vertex.visited = false
+        if (child != null) {
+            s.push(child);
+            cout << child.value << ' ';
+            child.visited = true;
+        } else {
+            s.pop();
+        }
+    }
+}
+```
+
+##### BFS
+
+```cpp
+void bfs(Graph graph) {
+    queue<Vertex> q;
+    q.push(graph.root_vertex);
+    cout << graph.root_vertex.value << ' ';
+    graph.root_vertex.visited = true;
+    while (!q.empty()) {
+        Vertex v = q.front();
+        q.pop();
+        Vertex connected_v;
+        while ((connected_v = getUnvisitedAdjacentVertex(v)) != null) {
+            connected_v = getUnvisitedAdjacentVertex(v);
+            cout << connected_v << ' ';
+            connected_v.visited = true;
+            q.push(conntected_v);
+        }
+    }
+}
+```
+
+##### 
+
 
 
