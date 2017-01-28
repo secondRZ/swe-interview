@@ -51,7 +51,74 @@ vec.push_back(6);
 * **Balanced** means that the difference between the height of the left and right subtrees from `root` isn't greater than 1. It is generally good to rebalance after each insertion / deletion.
 * Search, insertion, and deletion are **O\(log n\) **if tree is balanced.
 
-### Balanced BST
+### Tree Traversal
+
+* DFS \(depth first, using a stack.\)
+  * Left always before right. Root means you can read the data.  All three are **O\(n\)**.
+* * Pre-order: Root -&gt; left -&gt; right \(Root is before \(pre\) children\). Used for pretty print.
+  * In-order: Left -&gt; root -&gt; right \(Root is within \(in\) children\). Used for printing the sorted list of elements.
+  * Post-order: left -&gt; right -&gt; root \(Root is after \(post\) children\).
+* BFS \(breadth first, using a queue\)
+  * Visit all nodes at current level, advance to next level \(doesn't use recursion\). Also called "level-order traversal". 
+  * First you place a node into a queue, handle it, then enqueue both children \(left first\). **O\(n\)** time and space complexity.
+
+#### Pre-Order
+
+```cpp
+void preOrder(Node * node) {
+    if (node == NULL) return;
+
+    cout << node->value << endl;
+    preOrder(node->left);
+    preOrder(node->right);
+}
+```
+
+Without recursion \(Level-order / BFS looks the same as this, except you use a `queue` , `.front()`, and the left goes in first.\):
+
+```cpp
+void preOrder2(Node * node) {
+    stack<Node*> stack;
+    stack.push(node);
+    Node * curr;
+
+    while (!stack.empty()) {
+        curr = stack.top();
+        cout << curr->value << endl;
+
+        stack.pop();
+
+        if (curr->right != NULL) stack.push(curr->right);
+        if (curr->left != NULL) stack.push(curr->left);
+    }
+}
+```
+
+#### In-Order
+
+```cpp
+void inOrder(Node * node) {
+    if (node == NULL) return;
+
+    inOrder(node->left);
+    cout << node->value << endl;
+    inOrder(node->right);
+}
+```
+
+#### Post-Order
+
+```cpp
+void postOrder(Node * node) {
+    if (node == NULL) return;
+
+    postOrder(node->left);
+    postOrder(node->right);
+    cout << node->value << endl;
+}
+```
+
+## Balanced BST
 
 * A self-balancing binary search tree is any node-based binary search tree that automatically keeps its height small in the face of arbitrary item insertions and deletions.
 

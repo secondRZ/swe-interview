@@ -315,8 +315,6 @@ private void reset(Graph graph) {
 ##### BFS Graph Traversal
 
 ```java
-
-
 public void bfs(Graph graph, Vertex source) {
     reset(graph);
     Queue<Vertex> q = new LinkedList<>();
