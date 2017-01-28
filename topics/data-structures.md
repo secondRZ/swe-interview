@@ -186,12 +186,12 @@ void postOrder2(Node * node) {
 * **Undirected** graphs: social network \(A user is a node, friendship is the edge\), large roads between cities. Edges are represented as an unordered pair.
 * **Weighted** graph: Each edge has different weights. \(Giving different numbers to different path lengths, etc.\)
 * In a simple \(no self loops or multi-edges\) directed graph, maximum `|e| = |v|(|v|-1)`. In an undirected graph, it's half that number. 0 is the minimum. This is only if the graph is simple. A denser graph is a graph with more edges. Sparse is the opposite. The list of nodes is always stored in a map, to avoid linear lookup if you're given a node value instead of an index. You use different structures based on whether the graph is dense or sparse to store the edges:
-  * **Adjacency Matrix**: Used for _dense_ graphs \(number of edges closer to `|v|(|v|-1)` than not\). Use a matrix \(2d array\) with a size of `|V| * |V|` . Set element `[i,j] = 1` if an edge exists from point `i` to point `j`\), and `0` otherwise. 
+  * **Adjacency Matrix**: Used for _dense_ graphs \(number of edges closer to `|v|(|v|-1)` than not\). Use a matrix \(2d array\) with a size of `|v| * |v|` . Set element `[i,j] = 1` if an edge exists from point `i` to point `j`\), and `0` otherwise. 
     * There are two positions for each edge. If `A[i][j]` exists, so does `A[j][i]`. For an undirected graph, you only need to go half way.
     * To see if two nodes directly _connected_, you simply go to one node's row, and the column of the other `A[i][j]`. To see all adjacent nodes, just look for all indices with `1` as a value in its row.
     * For **weighted **graphs, use the `weight` of the edge for the matrix value instead of `1`,  and some arbitrarily low/high number that would never be reached for non-edge slots, like negative infinite.
-  * **Adjacency Lists**: Used for _sparse_ graphs. Use linked lists to store the neighbors adjacent to each vertex.
-    * Lists make it harder to tell if an edge is in the graph, since it requires searching the appropriate list, but this can be avoided.
+    * This is terrible in terms of space consumption, unless there are more `1's` than `0's`.
+  * **Adjacency Lists**: Used for _sparse_ graphs \(more common\). Simply use an array of lists to store the neighbors adjacent to each vertex \(typically a linked list, BST, or set \(not unordered set because they're slower with iteration\)\). Use a linked list for a weighted graph, because then you just add another field to each node for the weight.
     * Each vertex appears at least twice in the structure – once as a vertex with a list of connected vertices, and at least once in the list of vertex for the vertices it's connected to \(in undirected graphs\).
     * The parent list represents each of the vertices, and a vertex's inner list represents all the vertices the vertex is connected to \(the edges for that vertex\).
 
