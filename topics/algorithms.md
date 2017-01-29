@@ -300,6 +300,8 @@ private int partition(int[] a, int low, int high) {
 
 ## Graphs
 
+* Problems usually involve paths, directions, or grids of some sort. Those keywords should signal you should be thinking about graphs.
+
 ##### Shortest-Paths
 
 * Find the path with minimal edge _weights_ between a source vertex and every other vertex in the graph.
