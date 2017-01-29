@@ -135,10 +135,31 @@ void postOrder(Node * node) {
 
 ## Graphs
 
+```cpp
+struct Vertex {
+    std::string value = NULL;
+    set<Vertex *> connected;
+    // node fields (name, word length, etc.)
+    // ...
+};
+
+class Graph {
+  private:
+    std::unordered_set<Vertex *> vertices;
+  public:
+    Graph(int v); // create an empty graph with v vertices
+    void add_edge(Vertex * a, const Vertex &b); // look up vertex a in map and add to the vertex adjacency list
+    void dfs(Vertex * cur, unordered_set<Vertex *> &visited);
+    void bfs(Vertex * start);
+    // Other methods
+    // ...
+};
+```
+
 * **Directed** graphs / Digraph: the web \(web page is a node, links are the edges\), program execution flows. Edges are represented as an ordered pair. `(a, b)` where `a` is always the origin and `b` the destination.
 * **Undirected** graphs: social network \(A user is a node, friendship is the edge\), large roads between cities. Edges are represented as an unordered pair.
 * **Weighted** graph: Each edge has different weights. \(Giving different numbers to different path lengths, etc.\)
-* In a simple \(no self loops or multi-edges\) directed graph, maximum `|e| = |v|(|v|-1)`. In an undirected graph, it's half that number. 0 is the minimum. This is only if the graph is simple. A denser graph is a graph with more edges. Sparse is the opposite. The list of nodes is always stored in a map, to avoid linear lookup if you're given a node value instead of an index. You use different structures based on whether the graph is dense or sparse to store the edges:
+* In a simple \(no self loops or multi-edges\) directed graph, maximum `|e| = |v|(|v|-1)`. In an undirected graph, it's half that number. 0 is the minimum. This is only if the graph is simple. A denser graph is a graph with more edges. Sparse is the opposite. The list of nodes is always stored in a map with key = value, to avoid linear lookup if you're given a node value instead of an index. You use different structures based on whether the graph is dense or sparse to store the edges:
   * **Adjacency Matrix**: Used for _dense_ graphs \(number of edges closer to `|v|(|v|-1)` than not\). Use a matrix \(2d array\) with a size of `|v| * |v|` . Set element `[i,j] = 1` if an edge exists from point `i` to point `j`\), and `0` otherwise. 
     * There are two positions for each edge. If `A[i][j]` exists, so does `A[j][i]`. For an undirected graph, you only need to go half way.
     * To see if two nodes directly _connected_, you simply go to one node's row, and the column of the other `A[i][j]`. To see all adjacent nodes, just look for all indices with `1` as a value in its row.
@@ -153,42 +174,36 @@ void postOrder(Node * node) {
 ##### DFS
 
 ```java
-void dfs(Graph graph) {
-    stack<Vertex> s;
-    s.push(graph.root_vertex);
-    cout << graph.root_vertex.value << ' ';
-    graph.root_vertex.visited = true;
-    while (!s.empty()) {
-        Vertex v = s.top();
-        Vertex connected_v = getUnvisitedAdjacentVertex(v); // Goes through the neighbors of v, and finds the one with vertex.visited = false
-        if (child != null) {
-            s.push(child);
-            cout << child.value << ' ';
-            child.visited = true;
-        } else {
-            s.pop();
-        }
-    }
+void Graph::dfs(Vertex * cur, unordered_set<Vertex *> &visited) {
+    if (visited.count(cur)) 
+        return;   
+    cout << cur->value << endl;   
+    visited.insert(cur);   
+    for (Vertex * v : cur->connected)
+        dfs(v, visited);
 }
 ```
 
 ##### BFS
 
 ```cpp
-void bfs(Graph graph) {
-    queue<Vertex> q;
-    q.push(graph.root_vertex);
-    cout << graph.root_vertex.value << ' ';
-    graph.root_vertex.visited = true;
+void Graph::bfs(Vertex * start) {
+    queue<Vertex*> q;
+    unordered_set<Vertex*> visited;
+    
+    q.push(start);
+    cout << start->value << ' ';
+    visited.insert(start);
+    
     while (!q.empty()) {
-        Vertex v = q.front();
+        Vertex * cur = q.front();
         q.pop();
-        Vertex connected_v;
-        while ((connected_v = getUnvisitedAdjacentVertex(v)) != null) {
-            connected_v = getUnvisitedAdjacentVertex(v);
-            cout << connected_v << ' ';
-            connected_v.visited = true;
-            q.push(conntected_v);
+        
+        if (!visited.count(cur)) {
+            cout << cur->value << endl;
+            visited.insert(cur);
+            for (Vertex * v : cur->connected)
+                q.push(v);
         }
     }
 }
