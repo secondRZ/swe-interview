@@ -190,15 +190,15 @@ void Graph::dfs(Vertex * cur, unordered_set<Vertex *> &visited) {
 void Graph::bfs(Vertex * start) {
     queue<Vertex*> q;
     unordered_set<Vertex*> visited;
-    
+
     q.push(start);
     cout << start->value << ' ';
     visited.insert(start);
-    
+
     while (!q.empty()) {
         Vertex * cur = q.front();
         q.pop();
-        
+
         if (!visited.count(cur)) {
             cout << cur->value << endl;
             visited.insert(cur);
