@@ -37,7 +37,7 @@ vec.push_back(6);
 ## Associative Structures
 
 * **Set**: When you want the elements to be unique. **O\(1\)** insert/erase only if you give the hint. Else **O\(log n\)** since they're implemented with binary search trees. Search always logarithmic.
-* **Hash Table / Unordered\_map**: When you want **O\(1\)** for key/value lookup. Can also get first element in a map \(which is ordered\): `(A.begin())->first`
+* **Hash Table / Unordered\_map**: When you want **O\(1\)** for key/value lookup \(Key goes through the hash function which maps it directly to a place in memory where the value is\). Can also get first element in a map \(which is ordered\): `(A.begin())->first`
 * **Hashset**: When you want **O\(1\)** for `contains`, which is done with `count()`. Insert and delete also **O\(1\)** for one element.
 * **Priority Queue** / **Heap**: When you want **O\(1\)** for the min/max element in a collection. _Priority_ can be value, length, id, etc.
 
@@ -173,7 +173,7 @@ int main(int argc, const char * argv[]) {
     g.addEdge(3, 4);
     g.addEdge(4, 5);
     g.addEdge(5, 2);
-    
+
     map<int, Vertex *> v = g.getVertices();
     unordered_set<Vertex *> visited;
     g.dfs(v[1], visited);
@@ -215,15 +215,15 @@ void Graph::dfs(Vertex * cur, unordered_set<Vertex *> &visited) {
 void Graph::bfs(Vertex * start) {
     queue<Vertex*> q;
     unordered_set<Vertex *> visited;
-    
+
     q.push(start);
     cout << start->value << endl;
     visited.insert(start);
-    
+
     while (!q.empty()) {
         Vertex * cur = q.front();
         q.pop();
-        
+
         for (Vertex * v : cur->connected) {
             if (!visited.count(v)) {
                 cout << v->value << endl;
