@@ -52,7 +52,7 @@
   * Querying – serving search requests
   * Ranking – sorting the results
 
-#### Indexing
+##### Indexing
 
 * Define the corpus \(document collection\). How will we get it? Designing a web crawler is a whole topic on its own \(but might still be in the scope of such a question\).
 * Likely want to ignore casing, grammatical tenses, "stop words" \(most common words in a language, e.g., the, is, at, which, on, etc.\).
@@ -76,7 +76,7 @@ class DocumentOccurrences {
 }
 ```
 
-#### Querying
+##### Querying
 
 * Query types:
   * Single word queries
@@ -95,7 +95,7 @@ class DocumentOccurrences {
   * Subtract `i-1` from the elements \(positions\) of the `i`-th list, starting from the second list \(not changing the first one\).
   * Take the intersection of the lists \(or better: sets\). If it's not empty then that document is a match for the exact phrase. Perform the same for the rest of the documents.
 
-#### Ranking
+##### Ranking
 
 Ranking algorithms options:
 
@@ -104,7 +104,7 @@ Ranking algorithms options:
 * [PageRank](http://en.wikipedia.org/wiki/PageRank) – PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
 * Apply a ranking algorithm for the search query against each of the returned documents, and then sort by rank.
 
-#### Scaling
+##### Scaling
 
 * A single word could appear in too many documents, and so maintaining a single key-value pair for that word is not fesible.
 * Most likely need to shard documents based on URL \(domain\), and then query all shards \(fan-out\) for each keyword in the search query.
