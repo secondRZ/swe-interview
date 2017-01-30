@@ -137,23 +137,48 @@ void postOrder(Node * node) {
 
 ```cpp
 struct Vertex {
-    std::string value = NULL;
-    set<Vertex *> connected;
-    // node fields (name, word length, etc.)
-    // ...
+    int value = NULL; // plus any other data. city name, word length, etc.
+    std::set<Vertex *> connected;
 };
 
 class Graph {
   private:
-    std::unordered_set<Vertex *> vertices;
+    std::map<int, Vertex *> vertices;
   public:
-    Graph(int v); // create an empty graph with v vertices
-    void add_edge(Vertex * a, const Vertex &b); // look up vertex a in map and add to the vertex adjacency list
+    Graph(int n); // create an empty graph with v vertices
+    void addEdge(int a, int b); // look up vertex in map and add to the vertex adjacency list
     void dfs(Vertex * cur, unordered_set<Vertex *> &visited);
     void bfs(Vertex * start);
-    // Other methods
-    // ...
+    map<int, Vertex *> getVertices();
 };
+
+Graph::Graph(int n) {
+    for (int i = 1; i <= n; i++) {
+        Vertex * v = new Vertex;
+        v->value = i;
+        vertices[i] = v;
+    }
+}
+
+void Graph::addEdge(int a, int b) {
+    vertices[a]->connected.insert(vertices[b]);
+    vertices[b]->connected.insert(vertices[a]);
+}
+
+int main(int argc, const char * argv[]) {
+    Graph g(5);
+    g.addEdge(1, 2);
+    g.addEdge(2, 3);
+    g.addEdge(3, 1);
+    g.addEdge(3, 4);
+    g.addEdge(4, 5);
+    g.addEdge(5, 2);
+    
+    map<int, Vertex *> v = g.getVertices();
+    unordered_set<Vertex *> visited;
+    g.dfs(v[1], visited);
+    return 0;
+}
 ```
 
 * **Directed** graphs / Digraph: the web \(web page is a node, links are the edges\), program execution flows. Edges are represented as an ordered pair. `(a, b)` where `a` is always the origin and `b` the destination.
@@ -173,12 +198,12 @@ class Graph {
 
 ##### DFS
 
-```java
+```cpp
 void Graph::dfs(Vertex * cur, unordered_set<Vertex *> &visited) {
-    if (visited.count(cur)) 
-        return;   
-    cout << cur->value << endl;   
-    visited.insert(cur);   
+    if (visited.count(cur))
+        return;
+    cout << cur->value << endl;
+    visited.insert(cur);
     for (Vertex * v : cur->connected)
         dfs(v, visited);
 }
@@ -189,21 +214,22 @@ void Graph::dfs(Vertex * cur, unordered_set<Vertex *> &visited) {
 ```cpp
 void Graph::bfs(Vertex * start) {
     queue<Vertex*> q;
-    unordered_set<Vertex*> visited;
-
+    unordered_set<Vertex *> visited;
+    
     q.push(start);
-    cout << start->value << ' ';
+    cout << start->value << endl;
     visited.insert(start);
-
+    
     while (!q.empty()) {
         Vertex * cur = q.front();
         q.pop();
-
-        if (!visited.count(cur)) {
-            cout << cur->value << endl;
-            visited.insert(cur);
-            for (Vertex * v : cur->connected)
+        
+        for (Vertex * v : cur->connected) {
+            if (!visited.count(v)) {
+                cout << v->value << endl;
+                visited.insert(v);
                 q.push(v);
+            }
         }
     }
 }
