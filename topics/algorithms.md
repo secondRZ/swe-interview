@@ -178,7 +178,7 @@ Almost always faster than mergesort and heapsort, even with its `n^2` worst case
 
 ##### Heapsort `O(n log n)`
 
-Use when you don't need a stable sort \(meaning you don't need mergesort\), but under no circumstances can you have less than `O(n log n)`. \(Meaning quicksort is not an option\).
+Use when you don't need a stable sort \(meaning you don't need mergesort\), you want a sort to use less memory \(meaning you don't **want** mergesort\), but under no circumstances can you have less than `O(n log n)`. \(Meaning quicksort is not an option\).
 
 ##### External Sort
 
