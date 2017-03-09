@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 * [Behavioral](topics/behavioral.md)
 * [C++ Details](topics/c-details.md)
+* [C\# Details](c-details.md)
 * [Data Structures](topics/data-structures.md)
 * [Algorithms](topics/algorithms.md)
 * [Bit Operators](topics/bit-operators.md)
@@ -11,5 +12,5 @@
 * [Networking](topics/networking.md)
 * [Operating Systems](topics/operating-systems.md)
 * [System Design](topics/system-architecture.md)
-* [Accepting an Offer](topics/accepting-an-offer.md)
+* C\# Details
 
