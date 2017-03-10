@@ -32,10 +32,12 @@
 
 * **Find All Factors**: If you find that a number `n` % another number `d == 0`, then you have found 2 factors of `n`. `d` and `n / d`. The upper limit to finding all `d` values is `sqrt(n)`, so you loop only has to go that far \(**all the way to** `<=`, not just `<`\), and add both `d` and`n / d` every iteration, unless `d == sqrt(n)`, then you only enter it for itself, not for `n / d`.
 * **Verify prime number**: 2 is the lowest prime number. 1 is not prime. Same thing as finding all factors. You only need to go to the square root of the number.
-* **Decimal to nary**: Modulo by n. Add the remainder to the vector. Divide by n. Loop again. Loop only while num &gt; 0.
-* **Nary to Decimal**: n to the power of the level of the digit you're at \(starting at 0\) \* whatever the digit represents in decimal.
+* **Find all prime numbers between 1 and n: **Create a list of booleans, size n + 1, all numbers set to 1. \(Sieve's assumes all numbers are prime\). `vector<bool> prime(n + 1, 1);` Set 0 and 1 to false / 0. `prime[0] = false; prime[1] = false;`Then for every number 2 to the square root of n \(outer loop\), starting at the square of i \(inner loop: `int k = i * i`\) until `n`, set all factors of `i` to false by `i`,\(`k += i`\) since by definition, that number can't be prime. You start at the square root because all lower factors of the number will be handled by lower `i` values. In the end, every index that is still true is prime.
+* **Decimal to nary**: `n % base` gives you the index of the character. Add it to a stack \(or the remainder itself if your base is less than 10\). Divide by `base`. Loop again. Loop only while num &gt; 0. Print from the stack.
+* **Nary to Decimal**:  Multiplier = 1, result = 0. While n &gt; 0, add `n%10*multiplier` to the current result, set the multiplier to itself times base, and divide n by 10. Return the result.
 * **Permutations**: For n elements in a fixed set, there are `n!` \(n factorial\) permutations of their arrangement. Unless they can be both upper and lower case, then it's $$$$`2^n * (n!)`. If they can be any character then it's `k^n` where `k` is the amount of available characters, and `n` is the length of the collection. 
-* **Euclidean Algo \(Find the greatest common divisor\)**: The GCD of two numbers does not change when one is replaced by the difference between the two. Therefore if you repeatedly replace the larger number with the difference between the two numbers, the numbers will eventually be equal to each other. This is the GCD. Since this can take very long if the larger number is much greater than the smaller, the algo becomes more efficient if you use the modulo of the two numbers until you get 0 \(making the larger number the GCD\), instead of subtraction. If you continuously swap the first number for the second, then you don't have to worry about min and max. Like `tmp = A; A = B % A; B = A;`
+* **Euclidean Algo \(Find the greatest common divisor\)**: The GCD of two numbers does not change when one is replaced by the difference between the two. Therefore if you repeatedly replace the larger number with the difference between the two numbers, the numbers will eventually be equal to each other. This is the GCD. Since this can take very long if the larger number is much greater than the smaller, the algo becomes more efficient if you use the modulo of the two numbers until you get 0 \(making the larger number the GCD\), instead of subtraction. If you continuously swap the first number for the second, then you don't have to worry about min and max. Like `return gcd(b, a%b)`
+* You can use the gcd method to find the LCM of a and b which is `return a*b/gcd(a,b)`
 * **Reverse and Integer**: To get the last digit of any int, just run mod 10 \(remainder of 10 is always the last digit\). Now the current reversed number is the previous reversed number \(originally set to 0\), times 10 \(to give a blank digit\), plus the last digit you just got. Divide the int by 10, which simply erases the last digit since ints don't have any decimals, and save that to the new original number. This will eventually become 0 \(since ints don't have decimals\). That's when the loop stops.
 * **Fibonacci**: `a[i] = a[i - 2] + a[i - 1]`. To find nth element in the sequence,  Always iterative. Never recursively.
 * Set an upper limit on an incrementing variable w/ modulo by the upper limit from the variable. So `hour % = 24` will never increment higher than 24.
@@ -178,7 +180,7 @@ Almost always faster than mergesort and heapsort, even with its `n^2` worst case
 
 ##### Heapsort `O(n log n)`
 
-Use when you don't need a stable sort \(meaning you don't need mergesort\), but under no circumstances can you have less than `O(n log n)`. \(Meaning quicksort is not an option\).
+Use when you don't need a stable sort \(meaning you don't need mergesort\), you want a sort to use less memory \(meaning you don't **want** mergesort\), but under no circumstances can you have less than `O(n log n)`. \(Meaning quicksort is not an option\).
 
 ##### External Sort
 
@@ -355,14 +357,14 @@ public void dijkstra(Graph graph, Vertex source) {
 ## P, NP, NP-complete
 
 * A problem is in class `P` if its solution may be _found_ in polynomial time.
-* A problem is in class `NP` if its solution may be _verified_ in polynomial time.
-* A problem in `P` is in `NP` by definition, but the converse may not be the case.
+* A problem is in class `NP` if its solution may be _verified/checked_ in polynomial time. Meaning you may not be able to get the answer fast, but if I gave you the answer, it'd be easy to check. Like Sudoku.
+* A problem in `P` is in `NP` by definition, but the converse may not be the case. "You can't engineer luck."
 * `NP`-complete is a family of `NP` problems for which you know that if one of them has a polynomial solution then everyone of them has.
-* Examples of `NP`-complete problems: traveling salesman, knapsack, graph coloring.
+* Examples of `NP`-complete problems: traveling salesman, knapsack, graph coloring, Tetris.
 * Once you've reduced a problem to `NP`-complete, you know to give up on an efficient fast algorithm and to start looking at approximations.
 * For `NP`-complete problems, no polynomial-time algorithms are known for solving them \(although they can be verified in polynomial time\).
 * The most notable characteristic of `NP`-complete problems is that no fast solution to them is known.
-* `NP`-hard: non-deterministic polynomial time.
+* `NP`-hard: non-deterministic polynomial time. "At least as hard as every problem in NP. Maybe harder." 
 
 
 

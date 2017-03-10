@@ -152,5 +152,9 @@ int main () {
 4. Create a class diagram to show how the classes are related to one another.
 5. Use a UML diagram to create a detailed picture of each class.
 
+## Design Patterns
+
+* Design patterns are reusable solutions to commonly seen software problems. A few are: Singleton, factory, and adaptor.
+
 
 
