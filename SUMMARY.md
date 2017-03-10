@@ -4,6 +4,7 @@
 * [Behavioral](topics/behavioral.md)
 * [C++ Details](topics/c-details.md)
 * [C\# Details](c-details.md)
+* [Web Development](frontend-details.md)
 * [Data Structures](topics/data-structures.md)
 * [Algorithms](topics/algorithms.md)
 * [Bit Operators](topics/bit-operators.md)
@@ -12,5 +13,5 @@
 * [Networking](topics/networking.md)
 * [Operating Systems](topics/operating-systems.md)
 * [System Design](topics/system-architecture.md)
-* C\# Details
+* Frontend Details
 
