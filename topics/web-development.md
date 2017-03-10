@@ -14,11 +14,9 @@
 4. Coordinates are calculated for each object in the render tree. This creates the **layout** of the page.
 5. Finally, all of this is displayed in the browser. This process is called **painting**.
 
-* Changes to the DOM should be reflected in the window, so a re-render occurs when the DOM changes. If the layout or content isn't changed \(background-color, color, visibility, etc.\), then the browser simply **repaints** the page. Otherwise \(content changing, window resizing with adaptive layouts, etc.\), it **reflows** which computes the layout and position of the element, all of its children, and every element after it. It then calls a final repaint. Reflows are expensive.
+6. Changes to the DOM should be reflected in the window, so a re-render occurs when the DOM changes. If the layout or content isn't changed \(background-color, color, visibility, etc.\), then the browser simply **repaints** the page. Otherwise \(content changing, window resizing with adaptive layouts, etc.\), it **reflows** which computes the layout and position of the element, all of its children, and every element after it. It then calls a final repaint. Reflows are expensive.
 
 ## Event Loop
-
-
 
 ## Storage
 
@@ -36,15 +34,15 @@
 
 ### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
 
-* Avoid setting multiple inline styles; avoid setting styles individually.  These trigger a reflow for each dynamic style change.
+* Avoid setting multiple inline styles; avoid setting styles individually.  These trigger a reflow for each dynamic style change.
 
-* Use classNames of elements, and do so as low in the DOM tree as possible.  Changing the class attribute lets you apply multiple styles to an element with a single reflow.  But since this reflows all the element’s children, that means you don’t want to change the class on a wrapper div if you’re only targeting its first child.
+* Use classNames of elements, and do so as low in the DOM tree as possible.  Changing the class attribute lets you apply multiple styles to an element with a single reflow.  But since this reflows all the element’s children, that means you don’t want to change the class on a wrapper div if you’re only targeting its first child.
 
-* Batch your DOM changes and perform them “offline”.  "Offline" means removing the element from the active DOM \(e.g.$.detach\(\)\), performing your DOM changes and then re-appending the element to the DOM.
+* Batch your DOM changes and perform them “offline”.  "Offline" means removing the element from the active DOM \(e.g.$.detach\(\)\), performing your DOM changes and then re-appending the element to the DOM.
 
-* Avoid computing styles too often.  If you must then cache those values.  E.g. store  var offsetHt = elem.offsetHeightonce instead of calling it multiple times.
+* Avoid computing styles too often.  If you must then cache those values.  E.g. store  var offsetHt = elem.offsetHeightonce instead of calling it multiple times.
 
-* Apply animations with position fixed or absolute.  So the animation doesn’t affect the layout of other elements.
+* Apply animations with position fixed or absolute.  So the animation doesn’t affect the layout of other elements.
 
 * Stay away from table layouts, they trigger more reflows than block layouts because multiple passes must be made over the elements.
 
