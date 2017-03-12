@@ -20,6 +20,7 @@ static void Main() {
 ## OOP
 
 * Properties and methods default to `private` access. Even the constructor has to be made `public`.
+* A class should control everything about itself. No other classes should be able to change an object's properties without calling a method of that object.
 * Extend a base class with a colon. `class Mammal : Animal {`. Base class constructors are called first. The subclass needs a constructor that accepts  parameters that it can pass to the base class, then send it after the subclass' constructer with a colon, the keyword `base`, and the parameters passed. `Mammal(string numLegs, string species) : base(species) {`. The "colon base" thing isn't necessary for constructors without any parameters.
 * You can use the this keyword to reference the object itself in class methods.
 * Static members are initialized only once, and shared by all objects of the class.
@@ -60,9 +61,11 @@ Level level1 = new Level(invaders) {
 };
 ```
 
-* Create a **virtual method** by adding the keyword `virtual` after the access modifier, before the return type \(just like `static`\) inside of the base class: `public virtual void DecreaseHealth(int amount) {}`
-* You use **polymorphism** and **virtual methods **when different classes with the same parent should have the same method, but a different behavior for that method** and **there is some actual use of the parent class. **TODO: GENERIC TYPES THAT STILL KNOW WHICH METHOD TO CALL.**
-  * An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\). **TODO: USING A GENERIC ANIMAL TYPE, THAT STILL KNOWS WHICH MOVE\(\) TO CALL. MAKING CODE CLEANER.**
+* Create a **virtual method** by adding the keyword `virtual` after the access modifier, before the return type \(just like `static`\) inside of the base class: `public virtual void DecreaseHealth(int amount) {}` , and `override` in the derived classes.
+* Call the method of a parent class with `base.Method();` This comes in handy when some of the implementation of the virtual method is identical, but not all of it. So you don't have to repeat the identical part.
+* You use **polymorphism** and **virtual methods **when different classes with the same parent should have the same method, but a different behavior for that method** and **there is some actual use of the parent class. 
+  * An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\).
+* An object of a certain type will accept instantiation of children of its class as well. So `Polygon myShape = new Square();` will work, same if you want an array of polygons and put a square inside. When you mix this with virtual methods, you get the real magic of polymorphism. Now I can have `myShape.GetArea()`, and it will call the right method for it's specific type, but it will also fit in places that are expect a `Polygon` specifically. The rest of the code base only ever has to deal with the `Polygon` class, and the virtual methods will take care of the rest.
 
 ## Data Types
 
