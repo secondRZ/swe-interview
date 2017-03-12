@@ -18,15 +18,22 @@ static void Main() {
 ## OOP
 
 * Properties and methods default to `private` access. Even the constructor has to be made `public`.
+* Extend a base class with a colon. `class Mammal : Animal {`. Base class constructors are called first. The subclass needs a constructor that accepts  parameters that it can pass to the base class, then send it after the subclass' constructer with a colon, the keyword `base`, and the parameters passed. `Mammal(string numLegs, string species) : base(species) {`. The "colon base" thing isn't necessary for constructors without any parameters.
+* You can use the this keyword to reference the object itself in class methods.
 
 ## Data Types
 
-* `variable.GetType()` will return the type of the variable.
+* **Type checking:** `variable.GetType()` will return the type of the variable. `x is SomeType` will return a boolean if `x` is of that type.
 * **bool**
 * **string**: Always between two quotes.
   * `ToLower("C")` and `ToUpper("c")`
 * **int**:
   * `int.Parse("55");` returns the converted `string` **55** into an `int`.
+
+## Exceptions
+
+* Send a message: `throw new System.Exception("Some message")`. And in `catch(System.Exception ex)` you can log the `ex.Message`
+* It is wise to create your own classes of exceptions for your app, to make catching them more specific. The base exception of your app should inherit from System.Exception. And others from your app should inherit from that one. Make sure they have at least 2 constructors. One that accepts a message, and one that doesn't.
 
 ## Collections
 
