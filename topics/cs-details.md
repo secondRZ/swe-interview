@@ -63,33 +63,37 @@ Level level1 = new Level(invaders) {
 
 * Create a **virtual method** by adding the keyword `virtual` after the access modifier, before the return type \(just like `static`\) inside of the base class: `public virtual void DecreaseHealth(int amount) {}` , and `override` in the derived classes.
 * Call the method of a parent class with `base.Method();` This comes in handy when some of the implementation of the virtual method is identical, but not all of it. So you don't have to repeat the identical part.
-* You use **polymorphism** and **virtual methods **when different classes with the same parent should have the same method, but a different behavior for that method** and **there is some actual use of the parent class. 
+* Create a **virtual property **the same way. Even if that property is used inside of methods of the base class, when the object is an instance of the child class, it will use the value of the overridden property. You don't have to create a virtual method just for the property. Very good if you h
+* You use **polymorphism** and **virtual methods/properties **when different classes with the same parent should have the same method, but a different behavior for that method** and **there is some actual use of the parent class. 
   * An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\).
 * An object of a certain type will accept instantiation of children of its class as well. So `Polygon myShape = new Square();` will work, same if you want an array of polygons and put a square inside. When you mix this with virtual methods, you get the real magic of polymorphism. Now I can have `myShape.GetArea()`, and it will call the right method for it's specific type, but it will also fit in places that are expect a `Polygon` specifically. The rest of the code base only ever has to deal with the `Polygon` class, and the virtual methods will take care of the rest.
 * Here is the process for making your code polymorphic:
-  * Give the base class should have **every method and property/state** that can be called on the subclasses, even if the implementation is different for each subclass. The implementation of each method should be what you imagine a generic instance of this class to look like.
-    * Type:
-      * Should only ever be accessed within the class itself, not even in the children? **Field**
-        * Different values for each instance? Initialized in the constructor. E.g: `int _score;`
-        * Always the same starting value? Initialized with instantiation. E.g: `int _score = 0;`
-      * Should be accessed outside of the class itself, even if only in subclasses? **Property**
-  * * Access:
-      * Should only ever be accessed within the class itself, not even in the children? `private`.
-      * Should only be accessed within the class itself and its children? `protected`.
-      * Should be accessible from anywhere? `public`.
-    * Specialty:
-      * Is a field \(not a property or method\), and should not be changed even within itself? `readonly`
-      * Will be overridden in subclasses? `virtual`
-      * Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
-    * Accessor methods \(for properties\):
-      * Property value is based on the computation of one or more other field/property values? **Computed property**
-      * Initial value is magic? Give it a value after the parenthesis. `public int size { get; private set; } = 1;`
-      * `get;`
-        * Almost always public. Leave it alone unless its a computed property.
-      * `set;`
-        * Value should not be changed, even within itself \(basically a const, but a **property** because we want it accessible elsewhere.\): Leave `set;` out of the definition. No setter. Making it a readonly property everywhere.
-        * Value should only be changed within the class itself, not even subclasses. `private set;`
-        * Value should be changed only by itself and its subclasses \(this should be the most accessible level for the setter, never just public\) `protected set;` 
+* 1. Give the base class should have **every method and property/state** that can be called on the subclasses, even if the implementation is different for each subclass. The implementation of each method should be what you imagine a generic instance of this class to look like.
+     1. Type:
+        1. Should only ever be accessed within the class itself, not even in the children? **Field**
+           1. Different values for each instance? Initialized in the constructor. E.g: `int _score;`
+           2. Always the same starting value? Initialized with instantiation. E.g: `int _score = 0;`
+           3. Should be accessed outside of the class itself, even if only in subclasses? **Property**
+     2. Access:
+        1. Should only ever be accessed within the class itself, not even in the children? `private`.
+        2. Should only be accessed within the class itself and its children? `protected`.
+        3. Should be accessible from anywhere? `public`.
+     3. Specialty:
+        1. Is a field \(not a property or method\), and should not be changed even within itself? `readonly`
+        2. Will be overridden in subclasses? `virtual`
+        3. Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
+     4. Accessor methods \(for properties\):
+        1. Property value is based on the computation of one or more other field/property values? **Computed property**
+        2. Initial value is magic? Give it a value after the parenthesis. `public int Size { get; private set; } = 1;`
+        3. `get;`
+           1. Almost always public. Leave it alone unless its a computed property.
+        4. `set;`
+           1. Value should not be changed, even within itself \(basically a const, but a **property** because we want it accessible elsewhere.\): Leave `set;` out of the definition. No setter. Making it a readonly property everywhere.
+           2. Value should only be changed within the class itself, not even subclasses. `private set;`
+           3. Value should be changed only by itself and its subclasses \(this should be the most accessible level for the setter, never just public\) `protected set;` 
+        5. No `set;` **and** initial value is magic? Use a computed property. `public int Size => 1;`
+  2. Construct the subclasses:
+     1. The subclasses must have at least one constructor for every constructor the base class has that takes any parameters. At the minimum, passing on the necessary arguments. `public Child(Ethnicity eth) : base(eth) {}`
 
 ## Data Types
 
