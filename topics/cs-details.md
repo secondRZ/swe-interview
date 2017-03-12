@@ -40,7 +40,8 @@ invader.Location = 5;
 
 int num = invader.Location;
 
-// called an "auto-property". and you can completely delete the _location field that it once accessed.
+// called an "auto-property". and you can completely delete the _location field that it once accessed. 
+// Getters and setters are public by default.
 ```
 
 * A **computed property** is one where the getter method is written out so that the value is computed every time. This usually happens when a property's value is based on one or more other fields/properties. Instead of updating the property every time the others are changed, you simply compute this one when it is accessed. \(Like an area of a rectangle.\)
