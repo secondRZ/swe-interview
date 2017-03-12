@@ -29,7 +29,7 @@ public MapLocation Location { get; set; }
 public MapLocation Location ()
 {
   get { return _location; }
-  
+
   set { _location = value; }
 }
 
@@ -41,6 +41,8 @@ int num = invader.Location;
 
 // called an "auto-property". and you can completely delete the _location field that it once accessed.
 ```
+
+* A **computed property** is one where the getter method is written out so that the value is computed every time. This usually happens when a property's value is based on one or more other fields/properties.
 
 ## Data Types
 
