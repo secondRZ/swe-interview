@@ -89,8 +89,8 @@ Level level1 = new Level(invaders) {
            1. Almost always public. Leave it alone unless its a computed property.
         4. `set;`
            1. Value should not be changed, even within itself \(basically a const, but a **property** because we want it accessible elsewhere.\): Leave `set;` out of the definition. No setter. Making it a readonly property everywhere.
-           2. Value should only be changed within the class itself, not even subclasses. `private set;`
-           3. Value should be changed only by itself and its subclasses \(this should be the most accessible level for the setter, never just public\) `protected set;` 
+           2. Value should only be accessed within the class itself, not even subclasses. `private set;`
+           3. Value should be accessed only by itself and its subclasses \(this should be the most accessible level for the setter, never just public\) `protected set;` 
         5. No `set;` **and** initial value is magic? Use a computed property. `public int Size => 1;`
   2. Construct the subclasses:
      1. The subclasses must have at least one constructor for every constructor the base class has that takes any parameters. At the minimum, passing on the necessary arguments. `public Child(Ethnicity eth) : base(eth) {}`
