@@ -24,10 +24,22 @@ static void Main() {
 
 ```java
 public MapLocation Location { get; set; }
+// shorthand for:
+
+public MapLocation Location ()
+{
+  get { return _location; }
+  
+  set { _location = value; }
+}
+
+// then you can: 
 
 invader.Location = 5;
 
 int num = invader.Location;
+
+// called an "auto-property". and you can completely delete the _location field that it once accessed.
 ```
 
 ## Data Types
