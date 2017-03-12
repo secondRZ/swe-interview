@@ -60,6 +60,7 @@ Level level1 = new Level(invaders) {
 };
 ```
 
+* Create a **virtual method** by adding the keyword `virtual` after the access modifier, before the return type \(just like `static`\) inside of the base class: `public virtual void DecreaseHealth(int amount) {}`
 * You use **polymorphism** and **virtual methods **when different classes with the same parent should have the same method, but a different behavior for that method** and **there is some actual use of the parent class. **TODO: GENERIC TYPES THAT STILL KNOW WHICH METHOD TO CALL.**
   * An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\). **TODO: USING A GENERIC ANIMAL TYPE, THAT STILL KNOWS WHICH MOVE\(\) TO CALL. MAKING CODE CLEANER.**
 
