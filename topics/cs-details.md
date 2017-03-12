@@ -6,7 +6,7 @@
 * The `var` keyword only works when the assignment comes at the same time. `var some_int;` wouldn't work.
 * Just like C++, you can use `using SomeNameSpace;` at the top to avoid typing it every time, but it's better not to.
 * You can make a variable/property read only with the `readonly` keyword before its type: `public readonly int height;`.
-* Fat arrow methods work in C\#. Different syntax though.
+* Fat arrow methods work in C\#. Different syntax though. `public void Move() => _location++;`. You know it's a method \(not a property\) because of the parenthesis. You know whether it returns something because of the stated return type.
 * Accept input from a user:
 
 ```java
