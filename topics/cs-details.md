@@ -66,6 +66,30 @@ Level level1 = new Level(invaders) {
 * You use **polymorphism** and **virtual methods **when different classes with the same parent should have the same method, but a different behavior for that method** and **there is some actual use of the parent class. 
   * An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\).
 * An object of a certain type will accept instantiation of children of its class as well. So `Polygon myShape = new Square();` will work, same if you want an array of polygons and put a square inside. When you mix this with virtual methods, you get the real magic of polymorphism. Now I can have `myShape.GetArea()`, and it will call the right method for it's specific type, but it will also fit in places that are expect a `Polygon` specifically. The rest of the code base only ever has to deal with the `Polygon` class, and the virtual methods will take care of the rest.
+* Here is the process for making your code polymorphic:
+  * Give the base class should have **every method and property/state** that can be called on the subclasses, even if the implementation is different for each subclass. The implementation of each method should be what you imagine a generic instance of this class to look like.
+    * Type:
+      * Should only ever be accessed within the class itself, not even in the children? **Field**
+        * Different values for each instance? Initialized in the constructor. E.g: `int _score;`
+        * Always the same starting value? Initialized with instantiation. E.g: `int _score = 0;`
+      * Should be accessed outside of the class itself, even if only in subclasses? **Property**
+  * * Access:
+      * Should only ever be accessed within the class itself, not even in the children? `private`.
+      * Should only be accessed within the class itself and its children? `protected`.
+      * Should be accessible from anywhere? `public`.
+    * Specialty:
+      * Is a field \(not a property or method\), and should not be changed even within itself? `readonly`
+      * Will be overridden in subclasses? `virtual`
+      * Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
+    * Accessor methods \(for properties\):
+      * Property value is based on the computation of one or more other field/property values? **Computed property**
+      * Initial value is magic? Give it a value after the parenthesis. `public int size { get; private set; } = 1;`
+      * `get;`
+        * Almost always public. Leave it alone unless its a computed property.
+      * `set;`
+        * Value should not be changed, even within itself \(basically a const, but a **property** because we want it accessible elsewhere.\): Leave `set;` out of the definition. No setter. Making it a readonly property everywhere.
+        * Value should only be changed within the class itself, not even subclasses. `private set;`
+        * Value should be changed only by itself and its subclasses \(this should be the most accessible level for the setter, never just public\) `protected set;` 
 
 ## Data Types
 
