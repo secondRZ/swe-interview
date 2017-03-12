@@ -51,6 +51,7 @@ public int Health {get; set;} = 5;
 
 * A **computed property** is one where the getter method is written out so that the value is computed every time. This usually happens when a property's value is based on one or more other fields/properties. Instead of updating the property every time the others are changed, you simply compute this one when it is accessed. \(Like an area of a rectangle.\)
 * You can use fat arrows with computed properties: `public double Area => SideLength * SideLength;`
+* If a class has a property that is simply and array of objects, and that property will have its own behaviors, it may be best to give it its own class since all of the methods of `Array` probably won't be necessary. This practices good **encapsulation**. 
 * If a property is not part of a constructor, but you want to set it during instantiation, you can put curly brackets afterward like so:
 
 ```java
@@ -58,6 +59,8 @@ Level level1 = new Level(invaders) {
     Tower = towers
 };
 ```
+
+* You use **polymorphism** and **virtual methods **when different classes when the same parent should have the **same method, but a different behavior for that method**. An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\)
 
 ## Data Types
 
