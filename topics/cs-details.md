@@ -20,6 +20,26 @@ static void Main() {
 * Properties and methods default to `private` access. Even the constructor has to be made `public`.
 * Extend a base class with a colon. `class Mammal : Animal {`. Base class constructors are called first. The subclass needs a constructor that accepts  parameters that it can pass to the base class, then send it after the subclass' constructer with a colon, the keyword `base`, and the parameters passed. `Mammal(string numLegs, string species) : base(species) {`. The "colon base" thing isn't necessary for constructors without any parameters.
 * You can use the this keyword to reference the object itself in class methods.
+* Syntactic sugar for creating accessor methods \(these are called properties\):
+
+```java
+public MapLocation Location
+{
+  get 
+  {
+    return _location;
+  }
+  
+  set
+  {
+    _location = value;
+  }
+}
+
+invader.Location = 5;
+
+int num = invader.Location;
+```
 
 ## Data Types
 
@@ -39,5 +59,9 @@ static void Main() {
 
 ## Collections
 
+* **Array**: `string[] people = new string[3];` or `string[] people = {"Brandon", "Jacob", "Bob"};`
+  * `people.Length`: Return the length of the array.
+  * Pass array literals into a method with `SomeMethod(new []{"Brandon", "Jacob", "Bob"});`
+* 
 
 
