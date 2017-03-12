@@ -17,6 +17,33 @@ static void Main() {
 }
 ```
 
+## Data Types
+
+* **System.Object:** All classes inherit from System.Object, and they all have these methods:
+  * `object.Equals(Other)`: Returns true if `object` is equal to `Other`; false otherwise.
+  * `System.Object.Equals(object, other)`: Returns true if `object` and `other` are equal; false otherwise.
+* * `object.GetType()` will return the type of `object`. Conversely, `object is SomeType` will return a true if `object` is of that type; false otherwise.
+  * `object.MemberwiseClone()`: Creates a shallow copy of `object`.
+  * `object.ToString()`: Returns a string that represents `object`. Should be overridden if you want actual functionality.
+* **bool**
+* **string**: Always between two quotes.
+  * `ToLower("C")` and `ToUpper("c")`
+* **int**:
+  * `int.Parse("55");` returns the converted `string` **55** into an `int`.
+
+## Exceptions
+
+* Send a message: `throw new System.Exception("Some message")`. And in `catch(System.Exception ex)` you can log the `ex.Message`
+* It is wise to create your own classes of exceptions for your app, to make catching them more specific. The base exception of your app should inherit from System.Exception. And others from your app should inherit from that one. Make sure they have at least 2 constructors. One that accepts a message, and one that doesn't.
+* Parents also catch children exceptions.
+* When you use multiple catch statements, the most specific exceptions \(that is, those lowest in the inheritance tree, the child with the least children\) should go first.
+
+## Collections
+
+* **Array**: `string[] people = new string[3];` or `string[] people = {"Brandon", "Jacob", "Bob"};`
+  * `people.Length`: Return the length of the array.
+  * Pass array literals into a method with `SomeMethod(new []{"Brandon", "Jacob", "Bob"});`
+
 ## OOP
 
 * Properties and methods default to `private` access. Even the constructor has to be made `public`.
@@ -95,27 +122,5 @@ Level level1 = new Level(invaders) {
   2. Construct the subclasses:
      1. The subclasses must have at least one constructor for every constructor the base class has that takes any parameters. At the minimum, passing on the necessary arguments. `public Child(Ethnicity eth) : base(eth) {}`
 
-## Data Types
-
-* **Type checking:** `variable.GetType()` will return the type of the variable. `x is SomeType` will return a boolean if `x` is of that type.
-* **bool**
-* **string**: Always between two quotes.
-  * `ToLower("C")` and `ToUpper("c")`
-* **int**:
-  * `int.Parse("55");` returns the converted `string` **55** into an `int`.
-
-## Exceptions
-
-* Send a message: `throw new System.Exception("Some message")`. And in `catch(System.Exception ex)` you can log the `ex.Message`
-* It is wise to create your own classes of exceptions for your app, to make catching them more specific. The base exception of your app should inherit from System.Exception. And others from your app should inherit from that one. Make sure they have at least 2 constructors. One that accepts a message, and one that doesn't.
-* Parents also catch children exceptions.
-* When you use multiple catch statements, the most specific exceptions \(that is, those lowest in the inheritance tree, the child with the least children\) should go first.
-
-## Collections
-
-* **Array**: `string[] people = new string[3];` or `string[] people = {"Brandon", "Jacob", "Bob"};`
-  * `people.Length`: Return the length of the array.
-  * Pass array literals into a method with `SomeMethod(new []{"Brandon", "Jacob", "Bob"});`
-* 
 
 
