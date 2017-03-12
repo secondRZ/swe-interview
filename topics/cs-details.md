@@ -6,6 +6,7 @@
 * The `var` keyword only works when the assignment comes at the same time. `var some_int;` wouldn't work.
 * Just like C++, you can use `using SomeNameSpace;` at the top to avoid typing it every time, but it's better not to.
 * You can make a variable/property read only with the `readonly` keyword before its type: `public readonly int height;`.
+* Fat arrow methods work in C\#. Different syntax though.
 * Accept input from a user:
 
 ```java
@@ -26,7 +27,7 @@ static void Main() {
 public MapLocation Location { get; set; }
 // shorthand for:
 
-public MapLocation Location ()
+public MapLocation Location
 {
   get { return _location; }
 
@@ -43,6 +44,7 @@ int num = invader.Location;
 ```
 
 * A **computed property** is one where the getter method is written out so that the value is computed every time. This usually happens when a property's value is based on one or more other fields/properties. Instead of updating the property every time the others are changed, you simply compute this one when it is accessed. \(Like an area of a rectangle.\)
+* You can use fat arrows with computed properties: `public double Area => SideLength * SideLength;`
 
 ## Data Types
 
