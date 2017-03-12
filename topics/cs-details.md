@@ -4,6 +4,7 @@
 
 * Namespaces should be `CompanyName.ActualNamespace` and can be accessed from different files, so you can still give each class its own file.
 * The `var` keyword only works when the assignment comes at the same time. `var some_int;` wouldn't work.
+* Generate a random number: `System.Random rand = new System.Random();` Then `rand.Next();` or `rand.NextDouble();`
 * Just like C++, you can use `using SomeNameSpace;` at the top to avoid typing it every time, but it's better not to.
 * You can make a variable/property read only with the `readonly` keyword before its type: `public readonly int height;`.
 * Fat arrow methods work in C\#. Different syntax though. `public void Move() => _location++;`. You know it's a method \(not a property\) because of the parenthesis. You know whether it returns something because of the stated return type.
@@ -21,6 +22,7 @@ static void Main() {
 * Properties and methods default to `private` access. Even the constructor has to be made `public`.
 * Extend a base class with a colon. `class Mammal : Animal {`. Base class constructors are called first. The subclass needs a constructor that accepts  parameters that it can pass to the base class, then send it after the subclass' constructer with a colon, the keyword `base`, and the parameters passed. `Mammal(string numLegs, string species) : base(species) {`. The "colon base" thing isn't necessary for constructors without any parameters.
 * You can use the this keyword to reference the object itself in class methods.
+* Static members are initialized only once, and shared by all objects of the class.
 * Syntactic sugar for creating accessor methods for **fields** \(these are called **properties**, typically done whenever the member has public access\):
 
 ```java
