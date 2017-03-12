@@ -23,18 +23,7 @@ static void Main() {
 * Syntactic sugar for creating accessor methods \(these are called properties\):
 
 ```java
-public MapLocation Location
-{
-  get 
-  {
-    return _location;
-  }
-
-  private set
-  {
-    _location = value;
-  }
-}
+public MapLocation Location { get; set; }
 
 invader.Location = 5;
 
