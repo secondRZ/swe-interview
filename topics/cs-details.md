@@ -29,8 +29,8 @@ public MapLocation Location
   {
     return _location;
   }
-  
-  set
+
+  private set
   {
     _location = value;
   }
