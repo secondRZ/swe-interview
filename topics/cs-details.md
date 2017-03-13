@@ -94,9 +94,14 @@ Level level1 = new Level(invaders) {
 * You use **polymorphism** and **virtual methods/properties **when different classes with the same parent should have the same method, but a different behavior for that method** and **there is some actual use of the parent class. 
   * An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\).
 * An object of a certain type will accept instantiation of children of its class as well. So `Polygon myShape = new Square();` will work, same if you want an array of polygons and put a square inside. When you mix this with virtual methods, you get the real magic of polymorphism. Now I can have `myShape.GetArea()`, and it will call the right method for it's specific type, but it will also fit in places that are expect a `Polygon` specifically. The rest of the code base only ever has to deal with the `Polygon` class, and the virtual methods will take care of the rest.
+* Make a class **abstract** by placing `abstract` in front of `class `like this: `abstract class Person {}`
+* Making a class abstract means that it isn't meant to be instantiated by the program. It's only an interface. If you want a plain class that has exactly that interface, you'll now need to make a subclass of it.
+* The purpose of abstract classes is to have a blueprint for subclasses without that blueprint being an actual type that can be instantiated.
+* Members can also be made `abstract`, and should have `override` in their subclass.
+* Interfaces are a more clear way of creating such a blueprint. In them, you list all of the properties \(which should be public\) that will be passed on to subclasses. You don't need to put access modifiers, and you don't need to put any accessor methods that aren't public. See the IInvader.cs interface as an example.
 * Here is the process for making your code polymorphic:
-* 1. Go through the user stories. **Every **noun and verb should have its own base class. This should help you stick to **SRP**.
-  2. Give the base classes **every method and property/state** that can be called on the subclasses, even if the implementation is different for each subclass, and even if the subclasses don't obviously need that method or property. This keeps you close to **L** in SOLID \(Liskov substitution \(a subclass should be substitutable with its base class\)\). The little harm it does in creating a more bloated object that may not need each method/property is made up for 10 fold in the extra code you don't have to write using polymorphism \(only using the base classes throughout the program\). The implementation of each method should be what you imagine a generic instance of this class to look like.
+* 1. Using Pastebin, go through the user stories. **Every **noun and verb should have its own class. If a class will have subclasses then it should have its own abstract class \(and base class if you need a class that is exactly the same as the abstract\). This should help you stick to **SRP**. Abstract classes should end with "Base" \(PersonBase\), and if it has a subclass with no changes to the interface they should start with "Basic" \(BasicPerson\). Subclasses will inherit from the abstract.
+  2. Give the base classes **every method and property/state** that can be called on the subclasses, even if the implementation is different for each subclass, but **not** if only **some **subclasses will use it. If only some subclasses will use it, then you should create another base class with that method/property, and the subclasses can inherit from both base classes. This keeps you close to **L** in SOLID \(Liskov substitution \(a subclass should be substitutable with its base class\)\), and the **I** \(classes shouldn't be forced to implement **interfaces** they don't use\). Sometimes when you do this, because of polymorphism, you'll have implementations of a base class that calls a method or accesses a property that a child doesn't have \(which breaks the **L **principle\), so there should be a third base class that manages differences between the others. \(Ex: All objects of the `Shapes` class have an `area`, but not a `volume`. So you create the `ThreeDShapes` class and give it the `volume` property. Some places in the code want to calculate `totalSpace`, which is different if you have a volume vs not. So you make a third class called `SpaceManager` which has a method to calculate totalSpace. Now shapes can inherit from any combination of `Shapes` and `ThreeDShapes`, and all should inherit from `SpaceManager`.\) The implementation of each method should be what you imagine a generic instance of this class to look like.
      1. Type:
         1. Should only ever be accessed within the class itself, not even in the children? **Field**
            1. Different values for each instance? Initialized in the constructor. E.g: `int _score;`
@@ -108,11 +113,12 @@ Level level1 = new Level(invaders) {
         3. Should be accessible from anywhere? `public`.
      3. Specialty:
         1. Is a field \(not a property or method\), and should not be changed even within itself? `readonly`
-        2. Will be overridden in subclasses? `virtual`
-        3. Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
+        2. **Must **be overridden in subclasses? \(As in, there is no generic way to do this method or generic value this property should be. They'll all be different, so they should all declare their own version\) `abstract` The subclasses should have `override` in its place.
+        3. **Can** be overridden in subclasses? `virtual`
+        4. Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
      4. Accessor methods \(for properties\):
         1. Property value is based on the computation of one or more other field/property values? **Computed property**
-        2. Initial value is magic? Give it a value after the parenthesis. `public int Size { get; private set; } = 1;`
+        2. Initial value is magic **and** not member is **not** abstract? Give it a value after the parenthesis. `public int Size { get; private set; } = 1;`
         3. `get;`
            1. Almost always public. Leave it alone unless its a computed property.
         4. `set;`
