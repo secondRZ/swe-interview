@@ -101,9 +101,11 @@ Level level1 = new Level(invaders) {
 * **Interfaces** are a more clear way of creating such a blueprint. In them, you list all of the properties \(which should be public\) that will be passed on to subclasses. You don't need to put access modifiers, and you don't need to put any accessor methods that aren't public. See the "IInvader.cs" interface as an example. `interface IInvader {}`, then the Base class should have `: InterfaceName`, which does **not **mean it inherits from it. It means that it **implements** that interface. \(See "Invader.cs" for that.\)
 * Classes that implement an interface instead of being derived from a base class don't need to pass anything to a base constructor, because they don't have base classes.
 * C\# doesn't allow multiple inheritance because of the problems that it can cause. A class implementing multiple interfaces is a workaround to that. It allows a class to inherit from multiple blueprints, without the "diamond problem".
+* Make a **static** class by placing `static` in front of `class` like this: `static class Random{}`
+* Properties and methods inside of static classes will become **global**. So it's best to make the fields `private`, but the methods public so that they can't be tampered with. \(See "Random.cs"\)
 * Here is the process for writing good OOP \(Using interfaces instead of base classes/inheritance\):
 * 1. Using Pastebin, go through the user stories. **Every **noun and verb should have its own class or interface. If a noun or verb will have different types of itself then it should have its own interface This should help you stick to **SRP**. 
-  2. Give the interfaces **every method and property/state** that can be called on **all** of its implementing classes, even if the implementation is different for each subclass, but **not** if only **some **subclasses will use it and **not** if the property/method could be useful for other types as well. If only some implementing classes will use it, or if it could be used in a more general way by completely unrelated classes, then you should create another interface with that method/property, and the classes can implement both of the interfaces. 
+  2. Give the interfaces **every method and property/state** that can be called on **all** of its implementing classes, even if the implementation is different for each class, but **not** if only **some **implementing classes will use it and **not** if the property/method could be useful for other types as well. If only some implementing classes will use it, or if it could be used in a more general way by completely unrelated classes, then you should create another interface \(if it's going to be used by certain, related classes, but not all of them\) or a static class \(like a collection of Utils\) with that method/property, and the classes can implement both of the interfaces. 
   3. Write the classes. Think about making a basic version of the class \(See: "BasicInvader"\) that performs each method and sets each property in a way that most implementers of the interface will perform. Then you give those classes an instance of the basic class and simply call the method of the instance for each method implementation, or return the property of the instance for each property. \(See "ResurrectingInvader"\). Copy over all methods and  properties of every interface it implements, and every interface that those interfaces implement. Make them all public, and write the implementations. Then write the extra methods/properties for specific classes:
      1. Type:
         1. Should only ever be accessed within the class itself, not even in the children? **Field**
@@ -115,10 +117,11 @@ Level level1 = new Level(invaders) {
         2. Should only be accessed within the class itself and its children? `protected`.
         3. Should be accessible from anywhere? `public`.
      3. Specialty:
-        1. Is a field \(not a property or method\), and should not be changed even within itself? `readonly`
-        2. **Must **be overridden in subclasses? \(As in, there is no generic way to do this method or generic value this property should be. They'll all be different, so they should all declare their own version\) `abstract` The subclasses should have `override` in its place.
-        3. **Can** be overridden in subclasses? `virtual`
-        4. Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
+        1. Won't be specific to any one object. More of a general property/method of the class itself? `static` And probably a good candidate to be moved to a static class. \(See Random.cs, Tower.cs, and ShieldedInvader.cs\)
+        2. Is a field \(not a property or method\), and should not be changed even within itself? `readonly`
+        3. **Must **be overridden in subclasses? \(As in, there is no generic way to do this method or generic value this property should be. They'll all be different, so they should all declare their own version\) `abstract` The subclasses should have `override` in its place.
+        4. **Can** be overridden in subclasses? `virtual`
+        5. Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
      4. Accessor methods \(for properties\):
         1. Property value is based on the computation of one or more other field/property values? **Computed property**
         2. Initial value is magic **and** not member is **not** abstract? Give it a value after the parenthesis. `public int Size { get; private set; } = 1;`
