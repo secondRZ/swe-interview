@@ -20,11 +20,11 @@ static void Main() {
 ## Data Types
 
 * **System.Object:** All classes inherit from System.Object, and they all have these methods:
-  * `object.Equals(Other)`: Returns true if `object` is equal to `Other`; false otherwise.
+  * `object.Equals(Other)`: Returns true if `object` is equal to `Other`; false otherwise. By default it just checks if the objecs are actually the same object. Should be overridden if you want to check properties agains each other.
   * `System.Object.Equals(object, other)`: Returns true if `object` and `other` are equal; false otherwise.
 * * `object.GetType()` will return the type of `object`. Conversely, `object is SomeType` will return a true if `object` is of that type; false otherwise.
   * `object.MemberwiseClone()`: Creates a shallow copy of `object`.
-  * `object.ToString()`: Returns a string that represents `object`. Should be overridden if you want actual functionality.
+  * `object.ToString()`: Returns a string that represents `object`. Should be overridden if you want actual functionality. If you override a base class, the subclass will of course get the ToString method as well.
 * **bool**
 * **string**: Always between two quotes.
   * `ToLower("C")` and `ToUpper("c")`
@@ -95,7 +95,8 @@ Level level1 = new Level(invaders) {
   * An example is an** **`Animal` class having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\).
 * An object of a certain type will accept instantiation of children of its class as well. So `Polygon myShape = new Square();` will work, same if you want an array of polygons and put a square inside. When you mix this with virtual methods, you get the real magic of polymorphism. Now I can have `myShape.GetArea()`, and it will call the right method for it's specific type, but it will also fit in places that are expect a `Polygon` specifically. The rest of the code base only ever has to deal with the `Polygon` class, and the virtual methods will take care of the rest.
 * Here is the process for making your code polymorphic:
-* 1. Give the base class should have **every method and property/state** that can be called on the subclasses, even if the implementation is different for each subclass. The implementation of each method should be what you imagine a generic instance of this class to look like.
+* 1. Go through the user stories. **Every **noun and verb should have its own base class. This should help you stick to **SRP**.
+  2. Give the base classes **every method and property/state** that can be called on the subclasses, even if the implementation is different for each subclass, and even if the subclasses don't obviously need that method or property. This keeps you close to **L** in SOLID \(Liskov substitution \(a subclass should be substitutable with its base class\)\). The little harm it does in creating a more bloated object that may not need each method/property is made up for 10 fold in the extra code you don't have to write using polymorphism \(only using the base classes throughout the program\). The implementation of each method should be what you imagine a generic instance of this class to look like.
      1. Type:
         1. Should only ever be accessed within the class itself, not even in the children? **Field**
            1. Different values for each instance? Initialized in the constructor. E.g: `int _score;`
@@ -119,7 +120,7 @@ Level level1 = new Level(invaders) {
            2. Value should only be accessed within the class itself, not even subclasses. `private set;`
            3. Value should be accessed only by itself and its subclasses \(this should be the most accessible level for the setter, never just public\) `protected set;` 
         5. No `set;` **and** initial value is magic? Use a computed property. `public int Size => 1;`
-  2. Construct the subclasses:
+  3. Construct the subclasses:
      1. The subclasses must have at least one constructor for every constructor the base class has that takes any parameters. At the minimum, passing on the necessary arguments. `public Child(Ethnicity eth) : base(eth) {}`
 
 
