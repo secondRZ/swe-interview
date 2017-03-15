@@ -1,11 +1,5 @@
 # Web Development
 
-### ---------------------------------
-
-### [Primer: How Browsers Work](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#Introduction)
-
-### ---------------------------------
-
 ## Rendering
 
 1. The browser creates the **DOM** \(a tree based object with standards and APIs for object manipulation\) from the **HTML** \(_one_ language for creating a DOM tree\) it receives. \(The HTML can come from the server, or from a script. This is the difference between server-side and client-side rendering\).
