@@ -8,7 +8,7 @@
 * Just like C++, you can use `using SomeNameSpace;` at the top to avoid typing it every time, but it's better not to.
 * You can make a variable/property read only with the `readonly` keyword before its type: `public readonly int height;`.
 * Fat arrow methods work in C\#. Different syntax though. `public void Move() => _location++;`. You know it's a method \(not a property\) because of the parenthesis. You know whether it returns something because of the stated return type.
-* Accept input from a user:
+* Accept input from a user with **Console.ReadLine\(\)**:
 
 ```java
 static void Main() {
@@ -37,6 +37,13 @@ static void Main() {
 * It is wise to create your own classes of exceptions for your app, to make catching them more specific. The base exception of your app should inherit from System.Exception. And others from your app should inherit from that one. Make sure they have at least 2 constructors. One that accepts a message, and one that doesn't.
 * Parents also catch children exceptions.
 * When you use multiple catch statements, the most specific exceptions \(that is, those lowest in the inheritance tree, the child with the least children\) should go first.
+
+## I/O
+
+* System.IO is the namespace with the correct classes and methods.
+  * `Directory`: Mostly used to get directory info with static methods.
+  * `DirectoryInfo`: Mostly used to get directory info with instance methods.
+  * `StreamReader`: Create instances to do I/O with resources. 
 
 ## Collections
 
