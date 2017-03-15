@@ -145,5 +145,10 @@ Level level1 = new Level(invaders) {
         2. Else put it in its own interface that the subclass can inherit from on its own.
      3. Once its constructed, 
 
+## Backend Development
+
+* Data Processing
+  * Encoding is a map. A rosetta stone for the computer to know how to turn the characters into bytes.
+
 
 
