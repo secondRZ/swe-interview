@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [Behavioral](topics/behavioral.md)
+* [Development Process](/topics/development-process.md)
 * [C++ Details](topics/c-details.md)
 * [C\# Details](/topics/cs-details.md)
 * [Web Development](/topics/web-development.md)
@@ -12,5 +13,6 @@
 * [Numbers](topics/numbers.md)
 * [Networking](topics/networking.md)
 * [Operating Systems](topics/operating-systems.md)
-* [Development Process](development-process.md)
+
+
 
