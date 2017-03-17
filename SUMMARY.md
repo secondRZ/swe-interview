@@ -5,6 +5,7 @@
 * [Development Process](/topics/development-process.md)
 * [C++ Details](topics/c-details.md)
 * [C\# Details](/topics/cs-details.md)
+* [ST Notes](/topics/st-notes.md)
 * [Web Development](/topics/web-development.md)
 * [Data Structures](topics/data-structures.md)
 * [Algorithms](topics/algorithms.md)
