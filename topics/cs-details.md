@@ -65,6 +65,7 @@ namespace Treehouse.CodeChallenges
 
 * Use generic collections with `using System.Collections.Generic;`
 * Your own classes can have `foreach` if they implement **IEnumerable**. You get that plust `Add`, `Clear`, `Contains`, and `Remove` methods, and the `Count` property if they implement   **ICollection**. Implementing **IList** will get you all of that plus bracket notation, `IndexOf`, `Insert`, `Remove`, and `RemoveAt`.
+* A reason to make a collection **IEnumerable** instead of a List, is to essentially make it readonly, since it won't have any add or access methods.
 * **List**: `List<string> myList = new List<string>(optionalInitialCapactyInt) {"Optional", "initialized", "values"};`
   * `myList.Add("Item");`: Adds an item to the end of the list.
   * `myList.Count;`: Returns the length of the list.
@@ -137,7 +138,7 @@ Level level1 = new Level(invaders) {
 * Create a **virtual property **the same way. Even if that property is used inside of methods of the base class, when the object is an instance of the child class, it will use the value of the overridden property. You don't have to create a virtual method just for the property. Very good if you h
 * You use **polymorphism** and **virtual methods/properties **when different classes with the same parent or interface implementation should have the same method, but a different behavior for that method. 
   * An example is an** **`IAnimal` interface having a method `Move()` since all animals move, but the `Human` class having a different implementation of that method than the `Jaguar` class. \(Bipedal, slower speed, etc.\).
-* An object of a certain interface will accept instantiation of any class that uses the interface. So `IDancer myShape = new BreakDancer();` will work, same if you want an array of objects that implement the `IDancer` interface and put a breakdancer inside. Now I can have `myDancer.Dance()`, and it will call the right method for it's specific type. The rest of the code base only ever has to deal with the `IDancer` interface, and the virtual methods will take care of the rest.
+* An object of a certain interface will accept instantiation of any class that uses the interface. So `IDancer myShape = new BreakDancer();` will work, same for methods \(if the method wants a collection of objects that implement the `IDancer` interface, you can put a breakdancer inside\). Now I can have `myDancer.Dance()`, and it will call the right method for it's specific type. The rest of the code base only ever has to deal with the `IDancer` interface, and the virtual methods will take care of the rest. Likewise, if I have a method that simply runs a foreach loop, instead of making it accept a list, make it accept any `IEnumerable`, that way any class that implements that interface can be passed to it.
 * Make a class **abstract** by placing `abstract` in front of `class`like this: `abstract class Person {}`
 * Making a class abstract means that it isn't meant to be instantiated by the program. It's only an interface. If you want a plain class that has exactly that interface, you'll now need to make a subclass of it.
 * Members can also be made `abstract`, and should have `override` in their subclass.
@@ -155,7 +156,7 @@ Level level1 = new Level(invaders) {
         1. Should only ever be accessed within the class itself, not even in the children? **Field**
            1. Different values for each instance? Initialized in the constructor. E.g: `int _score;`
            2. Always the same starting value? Initialized with instantiation. E.g: `int _score = 0;`
-           3. Should be accessed outside of the class itself, even if only in subclasses? **Property**
+        2. Should be accessed outside of the class itself, even if only in subclasses? **Property**
      2. Access:
         1. Should only ever be accessed within the class itself, not even in the children? `private`.
         2. Should only be accessed within the class itself and its children? `protected`.
@@ -166,7 +167,12 @@ Level level1 = new Level(invaders) {
         3. **Must **be overridden in subclasses? \(As in, there is no generic way to do this method or generic value this property should be. They'll all be different, so they should all declare their own version\) `abstract` The subclasses should have `override` in its place.
         4. **Can** be overridden in subclasses? `virtual`
         5. Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
-     4. Accessor methods \(for properties\):
+     4. Data Type:
+        1. Numeric:
+        2. Collection:
+           1. Shouldn't have any kind of direct element access \(Square bracket notation, Remove\(\), etc\)? `IEnumerable`
+        3. Generic:
+     5. Accessor methods \(for properties\):
         1. Property value is based on the computation of one or more other field/property values? **Computed property**
         2. Initial value is magic **and** not member is **not** abstract? Give it a value after the parenthesis. `public int Size { get; private set; } = 1;`
         3. `get;`
