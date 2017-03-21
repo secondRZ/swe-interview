@@ -92,11 +92,11 @@ public int CompareTo(Student that)
 }
 ```
 
-* **HashSet**: Constant lookup time by value. Unordered. No duplicates added. `HashSet<Student> students = new HashSet<Student>(optionalListToInitializeWith);`
+* **HashSet**: Constant lookup time by value. Unordered. No duplicates added. `HashSet<Student> students = new HashSet<Student>(optionalListToInitializeWith);`.
   * When using objects, be careful about duplicates. By default, each object has it's own unique hashcode. You need to override `GetHashCode` to make the `HashSet` compare by value. If it came from a database, it probably has a unique id that you can simply return the `GetHashCode` of, otherwise, you can probably return the sum of `.GetHashCode()` of the properties that you care to compare for equality. If you override `GetHashCode`, you must also override `Equals`. Do this by just checking if the actual values of those properties are the same. \(Eg: `Name = obj.Name`\)
-* **Dictionary**: Holds key/value pairs. `Dictionary<char, string> people = new Dictionary<char, string> {{'b', "Brandon"}, {'j', "Jacob"}};`
+* **Dictionary**: Holds key/value pairs. `Dictionary<char, string> people = new Dictionary<char, string> {{'b', "Brandon"}, {'j', "Jacob"}};`.
 
-  * Loop over a dictionary with `foreach(KeyValuePair<char, string> pair in _dict) { pair.Value and pair.Key}`
+  * Loop over a dictionary with `foreach(KeyValuePair<char, string> pair in _dict) { pair.Value and pair.Key}`.
 
   * Add with square brackets or with `.Add()`, but if a key already exists while using `.Add()` then an exception is thrown.
 
