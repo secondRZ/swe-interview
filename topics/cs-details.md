@@ -65,7 +65,7 @@ namespace Treehouse.CodeChallenges
 
 * Use generic collections with `using System.Collections.Generic;`
 * Your own classes can have `foreach` if they implement **IEnumerable**. You get that plust `Add`, `Clear`, `Contains`, and `Remove` methods, and the `Count` property if they implement   **ICollection**. Implementing **IList** will get you all of that plus bracket notation, `IndexOf`, `Insert`, `Remove`, and `RemoveAt`.
-* A reason to make a collection **IEnumerable** instead of a List, is to essentially make it readonly, since it won't have any add or access methods.
+* A reason to make a collection **IEnumerable** instead of a List, is to essentially make it readonly, since it won't have any add or access methods. But **IReadOnlyList** is a more specific way to do that.
 * **List**: `List<string> myList = new List<string>(optionalInitialCapactyInt) {"Optional", "initialized", "values"};`
   * `myList.Add("Item");`: Adds an item to the end of the list.
   * `myList.Count;`: Returns the length of the list.
@@ -73,6 +73,7 @@ namespace Treehouse.CodeChallenges
   * `myList.Insert(2, "Brandon");`: Insert at index 2.
   * `myList.RemoveAt(2);`: Remove at index 2.
   * `myList.Remove("Brandon")`: Returns true if it could remove the item. The first one it finds.
+  * `myList.Contains("Brandon")`: Returns true if object is in the list.
   * `myList.IndexOf("Brandon");`: Returns the first index of the search argument, or -1 if not there.
   * `myList.Sort();`: Sorts the list. To sort objects, make sure the class implements the `IComparable<ClassName>` interface.
 
@@ -88,6 +89,10 @@ public int CompareTo(Student that)
     return result;
 }
 ```
+
+* **HashSet**: Constant lookup time by value. Unordered. No duplicates added. `HashSet<Student> students = new HashSet<Student>(optionalListToInitializeWith);`
+  * When using objects, be careful about duplicates. By default, each object has it's own unique hashcode. You need to override `GetHashCode` to make the `HashSet` compare by value. If it came from a database, it probably has a unique id that you can simply return the `GetHashCode` of, otherwise, you can probably return the sum of `.GetHashCode()` of the properties that you care to compare for equality. If you override `GetHashCode`, you must also override `Equals`. Do this by just checking if the actual values of those properties are the same. \(Eg: `Name = obj.Name`\)
+  * 
 
 ## OOP
 
@@ -169,8 +174,11 @@ Level level1 = new Level(invaders) {
         5. Is not specific to one instance of the class, rather it is useful for the class as a whole? `static`
      4. Data Type:
         1. Numeric:
-        2. Collection:
-           1. Shouldn't have any kind of direct element access \(Square bracket notation, Remove\(\), etc\)? `IEnumerable`
+        2. Collection \(by most common operation\):
+           1. Most often looking up by index. You care about the order.: `List` 
+           2. Shouldn't have any kind of direct element access \(Square bracket notation, Remove\(\), etc\)? `IEnumerable`
+           3. Most often looking up by value. Don't care about order. No duplicates in collection. `HashSet`.
+           4. Same as above but looking up by key. `Dictionary`.
         3. Generic:
      5. Accessor methods \(for properties\):
         1. Property value is based on the computation of one or more other field/property values? **Computed property**
