@@ -61,11 +61,30 @@ namespace Treehouse.CodeChallenges
         }
     }
 }
-
-
 ```
 
+* Use generic collections with `using System.Collections.Generic;`
+* **List**: `List<string> myList = new List<string>(optionalInitialCapactyInt) {"Optional", "initialized", "values"};`
+  * `myList.Add("Item");`: Adds an item to the end of the list.
+  * `myList.Count;`: Returns the length of the list.
+  * `myList.ToArray();`: Converts a list to an array.
+  * `myList.Insert(2, "Brandon");`: Insert at index 2.
+  * `myList.RemoveAt(2);`: Remove at index 2.
+  * `myList.Remove("Brandon"):` Returns true if it could remove the item. The first one it finds.
+  * `myList.Sort();`: Sorts the list. To sort objects, make sure the class implements the `IComparable<ClassName>` interface.
 
+```java
+public int CompareTo(Student that)
+{
+    int result = Name.CompareTo(that.Name);
+    if (result == 0)
+    {
+        result = GradeLevel.CompareTo(that.GradeLevel);
+    }
+    
+    return result;
+}
+```
 
 ## OOP
 
