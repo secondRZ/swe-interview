@@ -64,13 +64,15 @@ namespace Treehouse.CodeChallenges
 ```
 
 * Use generic collections with `using System.Collections.Generic;`
+* Your own classes can have `foreach` if they implement **IEnumerable**. You get that plust `Add`, `Clear`, `Contains`, and `Remove` methods, and the `Count` property if they implement   **ICollection**. Implementing **IList** will get you all of that plus bracket notation, `IndexOf`, `Insert`, `Remove`, and `RemoveAt`.
 * **List**: `List<string> myList = new List<string>(optionalInitialCapactyInt) {"Optional", "initialized", "values"};`
   * `myList.Add("Item");`: Adds an item to the end of the list.
   * `myList.Count;`: Returns the length of the list.
   * `myList.ToArray();`: Converts a list to an array.
   * `myList.Insert(2, "Brandon");`: Insert at index 2.
   * `myList.RemoveAt(2);`: Remove at index 2.
-  * `myList.Remove("Brandon"):` Returns true if it could remove the item. The first one it finds.
+  * `myList.Remove("Brandon")`: Returns true if it could remove the item. The first one it finds.
+  * `myList.IndexOf("Brandon");`: Returns the first index of the search argument, or -1 if not there.
   * `myList.Sort();`: Sorts the list. To sort objects, make sure the class implements the `IComparable<ClassName>` interface.
 
 ```java
@@ -81,7 +83,7 @@ public int CompareTo(Student that)
     {
         result = GradeLevel.CompareTo(that.GradeLevel);
     }
-    
+
     return result;
 }
 ```
