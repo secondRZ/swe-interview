@@ -44,6 +44,28 @@ static void Main() {
 * **Array**: `string[] people = new string[3];` or `string[] people = {"Brandon", "Jacob", "Bob"};`
   * `people.Length`: Return the length of the array.
   * Pass array literals into a method with `SomeMethod(new []{"Brandon", "Jacob", "Bob"});`
+  * For a two dimensional array: `int[,] arr = new int[100, 10];` You set values like so:
+
+```java
+namespace Treehouse.CodeChallenges
+{
+    public static class MathHelpers
+    {
+        public static int[,] BuildMultiplicationTable(int maxFactor)
+        {
+            int[,] arr = new int[maxFactor + 1, maxFactor + 1];
+            for (int i = 0; i < arr.GetLength(0); i++)
+                for (int j = 0; j < arr.GetLength(1); j++)
+                    arr[i, j] = i * j;
+            return arr;
+        }
+    }
+}
+
+
+```
+
+
 
 ## OOP
 
