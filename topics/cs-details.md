@@ -29,6 +29,8 @@ static void Main() {
 * **bool**
 * **string**: Always between two quotes.
   * `ToLower("C")` and `ToUpper("c")`
+  * `string.Join(" ");` Join items in a list by the delimiter into a string.
+  * `string.IsNullOrWhitespace(variable)`: Checks for and empty value.
 * **int**:
   * `int.Parse("55");` returns the converted `string` **55** into an `int`.
 
@@ -92,7 +94,15 @@ public int CompareTo(Student that)
 
 * **HashSet**: Constant lookup time by value. Unordered. No duplicates added. `HashSet<Student> students = new HashSet<Student>(optionalListToInitializeWith);`
   * When using objects, be careful about duplicates. By default, each object has it's own unique hashcode. You need to override `GetHashCode` to make the `HashSet` compare by value. If it came from a database, it probably has a unique id that you can simply return the `GetHashCode` of, otherwise, you can probably return the sum of `.GetHashCode()` of the properties that you care to compare for equality. If you override `GetHashCode`, you must also override `Equals`. Do this by just checking if the actual values of those properties are the same. \(Eg: `Name = obj.Name`\)
-  * 
+* **Dictionary**: Holds key/value pairs. `Dictionary<char, string> people = new Dictionary<char, string> {{'b', "Brandon"}, {'j', "Jacob"}};`
+
+  * Loop over a dictionary with `foreach(KeyValuePair<char, string> pair in _dict) { pair.Value and pair.Key}`
+
+  * Add with square brackets or with `.Add()`, but if a key already exists while using `.Add()` then an exception is thrown.
+
+  * `.Keys` and `.Values` are properties of each object that return collections for each respectively.
+
+  * `.ContainsKey()` and `.ContainsValue()` search for both respectively, though if you're only searching for values, you may be better off with a hashset.
 
 ## OOP
 
