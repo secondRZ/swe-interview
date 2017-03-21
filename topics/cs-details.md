@@ -104,6 +104,12 @@ public int CompareTo(Student that)
 
   * `.ContainsKey()` and `.ContainsValue()` search for both respectively, though if you're only searching for values, you may be better off with a hashset.
 
+## LINQ
+
+* Linq is a way to query with your code. It looks a lot like JS filter. You can use it on anything that implements IEnumerable&lt;T&gt;
+* Start by `using System.Linq;`
+* See the LINQ project for syntax.
+
 ## OOP
 
 * Properties and methods default to `private` access. Even the constructor has to be made `public`.
