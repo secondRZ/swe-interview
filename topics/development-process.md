@@ -23,5 +23,17 @@
 
    5. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
 
+6. Deployment
+
+   1. Version Number: Major.Minor.Patch
+
+      1. Major: When you make breaking API changes.
+
+      2. Minor: You've added functionality in a backwards compatible manner.
+
+      3. Patch: You've made backwards compatible bug fixes.
+
+      4. Pre-releases: 1.0.1-alpha, 1.0.1-beta
+
 
 
