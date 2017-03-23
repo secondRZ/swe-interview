@@ -29,7 +29,9 @@
 
 ### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
 
-* React: Instead of having conditional styles to display if a condition is true, simply use a conditional to decide whether to even render the element.
+* **React**: Instead of having conditional styles to display if a condition is true, simply use a conditional to decide whether to even render the element.
+
+* **React**: Should we be using arrow functions and binds when not necessary? See Airbnb React style guide.
 
 * Avoid setting multiple inline styles; avoid setting styles individually.  These trigger a reflow for each dynamic style change.
 
