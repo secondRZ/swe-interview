@@ -6,22 +6,23 @@
 
 #### --------------------------------------------
 
-1. With the specs in hand, go over the OOP design process laid out in the [C\# Details](/topics/cs-details.md) page. Build the tests before the actual classes. See Unit Testing project in the Dev References folder. Write a different test for edge, null, and range cases for every method of every class using your [class diagrams](https://www.genmymodel.com).
+1. With the specs in hand, go over the OOP design process laid out below. 
 2. Build the front end also using TDD.
 3. Check your work against all of the tenants of progressive web apps in the web development page. Especially offline considerations.
 4. Check your work against all of the tenants of performance in the [web development](/topics/web-development.md) page.
-5. Go over the list of code smells.  
+5. Go over the list of code smells.
+
    1. Code smells for bringing in certain design patterns.
 
-   1. Repeated code means you need to create helper methods/components.
+   2. Repeated code means you need to create helper methods/components.
 
-   2. Switch statements or a lot of type checking may mean you need to use inheritance, polymorphism and abstraction. And if you're changing the value of properties/states of data inside of those type checks, you should probably move that state changing to a method in the base class itself, and call it from the place with the type checking.
+   3. Switch statements or a lot of type checking may mean you need to use inheritance, polymorphism and abstraction. And if you're changing the value of properties/states of data inside of those type checks, you should probably move that state changing to a method in the base class itself, and call it from the place with the type checking.
 
-   3. Once you've properly used OOP, other classes should only interact with the base class, and allow polymorphism to do the work of type checking.
+   4. Once you've properly used OOP, other classes should only interact with the base class, and allow polymorphism to do the work of type checking.
 
-   4. Identical formatting of an object's properties to a string over and over. Just override the ToString\(\) method in that class and use the property itself. See "Point.cs" in the TreehouseDefense project. Ex: `Console.WriteLine("(" + point.X + "," + point.Y + ")")`
+   5. Identical formatting of an object's properties to a string over and over. Just override the ToString\(\) method in that class and use the property itself. See "Point.cs" in the TreehouseDefense project. Ex: `Console.WriteLine("(" + point.X + "," + point.Y + ")")`
 
-   5. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
+   6. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
 
 6. Deployment
 
@@ -34,6 +35,10 @@
       3. Patch: You've made backwards compatible bug fixes.
 
       4. Pre-releases: 1.0.1-alpha, 1.0.1-beta
+
+
+
+## ------------------------
 
 ## Unit Testing
 
@@ -105,7 +110,7 @@ Level level1 = new Level(invaders) {
 * Properties and methods inside of static classes will become **global**. So it's best to make the fields `private`, but the methods public so that they can't be tampered with. \(See "Random.cs"\)
 * Here is the process for writing good OOP \(Using interfaces instead of base classes/inheritance\):
 * 1. Using a [modeling tool](https://www.genmymodel.com), go through the user stories. **Every **noun and verb should have its own class or interface. If a noun or verb will have different types of itself then it should have its own interface This should help you stick to **SRP**. 
-  2. Stop here and write your tests.
+  2. Stop here and write your tests. See Unit Testing project in the Dev References folder and unit testing section on this page.
   3. Give the interfaces **every method and property/state** that can be called on **all** of its implementing classes, even if the implementation is different for each class, but **not** if only **some **implementing classes will use it and **not** if the property/method could be useful for other types as well. If only some implementing classes will use it, or if it could be used in a more general way by completely unrelated classes, then you should create another interface \(if it's going to be used by certain, related classes, but not all of them\) or a static class \(like a collection of Utils\) with that method/property, and the classes can implement both of the interfaces. 
   4. Write the classes. Think about making a basic version of the class \(See: "BasicInvader"\) that performs each method and sets each property in a way that most implementers of the interface will perform. Then you give those classes an instance of the basic class and simply call the method of the instance for each method implementation, or return the property of the instance for each property. \(See "ResurrectingInvader"\). Copy over all methods and  properties of every interface it implements, and every interface that those interfaces implement. Make them all public, and write the implementations. Then write the extra methods/properties for specific classes:
      1. Type:
@@ -151,4 +156,6 @@ Level level1 = new Level(invaders) {
 
 * Data Processing
   * Encoding is a map. A rosetta stone for the computer to know how to turn the characters into bytes.
+
+
 
