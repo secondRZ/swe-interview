@@ -126,6 +126,14 @@ public int CompareTo(Student that)
   * **Range**: Add n numbers to a list from a certain number.
   * **Intersect**: Returns a list that are present in both.
 
+## Unit Testing
+
+* Purpose: 
+  * To ensure that the software is build correctly, and make any bugs that come up easier to find and verify \(by making the test more verbose\).
+  * Help you think of range, corner, and edge cases.
+  * Discover runtime and logic \(wrong output for an input\) errors.
+* Typically, each class is considered a unit. A unit test should test each and every operation that the class provides. Each project should get its own .Tests project.
+
 ## OOP
 
 * Properties and methods default to `private` access. Even the constructor has to be made `public`.

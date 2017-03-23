@@ -6,8 +6,8 @@
 
 #### --------------------------------------------
 
-1. With the specs in hand, go over the OOP design process laid out in the [C\# Details](/topics/cs-details.md) page.
-2. Check for edge, null, and range cases for all of the data points you're dealing with.
+1. With the specs in hand, go over the OOP design process laid out in the [C\# Details](/topics/cs-details.md) page. Build the tests before the actual classes. See Unit Testing project in the Dev References folder. Check for edge, null, and range cases for every method of every class.
+2. Build the front end also using TDD.
 3. Check your work against all of the tenants of progressive web apps in the web development page. Especially offline considerations.
 4. Check your work against all of the tenants of performance in the [web development](/topics/web-development.md) page.
 5. Go over the list of code smells.  
