@@ -6,11 +6,12 @@
 
 #### --------------------------------------------
 
-1. With the specs in hand, go over the OOP design process laid out below. 
-2. Build the front end also using TDD.
-3. Check your work against all of the tenants of progressive web apps in the web development page. Especially offline considerations.
-4. Check your work against all of the tenants of performance in the [web development](/topics/web-development.md) page.
-5. Go over the list of code smells.
+1. If it's a bug, then try to reproduce the bug. You may need to write a unit test for the method.
+2. With the specs in hand, go over the OOP design process laid out below. 
+3. Build the front end also using TDD.
+4. Check your work against all of the tenants of progressive web apps in the web development page. Especially offline considerations.
+5. Check your work against all of the tenants of performance in the [web development](/topics/web-development.md) page.
+6. Go over the list of code smells.
 
    1. Code smells for bringing in certain design patterns.
 
@@ -24,7 +25,7 @@
 
    6. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
 
-6. Deployment
+7. Deployment
 
    1. Version Number: Major.Minor.Patch
 
@@ -47,7 +48,7 @@
 * Typically, each class is considered a unit. A unit test should test each and every operation that the class provides. Each project should get its own .Tests project.
 * Once you have your class models laid out,  start the test writing process with the Red-Green-Refactor method.
   1. Write the tests for each method. There should be errors because the methods don'e exist yet. Use `cmd + .` to create the stub in the classes. Run the tests. Verify that they all fail. There should be range, corner, null, and edge cases.
-  2. Now you write the code for the unit that you're testing. Run the tests to make sure they all pass.
+  2. Now you write the code for the unit that you're testing. Run the tests to make sure they all pass. Sometimes - although you should try to avoid this - a method will depend on another entity \(a class, a remote api, etc\) already being complete. In this case, build a mock/stub class for it \(which is easy if you're using interfaces\).
   3. Refactor the implementation code.
 
 ## OOP
