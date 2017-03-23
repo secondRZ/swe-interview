@@ -109,6 +109,22 @@ public int CompareTo(Student that)
 * Linq is a way to query with your code. It looks a lot like JS filter. You can use it on anything that implements IEnumerable&lt;T&gt;
 * Start by `using System.Linq;`
 * See the LINQ project for syntax.
+  * **Where**: Like JS filter.
+  * **FirstOrDefault**: Returns just one element of a filter or default \(null, 0, etc\).
+  * **OrderBy**: Better than Sort\(\) because you don't have to create a sortable class.
+  * **ThenBy**
+  * **All**: Like JS every;
+  * **Any**: Like JS any.
+  * **Select**: Create an anonymous object, or extract one property into a list like \_.pluck\(\);
+  * **SelectMany**: Flattens queries that return a list of lists.
+  * **Take**: Select the top n items. Usually after an OrderBy.
+  * **Skip**: Skip some before taking some. Creates pages.
+  * **Join**: Good for if your Where clause has multiple checks for the same property \(color == "Red" \|\| color == "Blue"\).
+  * **GroupBy**: Group elements by a property.
+  * **Sum**, **Average**, **Min**, and **Max**: Calculate for some property for items in the list.
+  * **Except**: Returns a list of items from another list that are not present in the first.
+  * **Range**: Add n numbers to a list from a certain number.
+  * **Intersect**: Returns a list that are present in both.
 
 ## OOP
 
