@@ -133,6 +133,7 @@ public int CompareTo(Student that)
   * Help you think of range, corner, and edge cases.
   * Discover runtime and logic \(wrong output for an input\) errors.
 * Typically, each class is considered a unit. A unit test should test each and every operation that the class provides. Each project should get its own .Tests project.
+* Once you have your class models laid out,  start the test writing process with the Red-Green-Refactor method.
 
 ## OOP
 
