@@ -29,6 +29,8 @@
 
 ### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
 
+* React: Instead of having conditional styles to display if a condition is true, simply use a conditional to decide whether to even render the element.
+
 * Avoid setting multiple inline styles; avoid setting styles individually.  These trigger a reflow for each dynamic style change.
 
 * Use classNames of elements, and do so as low in the DOM tree as possible.  Changing the class attribute lets you apply multiple styles to an element with a single reflow.  But since this reflows all the element’s children, that means you don’t want to change the class on a wrapper div if you’re only targeting its first child.
