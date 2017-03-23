@@ -36,8 +36,6 @@
 
       4. Pre-releases: 1.0.1-alpha, 1.0.1-beta
 
-
-
 ## ------------------------
 
 ## Unit Testing
@@ -48,6 +46,9 @@
   * Discover runtime and logic \(wrong output for an input\) errors.
 * Typically, each class is considered a unit. A unit test should test each and every operation that the class provides. Each project should get its own .Tests project.
 * Once you have your class models laid out,  start the test writing process with the Red-Green-Refactor method.
+  1. Write the tests for each method. There should be errors because the methods don'e exist yet. Use `cmd + .` to create the stub in the classes. Run the tests. Verify that they all fail. There should be range, corner, null, and edge cases.
+  2. Now you write the code for the unit that you're testing. Run the tests to make sure they all pass.
+  3. Refactor the implementation code.
 
 ## OOP
 
