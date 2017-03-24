@@ -27,6 +27,10 @@
 
 ## **Performance**
 
+### Event Listeners
+
+* When calling methods based on user input, it's usually a good idea to either debounce or [throttle](https://jsfiddle.net/jonathansampson/m7G64/) the method calls, so as not to overload your resources.
+
 ### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
 
 * **React**: Instead of having conditional styles to display if a condition is true, simply use a conditional to decide whether to even render the element.
@@ -48,6 +52,7 @@
 ## Misc
 
 * The `window` object contains all global variables and methods \(which is why typing `window` is optional\), and the tab itself. You use it sometimes because there may be other variables/methods with the same name. Like namespacing.
+* The `document` is the actual DOM object.
 
 
 
