@@ -40,6 +40,7 @@ static void Main() {
 * It is wise to create your own classes of exceptions for your app, to make catching them more specific. The base exception of your app should inherit from System.Exception. And others from your app should inherit from that one. Make sure they have at least 2 constructors. One that accepts a message, and one that doesn't.
 * Parents also catch children exceptions.
 * When you use multiple catch statements, the most specific exceptions \(that is, those lowest in the inheritance tree, the child with the least children\) should go first.
+* Anything that implements `IDisposable` should be wrapped in a `using ()` block.
 
 ## Collections
 
@@ -125,3 +126,6 @@ public int CompareTo(Student that)
   * **Except**: Returns a list of items from another list that are not present in the first.
   * **Range**: Add n numbers to a list from a certain number.
   * **Intersect**: Returns a list that are present in both.
+
+
+
