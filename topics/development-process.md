@@ -27,7 +27,9 @@
 
 7. Deployment
 
-   1. Version Number: Major.Minor.Patch
+   1. Make sure git is setup to ignore the .vscode, bin, obj, node\_modules, and packages \(nuget\) directories before commiting to version control.
+
+   2. Version Number: Major.Minor.Patch
 
       1. Major: When you make breaking API changes.
 
