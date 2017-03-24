@@ -33,6 +33,7 @@ static void Main() {
   * `string.IsNullOrWhitespace(variable)`: Checks for and empty value.
 * **int**:
   * `int.Parse("55");` returns the converted `string` **55** into an `int`.
+* **Nullable**: Making a type nullable can be useful when dealing with databases and other storage types that contain data that may not be assigned a value. When you see a question mark in a parameter list, it means that is a nullable type.
 
 ## Exceptions
 
