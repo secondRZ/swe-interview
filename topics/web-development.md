@@ -12,7 +12,7 @@
 
 ## Event Loop
 
-## Storage
+## [Storage](http://ejohn.org/blog/dom-storage/)
 
 * **Cookie**: A small text file containing key/value pairs that lives on your computer to carry information from one session to another. \(Remember the email, preferred font size, items in a shopping cart, etc.\). By default they are destroyed when the browser is closed, but are often set to persist longer than that. Only the root domain that created the cookie can retrieve it. Though, third party advertisers can store a cookie, and if used by another site can retrieve it to serve relevant ads. Only strings can be stored.
 * **localStorage**: Same as cookies but you can also store javascript primitives, but not objects or arrays \(though you could JSON serialize them\). This is also primarily used for client-side reading and writing. Whereas cookies are typically for the server to interact with. So the question is, who needs the data: The client or the server?
@@ -44,6 +44,10 @@
 * Apply animations with position fixed or absolute.  So the animation doesn’t affect the layout of other elements.
 
 * Stay away from table layouts, they trigger more reflows than block layouts because multiple passes must be made over the elements.
+
+## Misc
+
+* The `window` object contains all global variables and methods \(which is why typing `window` is optional\), and the tab itself. You use it sometimes because there may be other variables/methods with the same name. Like namespacing.
 
 
 
