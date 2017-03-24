@@ -117,7 +117,8 @@ Level level1 = new Level(invaders) {
 * 1. Using a [modeling tool](https://www.genmymodel.com), go through the user stories. **Every **noun and verb that uses two or more nouns should have its own class or interface. If a noun or verb will have different types of itself then it should have its own interface This should help you stick to **SRP**. Adjectives and adverbs are good indicators that there may need to be subclasses.
   2. Stop here and write your tests. See Unit Testing project in the Dev References folder and unit testing section on this page.
   3. Give the interfaces **every method and property/state** that can be called on **all** of its implementing classes, even if the implementation is different for each class, but **not** if only **some **implementing classes will use it and **not** if the property/method could be useful for other types as well. If only some implementing classes will use it, or if it could be used in a more general way by completely unrelated classes, then you should create another interface \(if it's going to be used by certain, related classes, but not all of them\) or a singleton \(like a collection of Utils\) with that method/property, and the classes can implement both of the interfaces. 
-  4. Write the classes. Think about making a basic version of the class \(See: "BasicInvader"\) that performs each method and sets each property in a way that most implementers of the interface will perform. Then you give those classes an instance of the basic class and simply call the method of the instance for each method implementation, or return the property of the instance for each property. \(See "ResurrectingInvader"\). Copy over all methods and  properties of every interface it implements, and every interface that those interfaces implement. Make them all public, and write the implementations. Then write the extra methods/properties for specific classes:
+  4. None of the properties should be of a custom class type. Instead you should use the necessary interface.
+  5. Write the classes. Think about making a basic version of the class \(See: "BasicInvader"\) that performs each method and sets each property in a way that most implementers of the interface will perform. Then you give those classes an instance of the basic class and simply call the method of the instance for each method implementation, or return the property of the instance for each property. \(See "ResurrectingInvader"\). Copy over all methods and  properties of every interface it implements, and every interface that those interfaces implement. Make them all public, and write the implementations. Then write the extra methods/properties for specific classes:
      1. Type:
         1. Should only ever be accessed within the class itself, not even in the children? **Field**
            1. Different values for each instance? Initialized in the constructor. E.g: `int _score;`
@@ -151,12 +152,12 @@ Level level1 = new Level(invaders) {
            2. Value should only be accessed within the class itself, not even subclasses. `private set;`
            3. Value should be accessed only by itself and its subclasses \(this should be the most accessible level for the setter, never just public\) `protected set;` 
         5. No `set;` **and** initial value is magic? Use a computed property. `public int Size => 1;`
-  5. Construct the interfaces:
+  6. Construct the interfaces:
      1. It should include each public method and property of the abstract base class, but it doesn't have to include them all in itself. It can be composed of multiple interfaces.
      2. 1. Does **every** subclass that will implement this interface use this property/method **and** is this property/method specific to this kind of class, not really for other types of objects? Put it in this interface.
         2. Else put it in its own interface that the subclass can inherit from on its own.
      3. Once its constructed, 
-  6. Build the program \(E.G: the "game method", etc.\)
+  7. Build the program \(E.G: the "game method", etc.\)
      1. Make use of [this](http://stackoverflow.com/questions/2247598/c-sharp-instantiate-class-from-string) for polymorphism.
 
 ## Backend Development
