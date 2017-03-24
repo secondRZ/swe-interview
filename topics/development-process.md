@@ -155,6 +155,8 @@ Level level1 = new Level(invaders) {
      2. 1. Does **every** subclass that will implement this interface use this property/method **and** is this property/method specific to this kind of class, not really for other types of objects? Put it in this interface.
         2. Else put it in its own interface that the subclass can inherit from on its own.
      3. Once its constructed, 
+  6. Build the program \(E.G: the "game method", etc.\)
+     1. Make use of [this](http://stackoverflow.com/questions/2247598/c-sharp-instantiate-class-from-string) for polymorphism.
 
 ## Backend Development
 
