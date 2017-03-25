@@ -160,10 +160,10 @@ Level level1 = new Level(invaders) {
   7. Build the program \(E.G: the "game method", etc.\)
      1. Make use of [this](http://stackoverflow.com/questions/2247598/c-sharp-instantiate-class-from-string) for polymorphism.
 
-## Backend Development
+## Design Patterns
 
-* Data Processing
-  * Encoding is a map. A rosetta stone for the computer to know how to turn the characters into bytes.
+* Creational
+  * 
 
 
 

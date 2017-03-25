@@ -130,3 +130,17 @@ public int CompareTo(Student that)
 
 
 
+## .Net Core MVC
+
+* To create a new project
+  * Create the repo on Github first. Then clone it with the git@ ssh version.
+  * Within the github folder, create another folder with the project's name, and another folder with .Tests after the name.
+  * Within the project folder, \(without the .Tests\), run `dotnet new mvc`, commit the template, then `dotnet restore` and commit that. Run `dotnet run` to make sure it's working.
+  * A prompt should come up saying something about things are missing that are necessary to run the project. Click yes. You should now have a .vscode folder with the correct settings. **TODO: GET THE ACTUAL STEPS TO CREATE THIS FOLDER.**
+  * Go into the .Tests folder, and **TODO: FINISH THIS.**
+* Controllers
+  * Classes must inherit from the `Controller` class, which you can use after `using Microsoft.AspNetCore.Mvc`.
+  * Classes and their methods must be public.
+
+
+
