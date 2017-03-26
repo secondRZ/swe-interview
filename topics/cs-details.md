@@ -139,9 +139,10 @@ public int CompareTo(Student that)
   * Go into the .Tests folder, and **TODO: FINISH THIS.**
   * Static content goes in the wwwroot folder. So anything referenced witn "~/some/path" will be searched for there.
 * **Controllers**
+  * Controllers are the "if this then that" of the application. _This_ being actions that happen from the view. _That_ being what happens in the model \(Retrieve items from a repository, update the database, etc.\).
   * Classes must inherit from the `Controller` class, which you can use after `using Microsoft.AspNetCore.Mvc`.
   * Classes and their methods must be public.
-  * For the home page, you need a `HomeController` class and an `Index()` method. Protocol is to put this inside of the **Controllers** folder.
+  * For the home page, you need a `HomeController` class and an `Index()` method. Protocol is to put this inside of the **Controllers** folder. You can change this by editing Configure\(\) method \(in .Net core\) or the RegisterRoutes\(\) method in previous versions.
   * Each controller should have a method named `Index()` for that url path.
   * You can return `Content("With some text")`,  a `Redirect("/with/a/path")`, or a `View()`.
 * **Views**
@@ -153,7 +154,7 @@ public int CompareTo(Student that)
     * @Html.Raw
     * @Html.ActionLink
 * **Models**
-  * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\). If on the backend they should be singletons or static classes.
+  * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\).
 
 
 
