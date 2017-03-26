@@ -33,6 +33,7 @@ static void Main() {
   * `string.IsNullOrWhitespace(variable)`: Checks for and empty value.
 * **int**:
   * `int.Parse("55");` returns the converted `string` **55** into an `int`.
+* **DateTime**: Has a Today property, which has a .DayOfTheWeek property, along with other helpful properties.
 * **Nullable**: Making a type nullable can be useful when dealing with databases and other storage types that contain data that may not be assigned a value. When you see a question mark in a parameter list, it means that is a nullable type.
 
 ## Exceptions
@@ -111,7 +112,7 @@ public int CompareTo(Student that)
 * Linq is a way to query with your code. It looks a lot like JS filter. You can use it on anything that implements IEnumerable&lt;T&gt;
 * Start by `using System.Linq;`
 * See the LINQ project for syntax.
-  * **Where**: Like JS filter.
+  * **Where**: Like JS filter. Doesn't return 1 item, returns a new enumerable.
   * **FirstOrDefault**: Returns just one element of a filter or default \(null, 0, etc\).
   * **OrderBy**: Better than Sort\(\) because you don't have to create a sortable class.
   * **ThenBy**
@@ -128,8 +129,6 @@ public int CompareTo(Student that)
   * **Range**: Add n numbers to a list from a certain number.
   * **Intersect**: Returns a list that are present in both.
 
-
-
 ## .Net Core MVC
 
 * To create a new project
@@ -138,9 +137,23 @@ public int CompareTo(Student that)
   * Within the project folder, \(without the .Tests\), run `dotnet new mvc`, commit the template, then `dotnet restore` and commit that. Run `dotnet run` to make sure it's working.
   * A prompt should come up saying something about things are missing that are necessary to run the project. Click yes. You should now have a .vscode folder with the correct settings. **TODO: GET THE ACTUAL STEPS TO CREATE THIS FOLDER.**
   * Go into the .Tests folder, and **TODO: FINISH THIS.**
-* Controllers
+  * Static content goes in the wwwroot folder. So anything referenced witn "~/some/path" will be searched for there.
+* **Controllers**
   * Classes must inherit from the `Controller` class, which you can use after `using Microsoft.AspNetCore.Mvc`.
   * Classes and their methods must be public.
+  * For the home page, you need a `HomeController` class and an `Index()` method. Protocol is to put this inside of the **Controllers** folder.
+  * Each controller should have a method named `Index()` for that url path.
+  * You can return `Content("With some text")`,  a `Redirect("/with/a/path")`, or a `View()`.
+* **Views**
+  * When a controller returns View\(\), .Net searches for a folder within the **Views** folder with the same name as the controller, and a file within that folder with the same name as the method. So if the page is localhost:3000/Brandon/Friends, then the controller BrandonController and the method Friends will be hit. If it returns a view, .Net will look to **Views/Brandon/Friends.cshtml**, and if not there then **Views/Shared/Friends.cshtml**.
+  * In razor, the `@{ var someCode = 5; }` syntax is used to say you're about to write some CSharp. Like the `<?php $someCode ?>` syntax in php. Once inside of the html, you can just use the at symbol and the variable like `@someCode`.
+  * Create a **layout** to use as a template. In our "Dev References" -&gt; Comic Book Gallery project, it's call \_Layout.cshtml in the Views/Shared folder. The actual view comes from the RenderBody\(\) method, of which there can only be one in the **layout**.
+  * Send the model to the view from within the View\(\) method. At the top of the razor page type `@model Namespace.Name.ClassName`, and reference it in the view with `@Model.PropertyName`.
+  * Helper methods:
+    * @Html.Raw
+    * @Html.ActionLink
+* **Models**
+  * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\). If on the backend they should be singletons or static classes.
 
 
 
