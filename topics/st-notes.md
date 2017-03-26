@@ -7,6 +7,7 @@
 * Build: Compile and create executable.
 * Clean: Removes any files created from `Build`. Things in the bin and obj folders.
 * Rebuild = Clean + Build. For a multi-project solution, "rebuild solution" does a "clean" followed by a "build" for each project \(possibly in parallel\). Whereas a "clean solution" followed by a "build solution" first cleans all projects \(possibly in parallel\) and then builds all projects \(possibly in parallel\). This difference in sequencing of events can become significant when inter-project dependencies come into play.
+* You can rewind execution while debugging by dragging the yellow arrow
 
 ### Nuget
 
