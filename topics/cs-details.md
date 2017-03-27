@@ -156,8 +156,5 @@ public int CompareTo(Student that)
 * **Models**
   * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\).
 
-## CRUD
-
-* 
 
 
