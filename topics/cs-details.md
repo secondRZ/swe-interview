@@ -135,7 +135,7 @@ public int CompareTo(Student that)
   * Create the repo on Github first. Then clone it with the git@ ssh version.
   * Within the github folder, create another folder with the project's name, and another folder with .Tests after the name.
   * Within the project folder, \(without the .Tests\), run `dotnet new mvc`, commit the template, then `dotnet restore` and commit that. Run `dotnet run` to make sure it's working.
-  * A prompt should come up saying something about things are missing that are necessary to run the project. Click yes. You should now have a .vscode folder with the correct settings. **TODO: GET THE ACTUAL STEPS TO CREATE THIS FOLDER.**
+  * Once you navigate to Startup.cs, a prompt should come up saying "Required assets to build and debug are missing from 'MVC Forms'. Add them?". Click **yes**. You should now have a .vscode folder with the correct settings.
   * Go into the .Tests folder, and **TODO: FINISH THIS.**
   * Static content goes in the wwwroot folder. So anything referenced witn "~/some/path" will be searched for there.
 * **Controllers**
@@ -156,5 +156,8 @@ public int CompareTo(Student that)
 * **Models**
   * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\).
 
+## CRUD
+
+* 
 
 
