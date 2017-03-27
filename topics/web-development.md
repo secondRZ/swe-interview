@@ -1,5 +1,17 @@
 # Web Development
 
+## CRUD
+
+* **Forms**
+
+  * The **action** attribute tells the browser what url to post the data to.  Forms that don't provide an action attribute will post/get to/from the same page.
+
+  * The **method** attribute tells the browser which HTTP verb to use.
+
+  * The **name **attribute of each input is the name of the field. Its value is the key to the key/value pair in the request body, the value of that pair being the value of the input field.
+
+  * The submit button tells the browser that the form data should now be submitted.
+
 ## Rendering
 
 1. The browser creates the **DOM** \(a tree based object with standards and APIs for object manipulation\) from the **HTML** \(_one_ language for creating a DOM tree\) it receives. \(The HTML can come from the server, or from a script. This is the difference between server-side and client-side rendering\).
@@ -27,13 +39,13 @@
 
 ## **Performance**
 
-### Content Optimization
+#### Content Optimization
 
-### Event Listeners
+#### Event Listeners
 
 * When calling methods based on user input, it's usually a good idea to either debounce or [throttle](http://pastebin.com/igUFpKUQ) the method calls, so as not to overload your resources.
 
-### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
+#### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
 
 * **React**: Instead of having conditional styles to display if a condition is true, simply use a conditional to decide whether to even render the element.
 
