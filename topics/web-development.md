@@ -27,6 +27,8 @@
 
 ## **Performance**
 
+### Content Optimization
+
 ### Event Listeners
 
 * When calling methods based on user input, it's usually a good idea to either debounce or [throttle](http://pastebin.com/igUFpKUQ) the method calls, so as not to overload your resources.
