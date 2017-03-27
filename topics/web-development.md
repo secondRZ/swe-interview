@@ -29,7 +29,7 @@
 
 ### Event Listeners
 
-* When calling methods based on user input, it's usually a good idea to either debounce or [throttle](https://jsfiddle.net/jonathansampson/m7G64/) the method calls, so as not to overload your resources.
+* When calling methods based on user input, it's usually a good idea to either debounce or [throttle](http://pastebin.com/igUFpKUQ) the method calls, so as not to overload your resources.
 
 ### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
 
