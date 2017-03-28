@@ -156,6 +156,7 @@ public int CompareTo(Student that)
     * @Html.Raw
     * @Html.ActionLink
     * @using \(Html.BeginForm\(\)\)
+    * @Html.Label
     * @Html.TextBox
     * @Html.TextArea
 * **Models**
