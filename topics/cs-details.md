@@ -166,6 +166,7 @@ public int CompareTo(Student that)
     * @Html.LabelFor
 * **Models**
   * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\).
+  * You can add attributes on top of the property names for automatic server-side validation. These are called [**data annotations**](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations%28v=vs.110%29.aspx). They include things like Required, MaxLength, Email, etc.
 
 
 
