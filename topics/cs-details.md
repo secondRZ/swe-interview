@@ -34,7 +34,7 @@ static void Main() {
 * **int**:
   * `int.Parse("55");` returns the converted `string` **55** into an `int`.
 * **DateTime**: Has a Today property, which has a .DayOfTheWeek property, along with other helpful properties.
-* **Nullable**: Making a type nullable can be useful when dealing with databases and other storage types that contain data that may not be assigned a value. When you see a question mark in a parameter list, it means that is a nullable type.
+* **Nullable**: Making a value type nullable can be useful when dealing with databases and other storage types that contain data that may not be assigned a value. When you see a question mark in a parameter list, it means that is a nullable type. Reference types \(including strings\) are nullable by default.
 
 ## Exceptions
 
@@ -147,6 +147,7 @@ public int CompareTo(Student that)
   * You can return `Content("With some text")`,  a `Redirect("/with/a/path")`, or a `View()`.
   * Parameters can be used to capture post/get data as well. It will automatically match for request form field names and for query string parameters. This is called **Model Binding**. Parameters should be lower cased and camelCased. Alternatively, you can have a class with those same parameter names as properties and the method can accept an instance of that class. .Net will assign the properties to the values.
   * You can get a forms attempted value with `ViewBag.Date = ModelState["Date"].AttemptedValue;` or for the old .Net: `ModelState["Date"].Value.AttemptedValue`. This can be good for handling input that didn't convert properly to a parameter. See the crud app's `Add` method. You don't need this if you use the html helper methods to create inputs.
+  * You can check whether a form is valid with ModelState.IsValid, which checks whether any of the non-nullable properties have are null.
 * **Views**
   * When a controller returns View\(\), .Net searches for a folder within the **Views** folder with the same name as the controller, and a file within that folder with the same name as the method. So if the page is localhost:3000/Brandon/Friends, then the controller BrandonController and the method Friends will be hit. If it returns a view, .Net will look to **Views/Brandon/Friends.cshtml**, and if not there then **Views/Shared/Friends.cshtml**.
   * In razor, the `@{ var someCode = 5; }` syntax is used to say you're about to write some CSharp. Like the `<?php $someCode ?>` syntax in php. Once inside of the html, you can just use the at symbol and the variable like `@someCode`.
