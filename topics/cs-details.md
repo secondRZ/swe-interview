@@ -30,7 +30,8 @@ static void Main() {
 * **string**: Always between two quotes.
   * `ToLower("C")` and `ToUpper("c")`
   * `string.Join(" ");` Join items in a list by the delimiter into a string.
-  * `string.IsNullOrWhitespace(variable)`: Checks for and empty value.
+  * `string.IsNullOrWhitespace(variable)`: Checks for and null or whitespace value.
+  * `string.IsNullOrEmpty(variable)`:  Allows whitespace.
 * **int**:
   * `int.Parse("55");` returns the converted `string` **55** into an `int`.
 * **DateTime**: Has a Today property, which has a .DayOfTheWeek property, along with other helpful properties.
