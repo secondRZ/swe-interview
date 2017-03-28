@@ -12,6 +12,10 @@
 
   * The submit button tells the browser that the form data should now be submitted.
 
+* Validation
+
+  * Make sure that server-side validation at least mirrors client side validation.
+
 ## Rendering
 
 1. The browser creates the **DOM** \(a tree based object with standards and APIs for object manipulation\) from the **HTML** \(_one_ language for creating a DOM tree\) it receives. \(The HTML can come from the server, or from a script. This is the difference between server-side and client-side rendering\).
