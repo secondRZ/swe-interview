@@ -146,7 +146,7 @@ public int CompareTo(Student that)
   * Each controller should have a method named `Index()` for that url path.
   * You can return `Content("With some text")`,  a `Redirect("/with/a/path")`, or a `View()`.
   * Parameters can be used to capture post/get data as well. It will automatically match for request form field names and for query string parameters. This is called **Model Binding**. Parameters should be lower cased and camelCased.
-  * You can get a forms attempted value with `ViewBag.Date = ModelState["Date"].AttemptedValue;` or for the old .Net: `ModelState["Date"].Value.AttemptedValue`. This can be good for handling input that didn't convert properly to a parameter. See the crud app's `Add` method.
+  * You can get a forms attempted value with `ViewBag.Date = ModelState["Date"].AttemptedValue;` or for the old .Net: `ModelState["Date"].Value.AttemptedValue`. This can be good for handling input that didn't convert properly to a parameter. See the crud app's `Add` method. You don't need this if you use the html helper methods to create inputs.
 * **Views**
   * When a controller returns View\(\), .Net searches for a folder within the **Views** folder with the same name as the controller, and a file within that folder with the same name as the method. So if the page is localhost:3000/Brandon/Friends, then the controller BrandonController and the method Friends will be hit. If it returns a view, .Net will look to **Views/Brandon/Friends.cshtml**, and if not there then **Views/Shared/Friends.cshtml**.
   * In razor, the `@{ var someCode = 5; }` syntax is used to say you're about to write some CSharp. Like the `<?php $someCode ?>` syntax in php. Once inside of the html, you can just use the at symbol and the variable like `@someCode`.
@@ -155,6 +155,9 @@ public int CompareTo(Student that)
   * Helper methods:
     * @Html.Raw
     * @Html.ActionLink
+    * @using \(Html.BeginForm\(\)\)
+    * @Html.TextBox
+    * @Html.TextArea
 * **Models**
   * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\).
 
