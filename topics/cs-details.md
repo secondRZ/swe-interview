@@ -152,6 +152,7 @@ public int CompareTo(Student that)
   * In razor, the `@{ var someCode = 5; }` syntax is used to say you're about to write some CSharp. Like the `<?php $someCode ?>` syntax in php. Once inside of the html, you can just use the at symbol and the variable like `@someCode`.
   * Create a **layout** to use as a template. In our "Dev References" -&gt; Comic Book Gallery project, it's call \_Layout.cshtml in the Views/Shared folder. The actual view comes from the RenderBody\(\) method, of which there can only be one in the **layout**.
   * Send the model to the view from within the View\(\) method. At the top of the razor page type `@model Namespace.Name.ClassName`, and reference it in the view with `@Model.PropertyName`.
+  * You can also import all of the models with @using Namespace.Models.Name \(See the crud app's Add.cshtml\)
   * Helper methods:
     * @Html.Raw
     * @Html.ActionLink
@@ -159,6 +160,8 @@ public int CompareTo(Student that)
     * @Html.Label
     * @Html.TextBox
     * @Html.TextArea
+    * @Html.TextBoxFor
+    * @Html.LabelFor
 * **Models**
   * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\).
 
