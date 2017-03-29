@@ -34,6 +34,7 @@ static void Main() {
   * `string.IsNullOrEmpty(variable)`:  Allows whitespace.
 * **int**:
   * `int.Parse("55");` returns the converted `string` **55** into an `int`.
+  * `int.TryParse("55", out variable);` does the same, but does not throw an exception. Returns a bool, and outputs the reult to a `variable`. The `out` is passing a variable as a reference, which is set inside of the `TryParse` method. Used in situations where you want to return two or more values. The `ref` keyword does the same, but it has to be initialized to something before being passed, else it throws and error.
 * **DateTime**: Has a Today property, which has a .DayOfTheWeek property, along with other helpful properties.
 * **Nullable**: Making a value type nullable can be useful when dealing with databases and other storage types that contain data that may not be assigned a value. When you see a question mark in a parameter list, it means that is a nullable type. Reference types \(including strings\) are nullable by default.
 
@@ -157,6 +158,7 @@ public int CompareTo(Student that)
   * You can also import all of the models with @using Namespace.Models.Name \(See the crud app's Add.cshtml\)
   * Helper methods:
     * @Html.Raw
+    * @Html.Partial
     * @Html.ActionLink
     * @using \(Html.BeginForm\(\)\)
     * @Html.Label
@@ -164,6 +166,8 @@ public int CompareTo(Student that)
     * @Html.TextArea
     * @Html.TextBoxFor
     * @Html.LabelFor
+    * @Html.ValidationSummary
+    * @Html.ValidationMessageFor
 * **Models**
   * Typically you'd use the **repository pattern** to fill repositories with information from some database. The repository contains a list of custom class types, and the methods to retrieve and modify them \(all of them, some of them, one of them, etc.\).
   * You can add attributes on top of the property names for automatic server-side validation. These are called [**data annotations**](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations%28v=vs.110%29.aspx). They include things like Required, MaxLength, Email, etc.
