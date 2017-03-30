@@ -16,7 +16,7 @@
 
   * Make sure that server-side validation at least mirrors client side validation.
 
-## Rendering
+## Rendering Process
 
 1. The browser creates the **DOM** \(a tree based object with standards and APIs for object manipulation\) from the **HTML** \(_one_ language for creating a DOM tree\) it receives. \(The HTML can come from the server, or from a script. This is the difference between server-side and client-side rendering\).
 2. Styles \(**CSS**\) are loaded and parsed.
@@ -50,18 +50,28 @@
   * The server processes the request, and sends a new document \(usually HTML\) as a response
   * The browser discards the old webpage altogether, and displays the newly downloaded one.
 * If the webapp uses **client side routing**:
+
   * The browser detects that the user has clicked on an anchor element, just like before.
   * A client side code \(usually the routing library\) catches this event, detects that the URL is not an external link, and then **prevents the browser **from making the HTTP GET request.
   * The routing library then  **manually changes the URL **displayed in the browser \(using the HTML5 history API, or maybe URL hashbangs on older browsers\)
   * The routing library then **changes the state of the client app. **For example, it can change the root component according to the route rules.
 
   * The app then processes state changes. It renders the new components, and if necessary, it requests new data from the server. But this time the response isn't necessarily an entire webpage, it may also be "raw" data, in which case the client-side code turns it into HTML elements.
+
 * There are several upsides of client-side routing: you download less data to display new content, you can reuse DOM elements, display loading notifications to user etc. However, webapps that generate the DOM on server side are much easier to crawl \(by search engines\), thereby making SEO optimization easier. You should know where you want your app to use either.
 
 ## Responsive Design
 
 * [9 tenants of responsive design.](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
 * Flexbox [containers](https://medium.freecodecamp.com/an-animated-guide-to-flexbox-d280cf6afc35#.5dz9ogn1v) and [elements](https://medium.freecodecamp.com/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053#.5f0sx5o52).
+* Use `box-sizing: border-box;` to make things easier when using responsive design.
+* An [SVG](https://teamtreehouse.com/library/svg-basics) is an alternative to a raster photo. Typically used for icons and other simple images.
+
+## Animations
+
+* [Transition syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+* [Keyframe & Animation syntax.](http://blog.teamtreehouse.com/css3-animation-demystified)
+* [Pre-built animations.](http://animista.net)
 
 ## Dev Tools
 
@@ -115,6 +125,35 @@
 
 * The `window` object contains all global variables and methods \(which is why typing `window` is optional\), and the tab itself. You use it sometimes because there may be other variables/methods with the same name. Like namespacing.
 * The `document` is the actual DOM object.
+* Closure issue: i equals 3 WHEN you CALL it. The closure is using the most current value, which is the end of the loop.
+
+```js
+var funcs = [];
+for (var i = 0; i < 3; i++) {
+  funcs[i] = function() {
+    console.log("My value: " + i); // when this is finally executed, i == 3
+  };
+}
+for (var j = 0; j < 3; j++) {
+  funcs[j]();
+}
+
+// solution:
+
+var funcs = [];
+
+function createfunc(i) {
+    return function() { console.log("My value: " + i); }; // now "i" is bound to this copied value.
+}
+
+for (var i = 0; i < 3; i++) {
+    funcs[i] = createfunc(i);
+}
+
+for (var j = 0; j < 3; j++) {
+    funcs[j]();
+}
+```
 
 
 
