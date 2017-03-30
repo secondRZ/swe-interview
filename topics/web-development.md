@@ -45,6 +45,8 @@
 
 #### Content Optimization
 
+* Any time you're requesting an outside resource \(a file, an image, a video, whatever\) it should be done asynchronously.
+
 #### Event Listeners
 
 * When calling methods based on user input, it's usually a good idea to either debounce or [throttle](http://pastebin.com/igUFpKUQ) the method calls, so as not to overload your resources.
