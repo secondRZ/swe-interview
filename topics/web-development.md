@@ -41,22 +41,59 @@
 * **sessionStorage**: Same as localStorage, but it doesn't persist tab to tab, window to window, or browser to browser.
 * **Cache**: A folder full of temporarily stored static files \(HTML documents, images, scripts, etc.\) to improve page loading speed and reduce bandwidth. If a file is cached on a user's computer, then they don't have to download it from the server when they need it again.  
 
+## Routing
+
+* User clicks a link: `<a href="/hello">Hello</a>`
+* On a webapp that uses **server side routing**:
+  * The browser detects that the user has clicked on an anchor element.
+  * It makes an HTTP GET request to the URL found in the `href` tag.
+  * The server processes the request, and sends a new document \(usually HTML\) as a response
+  * The browser discards the old webpage altogether, and displays the newly downloaded one.
+* If the webapp uses **client side routing**:
+  * The browser detects that the user has clicked on an anchor element, just like before.
+  * A client side code \(usually the routing library\) catches this event, detects that the URL is not an external link, and then **prevents the browser **from making the HTTP GET request.
+  * The routing library then  **manually changes the URL **displayed in the browser \(using the HTML5 history API, or maybe URL hashbangs on older browsers\)
+  * The routing library then **changes the state of the client app. **For example, it can change the root component according to the route rules.
+
+  * The app then processes state changes. It renders the new components, and if necessary, it requests new data from the server. But this time the response isn't necessarily an entire webpage, it may also be "raw" data, in which case the client-side code turns it into HTML elements.
+* There are several upsides of client-side routing: you download less data to display new content, you can reuse DOM elements, display loading notifications to user etc. However, webapps that generate the DOM on server side are much easier to crawl \(by search engines\), thereby making SEO optimization easier. You should know where you want your app to use either.
+
 ## Responsive Design
 
 * [9 tenants of responsive design.](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
 * Flexbox [containers](https://medium.freecodecamp.com/an-animated-guide-to-flexbox-d280cf6afc35#.5dz9ogn1v) and [elements](https://medium.freecodecamp.com/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053#.5f0sx5o52).
 
+## Dev Tools
+
+* Measuring Performance
+  * Go to the network tab and check **Disable Cache**. Load the page again.
+    * The status bar at the bottom shows you the total number of requests, total size of the page, and how long it took to download.
+  * * In the Timeline or Waterfall section, sort by "Duration".
+  * Go to the google pagespeed site, or download the chrome extension.
+
 ## **Performance**
 
 #### Content Optimization
 
+* Are there any 404 errors? Are all of the included assets necessary?
+* Have you decided on performance budgets? Speed to load? Total page size?
+* The first thing you should look at is the size of the assets. 
+  * Images
+    * Are they optimized for the needs of the users? 
+    * Was the right sized image requested for the screen? Are you using thumbnails when smaller images are needed instead of loading the full image? \(Twice the size of the actual image in pixels for retina screens.\)
+    * Is the quality of that image higher than needed? 
+    * Are you using sprites for small images?
+    * Are you using SVGs for anything that isn't a photo? \(Usually icons\) And [bundling](https://teamtreehouse.com/library/front-end-performance-optimization/combine-and-minify-assets/create-a-sprite-map) those SVG images.
+  * Are you bundling and minimizing your file requests? 
 * Any time you're requesting an outside resource \(a record from a database, a file, image, or video from another server, whatever\) it should be done asynchronously.
+* Are you using a CDN  for pages that have to load a large **number** of assets? Browsers limit the amount of concurrent requests per server, CDNS spread your requests to many servers, allowing more concurrent requests.
+* Are your files optimized for caching? 
 
 #### Event Listeners
 
 * When calling methods based on user input, it's usually a good idea to either debounce or [throttle](http://pastebin.com/igUFpKUQ) the method calls, so as not to overload your resources.
 
-#### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom)
+#### [Rendering](http://blog.letitialew.com/post/30425074101/repaints-and-reflows-manipulating-the-dom) [1](https://developers.google.com/web/fundamentals/performance/rendering/)
 
 * **React**: Instead of having conditional styles to display if a condition is true, simply use a conditional to decide whether to even render the element.
 
