@@ -28,6 +28,11 @@
 
 ## Event Loop
 
+1. Javascript is single threaded. == One call stack \(Stack structure that records where in the program you are\). == It can do one thing at a time. So each function that's called is pushed onto this one stack. The longer a function takes \(because of its depth, network requests, image processing, etc\), the longer it takes before the next line of code can be executed.
+2. The browser has a **render queue**, which waits for an empty call stack before dequeuing a rerender; therefore if your call stack is constantly **blocked**, your render queue rarely dequeues. 
+3. The fix for this is to use asynchronous code with tasks that take longer. Instead of being pushed onto the call stack, asynchronous functions go into the **event queue**, which also waits for the call stack to empty before dequeuing a task into the call stack.
+4. Asynchronous code waits out of the way - via some web api - and once it's ready \(the data arrived, the countdown is done, etc\) it adds the callback to the event queue. 
+
 ## [Storage](http://ejohn.org/blog/dom-storage/)
 
 * **Cookie**: A small text file containing key/value pairs that lives on your computer to carry information from one session to another. \(Remember the email, preferred font size, items in a shopping cart, etc.\). By default they are destroyed when the browser is closed, but are often set to persist longer than that. Only the root domain that created the cookie can retrieve it. Though, third party advertisers can store a cookie, and if used by another site can retrieve it to serve relevant ads. Only strings can be stored.
