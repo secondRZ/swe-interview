@@ -31,9 +31,9 @@
 ## [Storage](http://ejohn.org/blog/dom-storage/)
 
 * **Cookie**: A small text file containing key/value pairs that lives on your computer to carry information from one session to another. \(Remember the email, preferred font size, items in a shopping cart, etc.\). By default they are destroyed when the browser is closed, but are often set to persist longer than that. Only the root domain that created the cookie can retrieve it. Though, third party advertisers can store a cookie, and if used by another site can retrieve it to serve relevant ads. Only strings can be stored.
+  * **session**: A type of cookie, used to store data on the server instead of the client. Some info is sent from the client, which is used to unlock other information on the server.
 * **localStorage**: Same as cookies but you can also store javascript primitives, but not objects or arrays \(though you could JSON serialize them\). This is also primarily used for client-side reading and writing. Whereas cookies are typically for the server to interact with. So the question is, who needs the data: The client or the server?
 * **sessionStorage**: Same as localStorage, but it doesn't persist tab to tab, window to window, or browser to browser.
-* **session**: Used to store data on the server instead of the client. 
 * **Cache**: A folder full of temporarily stored static files \(HTML documents, images, scripts, etc.\) to improve page loading speed and reduce bandwidth. If a file is cached on a user's computer, then they don't have to download it from the server when they need it again.  
 
 ## Responsive Design
@@ -45,7 +45,7 @@
 
 #### Content Optimization
 
-* Any time you're requesting an outside resource \(a file, an image, a video, whatever\) it should be done asynchronously.
+* Any time you're requesting an outside resource \(a record from a database, a file, image, or video from another server, whatever\) it should be done asynchronously.
 
 #### Event Listeners
 
