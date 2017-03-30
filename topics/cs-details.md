@@ -23,7 +23,7 @@ static void Main() {
 * **System.Object:** All classes inherit from System.Object, and they all have these methods:
   * `object.Equals(Other)`: Returns true if `object` is equal to `Other`; false otherwise. By default it just checks if the objecs are actually the same object. Should be overridden if you want to check properties agains each other.
   * `System.Object.Equals(object, other)`: Returns true if `object` and `other` are equal; false otherwise.
-* * `object.GetType()` will return the type of `object`. Conversely, `object is SomeType` will return a true if `object` is of that type; false otherwise.
+* * `object.GetType()` will return the type of `object`. Conversely, `object is SomeType` will return a true if `object` is of that type; false otherwise. See info on **reflection **and **late binding**.
   * `object.MemberwiseClone()`: Creates a shallow copy of `object`.
   * `object.ToString()`: Returns a string that represents `object`. Should be overridden if you want actual functionality. If you override a base class, the subclass will of course get the ToString method as well.
 * **bool**
