@@ -73,6 +73,10 @@
 * [Keyframe & Animation syntax.](http://blog.teamtreehouse.com/css3-animation-demystified)
 * [Pre-built animations.](http://animista.net)
 
+## React
+
+* [Stateless functional components when you can](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc).
+* 
 ## Dev Tools
 
 * Measuring Performance
