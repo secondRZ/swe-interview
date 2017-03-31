@@ -76,10 +76,10 @@
 ## React
 
 * [Stateless functional components when you can](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc).
-* 
-## Dev Tools
-
+* [Virtual DOM Benefits](http://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode) 
+* ## Dev Tools
 * Measuring Performance
+
   * Go to the network tab and check **Disable Cache**. Load the page again.
     * The status bar at the bottom shows you the total number of requests, total size of the page, and how long it took to download.
   * * In the Timeline or Waterfall section, sort by "Duration".

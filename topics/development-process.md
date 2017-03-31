@@ -15,21 +15,29 @@
 
    1. Code smells for bringing in certain design patterns.
 
-   2. Repeated code means you need to create helper methods/components.
+   2. Type checking may mean you need to use polymorphism.
 
-   3. Switch statements or a lot of type checking may mean you need to use inheritance, polymorphism and abstraction. And if you're changing the value of properties/states of data inside of those type checks, you should probably move that state changing to a method in the base class itself, and call it from the place with the type checking.
+   3. Rendering `this.props.value || "some static value"` means you should be setting some default for this.
 
-   4. Once you've properly used OOP, other classes should only interact with the base class, and allow polymorphism to do the work of type checking.
+   4. You shouldn't be setting anonymous functions as props or callbacks. Give it its own named function for performance.
 
-   5. Identical formatting of an object's properties to a string over and over. Just override the ToString\(\) method in that class and use the property itself. See "Point.cs" in the TreehouseDefense project. Ex: `Console.WriteLine("(" + point.X + "," + point.Y + ")")`
+   5. Repeated code means you need to create helper methods/components.
 
-   6. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
+   6. Repeated patterns means that you should be using some sort of factory like [higher order components](https://facebook.github.io/react/docs/higher-order-components.html).
+
+   7. Switch statements or a lot of type checking may mean you need to use inheritance, polymorphism and abstraction. And if you're changing the value of properties/states of data inside of those type checks, you should probably move that state changing to a method in the base class itself, and call it from the place with the type checking.
+
+   8. Once you've properly used OOP, other classes should only interact with the base class, and allow polymorphism to do the work of type checking.
+
+   9. Identical formatting of an object's properties to a string over and over. Just override the ToString\(\) method in that class and use the property itself. See "Point.cs" in the TreehouseDefense project. Ex: `Console.WriteLine("(" + point.X + "," + point.Y + ")")`
+
+   10. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
 
 7. Deployment
 
    1. Make sure git is setup to ignore the .vscode, bin, obj, node\_modules, and packages \(nuget\) directories before commiting to version control.
 
-   2. [Set up continuous integration, deployment, and delivery.](https://www.linkedin.com/pulse/basic-overview-continuous-integration-deployment-delivery-agrawal?articleId=8844457107160970573) 
+   2. [Set up continuous integration, deployment, and delivery.](https://www.linkedin.com/pulse/basic-overview-continuous-integration-deployment-delivery-agrawal?articleId=8844457107160970573)
 
    3. Version Number: Major.Minor.Patch
 
