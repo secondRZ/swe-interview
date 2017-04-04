@@ -77,6 +77,23 @@
 
 * [Stateless functional components when you can](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc).
 * [Virtual DOM Benefits](http://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode) 
+* Two types of presentation components: logical and pure:
+  * Logical presentation components manage their own internal state.
+* * Pure **stateless** components simply present the data given to them via props.
+  * Pure stateless components should be the goal, being the simplest, and in the future the most performant \(skipping certain checks\).
+* Remember to break your components down as far as they should be. Look at the name of the component. Does everything within the render method belong to that name? For example, don't have the header and footer of the page in the `<ProductList />` component. Give them their own.
+
+## Redux
+
+* First questions when implementing redux: What state should be placed at the application level, vs the component level. Look at any components that manage or manipulate state, and ask these questions to get the answer:
+  * Application State: 
+    * Is the data already very high up in the component tree? 
+    * Is the data coming from some already globally accessible data? Singleton, repository pattern, etc?
+  * Component State:
+    * Is the state tightly coupled with the component and has no dependencies on any other components/props?
+    * Is the data only used in this one component? 
+* Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called `actionTypes`, and add js files for each state object. For example, for jobs, you'll have `job.js `, and inside you'll have `export const ADD_JOB = 'job/ADD`\_`JOB';` ddsfsdf
+* 
 * ## Dev Tools
 * Measuring Performance
 
