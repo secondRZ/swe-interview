@@ -92,7 +92,7 @@
   * Component State:
     * Is the state tightly coupled with the component and has no dependencies on any other components/props?
     * Is the data only used in this one component? 
-* Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called `actionTypes`, and add js files for each state object. For example, for jobs, you'll have `job.js `, and inside you'll have `export const ADD_JOB = 'job/ADD`\_`JOB';` ddsfsdf
+* Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called `actionTypes`, and add js files for each state object. For example, for jobs, you'll have `job.js`, and inside you'll have `export const ADD_JOB = 'job/ADD`\_`JOB';` ddsfsdf
 * 
 * ## Dev Tools
 * Measuring Performance
