@@ -93,7 +93,22 @@
     * Is the state tightly coupled with the component and has no dependencies on any other components/props?
     * Is the data only used in this one component? 
 * Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called `actionTypes`, and add js files for each state object. For example, for jobs, you'll have `job.js`, and inside you'll have `export const ADD_JOB = job/ADD_JOB;` ddsfsd
-* An `action` returns a new state, via a `reducer`. You now create a folder called `reducers` with a file called `job.js` in the same directory as before. Import your action types into that file like: `import * as JobActionTypes from '../actionTypes/job';` Now you create the initial state, based on whatever it was before in a component with `const initialState = ...`. See **reducers/player.js** in the **Redux** project.
+* An `action type` returns a new state, via a `reducer`. You now create a folder called `reducers` with a file called `job.js` in the same directory as before. Import your action types into that file like: `import * as JobActionTypes from '../actionTypes/job';` Now you create the initial state, based on whatever it was before in a component with `const initialState = ...`. See **reducers/player.js** in the **Redux** project. 
+* The job of the reducer is to take the state and produce a new state based on some action occuring. \(Like repository methods, except immutable.\) The function takes 2 arguments, the current state, and the action. They **should not** directly change the current state. They should be pure functions, and only return a new state.
+* The next step is to provide a mechanism for notifying the reducer when an action takes place. This is done with **actions** and **dispatching**. Create a folder called `actions` in the same directory.  and another file called `job.js`. Copy the import from the reducers file to import the action types.
+* Create and export a const function for each of the action types you've defined. Each function should return and object of with properties `type`  and whatever parameters the action takes. See **actions/player.js **for more info. 
+* Now create the **store**, which is the single source of truth for the state of the app. It is a combination of all of the reducers you have created, that then becomes one single state container for the application.
+* Import` { Provider } from react-redux` , `{ createStore } from 'redux'`, and the reducers that you've created, all inside of index.js.
+* Then `const store = createStore(YouReducers);`
+* Now wrap your root component in index.js inside of a `<Provider store={store}></Provider>` component. By doing this, you create a method for any container component to subscribe to store changes.
+* Now it's time to connect the necessary components \(the containers, or root level components\) to the store. Go into them and  `import { connect } from 'react-redux';` See **containers/Scoreboard.js**
+* Connect converts state to props. You pass it a function that takes state, and returns an object that will now be the props in that component.  Make sure you're using the export statement at the bottom of the page instead of `export default`, and write it like this: `export default connect(mapStateToProps)(ComponentName);` This subscribes the component to store changes, and whenever that happens, the mapStateToProps function is called, and the result is passed as the new **props** object to the component.
+* import `{ PropTypes } from 'react'` \(you may already be importing something from 'react', like `Component`\) Define whatever you defined in the mapStateToProps method.
+* Now update the render method with **bindActionCreators**. Import `{ bindActionCreators } from 'redux';` Then import the action creators that you created in the **actions** folder like: `import * as JobActionCreators from ../actions/job;`
+* In the render method, add `const { dispatch, job } = this.props;` Then bind each of the actions like this: `const addJob = bindActionCreators(JobActionCreators.addJob, dispatch);`
+* Add the necessary bound actions to the components that need them. And change all instance of `this.state.job` to `job`. And replace method calls and props \(props that were set to methods that are now bound actions like addJob={this.\_addJob}\) with the bound actions.
+* Now go through each component and make sure that it's using the actual bound actions like props.addJob\(\);
+
 * ## Dev Tools
 * Measuring Performance
 
