@@ -92,8 +92,8 @@
   * Component State:
     * Is the state tightly coupled with the component and has no dependencies on any other components/props?
     * Is the data only used in this one component? 
-* Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called `actionTypes`, and add js files for each state object. For example, for jobs, you'll have `job.js`, and inside you'll have `export const ADD_JOB = 'job/ADD`\_`JOB';` ddsfsdf
-* 
+* Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called `actionTypes`, and add js files for each state object. For example, for jobs, you'll have `job.js`, and inside you'll have `export const ADD_JOB = job/ADD_JOB;` ddsfsd
+* An `action` returns a new state, via a `reducer`. You now create a folder called `reducers` with a file called `job.js` in the same directory as before. Import your action types into that file like: `import * as JobActionTypes from '../actionTypes/job';` Now you create the initial state, based on whatever it was before in a component with `const initialState = ...`. See **reducers/player.js** in the **Redux** project.
 * ## Dev Tools
 * Measuring Performance
 
