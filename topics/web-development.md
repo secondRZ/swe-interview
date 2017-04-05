@@ -77,6 +77,9 @@
 
 * [Stateless functional components when you can](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc).
 * [Virtual DOM Benefits](http://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode) 
+* Two types of components: containers and presentational.
+  * Container components source the data, and deal with state.
+  * A presentational component should only be concerned with rendering the view. There should be no behavior involved \(fetching data, manipulating data, etc.\) Any events should be called as props, that came from parents \(e.g: this.props.addUser\(\)\), though it can format data for the view \(like changing the format of a date\). Any state involved should only deal with the view, not data more important to the application itself \(like value={this.state.name}\).
 * Two types of presentation components: logical and pure:
   * Logical presentation components manage their own internal state \(NEVER APPLICATION STATE. Only data that will never be helpful to any other components \(like a stopwatch\)\).
 * * Pure **stateless** components simply present the data given to them via props.
