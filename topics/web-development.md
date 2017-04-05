@@ -81,7 +81,7 @@
   * Container components source the data, and deal with state.
   * A presentational component should only be concerned with rendering the view. There should be no behavior involved \(fetching data, manipulating data, etc.\) Any events should be called as props, that came from parents \(e.g: this.props.addUser\(\)\), though it can format data for the view \(like changing the format of a date\). Any state involved should only deal with the view, not data more important to the application itself \(like value={this.state.name}\).
 * Two types of presentation components: logical and pure:
-  * Logical presentation components manage their own internal state \(NEVER APPLICATION STATE. Only data that will never be helpful to any other components \(like a stopwatch\)\).
+  * Logical presentation components manage their own internal state \(NEVER APPLICATION STATE. Only data that will never be helpful to any other components \(like a stopwatch\)\). Or maybe they need their own method like search-form.js and need to wrap a handler within something else.
 * * Pure **stateless** components simply present the data given to them via props.
   * Pure stateless components should be the goal, being the simplest, and in the future the most performant \(skipping certain checks\).
 * Things to remember:
