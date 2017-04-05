@@ -78,10 +78,11 @@
 * [Stateless functional components when you can](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc).
 * [Virtual DOM Benefits](http://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode) 
 * Two types of presentation components: logical and pure:
-  * Logical presentation components manage their own internal state.
+  * Logical presentation components manage their own internal state \(NEVER APPLICATION STATE. Only data that will never be helpful to any other components \(like a stopwatch\)\).
 * * Pure **stateless** components simply present the data given to them via props.
   * Pure stateless components should be the goal, being the simplest, and in the future the most performant \(skipping certain checks\).
 * Things to remember:
+  * There should be containers and components. \(Containers are what we call handlers in ST codebase, but we should be using them better\). The components should be presentational only. They should not modify any state. They should not have their own methods handler methods. All of this should be passed in from the container/handler.
   * Break your components down as far as they should be. Look at the name of the component. Does everything within the render method belong to that name? For example, don't have the header and footer of the page in the `<ProductList />` component. Give them their own.
   * No anonymous functions.
   * No state when unnecessary. Like when the info you need can be derived from another state property.
@@ -104,8 +105,9 @@
 * The next step is to provide a mechanism for notifying the reducer when an action takes place. This is done with **actions** and **dispatching**. Create a folder called `actions` in the same directory.  and another file called `job.js`. Copy the import from the reducers file to import the action types.
 * Create and export a const function for each of the action types you've defined. Each function should return and object of with properties `type`  and whatever parameters the action takes. See **actions/player.js **for more info. 
 * Now create the **store**, which is the single source of truth for the state of the app. It is a combination of all of the reducers you have created, that then becomes one single state container for the application.
-* Import`{ Provider } from react-redux` , `{ createStore } from 'redux'`, and the reducers that you've created, all inside of index.js.
-* Then `const store = createStore(YouReducers);`
+* Import`{ Provider } from react-redux` , `{ createStore, combineReducers } from 'redux'`, and the reducers that you've created, all inside of index.js.
+* Create a const reducers variable, that is an object of objects. `const reducers = combineReducers({jobState: jobReducer, technicianState: technicianReducer});`
+* Then `const store = createStore(reducers);`
 * Now wrap your root component in index.js inside of a `<Provider store={store}></Provider>` component. By doing this, you create a method for any container component to subscribe to store changes.
 * Now it's time to connect the necessary components \(the containers, or root level components\) to the store. Go into them and  `import { connect } from 'react-redux';` See **containers/Scoreboard.js**
 * Connect converts state to props. You pass it a function that takes state, and returns an object that will now be the props in that component.  Make sure you're using the export statement at the bottom of the page instead of `export default`, and write it like this: `export default connect(mapStateToProps)(ComponentName);` This subscribes the component to store changes, and whenever that happens, the mapStateToProps function is called, and the result is passed as the new **props** object to the component.
