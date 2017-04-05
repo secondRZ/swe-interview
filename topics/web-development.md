@@ -81,7 +81,13 @@
   * Logical presentation components manage their own internal state.
 * * Pure **stateless** components simply present the data given to them via props.
   * Pure stateless components should be the goal, being the simplest, and in the future the most performant \(skipping certain checks\).
-* Remember to break your components down as far as they should be. Look at the name of the component. Does everything within the render method belong to that name? For example, don't have the header and footer of the page in the `<ProductList />` component. Give them their own.
+* Things to remember:
+  * Break your components down as far as they should be. Look at the name of the component. Does everything within the render method belong to that name? For example, don't have the header and footer of the page in the `<ProductList />` component. Give them their own.
+  * No anonymous functions.
+  * No state when unnecessary. Like when the info you need can be derived from another state property.
+  * If a component has no state, make it a functional component.
+  * No {display: 'none'} styles. Just don't render it based on the info you need with info && component
+  * No \|\| 'some static value'. Just use default props.
 
 ## Redux
 
@@ -98,7 +104,7 @@
 * The next step is to provide a mechanism for notifying the reducer when an action takes place. This is done with **actions** and **dispatching**. Create a folder called `actions` in the same directory.  and another file called `job.js`. Copy the import from the reducers file to import the action types.
 * Create and export a const function for each of the action types you've defined. Each function should return and object of with properties `type`  and whatever parameters the action takes. See **actions/player.js **for more info. 
 * Now create the **store**, which is the single source of truth for the state of the app. It is a combination of all of the reducers you have created, that then becomes one single state container for the application.
-* Import` { Provider } from react-redux` , `{ createStore } from 'redux'`, and the reducers that you've created, all inside of index.js.
+* Import`{ Provider } from react-redux` , `{ createStore } from 'redux'`, and the reducers that you've created, all inside of index.js.
 * Then `const store = createStore(YouReducers);`
 * Now wrap your root component in index.js inside of a `<Provider store={store}></Provider>` component. By doing this, you create a method for any container component to subscribe to store changes.
 * Now it's time to connect the necessary components \(the containers, or root level components\) to the store. Go into them and  `import { connect } from 'react-redux';` See **containers/Scoreboard.js**
@@ -109,7 +115,38 @@
 * Add the necessary bound actions to the components that need them. And change all instance of `this.state.job` to `job`. And replace method calls and props \(props that were set to methods that are now bound actions like addJob={this.\_addJob}\) with the bound actions.
 * Now go through each component and make sure that it's using the actual bound actions like props.addJob\(\);
 
-* ## Dev Tools
+## Data Fetching in React
+
+* Should be done in `componentDidMount`
+* Browser's `fetch` API
+
+```js
+fetch(''https://someapi.com/endpoint')
+    .then(response => response.json())
+    .then(json => {
+        // do something with response.
+    })
+    catch(error => {
+        console.log('Error fetching and parsing data: ', error);
+    });
+```
+
+* Axios \(better browser support\). Automatically returns the response in json format.
+
+```js
+import axios from 'axios';
+
+axios.get('https://someapi.com/endpoint')
+    .then(response => {
+        // do something with the response.data from axios.
+    })
+    .catch(error => {
+        console.log('Error fetching and parsing data: ', error);
+    });
+```
+
+## Dev Tools
+
 * Measuring Performance
 
   * Go to the network tab and check **Disable Cache**. Load the page again.
