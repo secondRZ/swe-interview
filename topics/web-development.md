@@ -108,7 +108,7 @@
 * Import`{ Provider } from react-redux` , `{ createStore, combineReducers } from 'redux'`, and the reducers that you've created, all inside of index.js.
 * Create a const reducers variable, that is an object of objects. `const reducers = combineReducers({jobState: jobReducer, technicianState: technicianReducer});`
 * Then `const store = createStore(reducers);`
-* Now wrap your root component in index.js inside of a `<Provider store={store}></Provider>` component. By doing this, you create a method for any container component to subscribe to store changes.
+* Now wrap your root component, or routes variable if you're using react-router, in index.js inside of a `<Provider store={store}></Provider>` component. By doing this, you create a method for any container component to subscribe to store changes.
 * Now it's time to connect the necessary components \(the containers, or root level components\) to the store. Go into them and  `import { connect } from 'react-redux';` See **containers/Scoreboard.js**
 * Connect converts state to props. You pass it a function that takes state, and returns an object that will now be the props in that component.  Make sure you're using the export statement at the bottom of the page instead of `export default`, and write it like this: `export default connect(mapStateToProps)(ComponentName);` This subscribes the component to store changes, and whenever that happens, the mapStateToProps function is called, and the result is passed as the new **props** object to the component.
 * import `{ PropTypes } from 'react'` \(you may already be importing something from 'react', like `Component`\) Define whatever you defined in the mapStateToProps method.
