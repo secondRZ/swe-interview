@@ -95,6 +95,7 @@
 
 ## Redux
 
+* Add redux and react-redux to your apps and package.json.
 * First questions when implementing redux: What state should be placed at the application level, vs the component level. Look at any components that manage or manipulate state, and ask these questions to get the answer:
   * Application State: 
     * Is the data already very high up in the component tree? 
@@ -102,8 +103,8 @@
   * Component State:
     * Is the state tightly coupled with the component and has no dependencies on any other components/props?
     * Is the data only used in this one component? 
-* Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called **action types**, and add js files for each state object. For example, for jobs, you'll have `job.js`, and inside you'll have `export const ADD_JOB = job/ADD_JOB;` ddsfsd
-* An **action type** returns a new state, via a **reducer**. You now create a folder called `reducers` with a file called `job.js` in the same directory as before. Import your action types into that file like: `import * as JobActionTypes from '../actionTypes/job';` Now you create the initial state, based on whatever it was before in a component with `const initialState = ...`. See **reducers/player.js** in the **Redux** project. 
+* Next, for all state data that you determined should be stored at the application level, what methods currently manipulate that state? You will define those methods as string constants. Make a folder in the same directory as your components folder called **actionTypes**, and add js files for each state object. For example, for jobs, you'll have `job.js`, and inside you'll have `export const ADD_JOB = job/ADD_JOB;` ddsfsd
+* An **action** returns a new state, via a **reducer**. You now create a folder called `reducers` with a file called `job.js` in the same directory as before. Import your action types into that file like: `import * as JobActionTypes from '../actionTypes/job';` Now you create the initial state, based on whatever it was before in a component with `const initialState = ...`. See **reducers/player.js** in the **Redux** project. 
 * The job of the **reducer** is to take the state and produce a new state based on some action occuring. \(Like repository methods, except immutable.\) The function takes 2 arguments, the current state, and the action. They **should not** directly change the current state. They should be pure functions, and only return a new state.
 * The next step is to provide a mechanism for notifying the reducer when an action takes place. This is done with **actions** and **dispatching**. Create a folder called `actions` in the same directory.  and another file called `job.js`. Copy the import from the reducers file to import the action types.
 * Create and export a const function for each of the action types you've defined. Each function should return and object of with properties `type`  and whatever parameters the action takes. See **actions/player.js **for more info. 
