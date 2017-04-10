@@ -92,6 +92,12 @@
   * If a component has no state, make it a functional component.
   * No {display: 'none'} styles. Just don't render it based on the info you need with info && component
   * No \|\| 'some static value'. Just use default props.
+* Inheritance Alternatives:
+  * Sharing business logic between components: \(Connecting to stores, component lifecycle methods, etc\): Use [higher components](https://facebook.github.io/react/docs/higher-order-components.html).
+    * 1. Extract the similar code.
+      2. Accept the different code as arguments in the HOC.
+  * Sharing rendering logic between components: You need to further extract the component with the props that it needs.
+  * Utility functions: Just put them into their own JS module in utils and export them.
 
 ## Redux
 
