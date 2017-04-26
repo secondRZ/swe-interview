@@ -29,6 +29,7 @@
 * **CommonApply**: Adds the action to the action Repository \(which triggers sync\(\)\), and saves data to the corrisponding repository \(job, estimate, or location\). If you need to save to another repository, you overload it with that save, and then call the original commonApply like this: `JobAction.prototype.CommonApply.call(this, job);`Parameters come from its base class' ApplyAction method.
 * **Reapply**: Don't do anything with this. It's just an apply that doesn't trigger the "Job is not found" alert. We use this to apply non-synchronized actions after synchronization. This could happen if a sync took a long time and the tech performed actions while it was happening.
 * **this.ToServerIds**: "If this action works with an object that will receive a server id later."
+* **this.Data** comes from the base **Action** class if you pass `data` into the `SomeAction.call(this, jobId, ActionType, data)` method inside of the action file.
 
 
 
