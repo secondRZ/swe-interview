@@ -109,6 +109,9 @@ public int CompareTo(Student that)
 
   * `.ContainsKey()` and `.ContainsValue()` search for both respectively, though if you're only searching for values, you may be better off with a hashset.
 
+## Generics
+
+* 
 ## LINQ
 
 * Linq is a way to query with your code. It looks a lot like JS filter. You can use it on anything that implements IEnumerable&lt;T&gt;
@@ -130,6 +133,7 @@ public int CompareTo(Student that)
   * **Except**: Returns a list of items from another list that are not present in the first.
   * **Range**: Add n numbers to a list from a certain number.
   * **Intersect**: Returns a list that are present in both.
+  * **Count**: The number of items that pass the test.
 
 ## .Net Core MVC
 
