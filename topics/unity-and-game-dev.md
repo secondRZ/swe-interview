@@ -1,15 +1,28 @@
 # Unity and Game Dev
 
+## Unity
+
+* What is a game engine: Think Xcode for building games. Gives you everything necessary to build a game without worrying about how it renders and builds. It does **not** provide your final artwork and assets. It simply allows you to tie them tall together with your code.
+
 ## Process
 
-1. Planning
-   1. "It turns out that it boils down to a kind of pragmatic freedom to roam coupled with an odd combination of social factors. The fundamental human desire to master an environment in concert with the stories that these games generate for the player seems to be utterly compelling, independent of any idea of skill, progression … or even the game being actually finished and fully playable. You could lose years trying to figure this out fully."
-   2. Art and design.
-   3. Amazing story.
-   4. Interesting characters that can be latched on to \(and easily promoted\).
+1. Ideation
+   1. Satisfy this requirement first: "It turns out that it boils down to a kind of pragmatic freedom to roam coupled with an odd combination of social factors. The fundamental human desire to master an environment in concert with the stories that these games generate for the player seems to be utterly compelling, independent of any idea of skill, progression … or even the game being actually finished and fully playable. You could lose years trying to figure this out fully."
+   2. Next come up with new and interesting characters that can be latched on to \(and easily promoted\). With full backstories. \("You should know how much change is in their pockets at any given time."\)
+   3. Finally come up with an amazing story arc and backdrop. \(Feel free to use inspiration from sources we've screenshot and saved\).
 2. Production
-   1. Design
-   2. Art & Assets
+   1. Design: 
+      1. Deciding _how_ the game should play and feel \(2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\) 
+      2. What are the set of problems that your subject has to solve? 
+      3. How do they vary in design and difficulty \(levels\)? 
+      4. What are the risks and rewards that they have to balance at any given moment?
+   2. Art & Assets: 
+      1. 3D Models
+      2. Textures
+      3. Level UI
+      4. Scripts
+      5. Sound Effects
+      6. Music
    3. Development
    4. QA and Playtesting
 3. Publish: developer digital Paradox  Surprise Attack tinyBuild  indie fund team 17 adult swim games finji devolver curve double fine
