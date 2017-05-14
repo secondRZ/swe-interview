@@ -9,7 +9,8 @@
 1. Ideation
    1. Satisfy this requirement first: "It turns out that it boils down to a kind of pragmatic freedom to roam coupled with an odd combination of social factors. The fundamental human desire to master an environment in concert with the stories that these games generate for the player seems to be utterly compelling, independent of any idea of skill, progression … or even the game being actually finished and fully playable. You could lose years trying to figure this out fully."
    2. Next come up with new and interesting characters that can be latched on to \(and easily promoted\). With full backstories. \("You should know how much change is in their pockets at any given time."\)
-   3. Finally come up with an amazing story arc and backdrop. \(Feel free to use inspiration from sources we've screenshot and saved\).
+   3. Then come up with an amazing story arc and backdrop. \(Feel free to use inspiration from sources we've screenshot and saved\).
+   4. Finally solidify your revenue streams for this particular game. Ads only? IAP to get rid of ads? Other IAPs?
 2. Production
    1. Design: 
       1. Deciding _how_ the game should play and feel \(Which platforms? 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\) 
