@@ -17,21 +17,23 @@
 
    2. Type checking may mean you need to use polymorphism.
 
-   3. Rendering `this.props.value || "some static value"` means you should be setting some default for this.
+   3. Casting may mean you need to create a generic class.
 
-   4. You shouldn't be setting anonymous functions as props or callbacks. Give it its own named function for performance.
+   4. Rendering `this.props.value || "some static value"` means you should be setting some default for this.
 
-   5. Repeated code means you need to create helper methods/components.
+   5. You shouldn't be setting anonymous functions as props or callbacks. Give it its own named function for performance.
 
-   6. Repeated patterns means that you should be using some sort of factory like [higher order components](https://facebook.github.io/react/docs/higher-order-components.html).
+   6. Repeated code means you need to create helper methods/components.
 
-   7. Switch statements or a lot of type checking may mean you need to use inheritance, polymorphism and abstraction. And if you're changing the value of properties/states of data inside of those type checks, you should probably move that state changing to a method in the base class itself, and call it from the place with the type checking.
+   7. Repeated patterns means that you should be using some sort of factory like [higher order components](https://facebook.github.io/react/docs/higher-order-components.html).
 
-   8. Once you've properly used OOP, other classes should only interact with the base class, and allow polymorphism to do the work of type checking.
+   8. Switch statements or a lot of type checking may mean you need to use inheritance, polymorphism and abstraction. And if you're changing the value of properties/states of data inside of those type checks, you should probably move that state changing to a method in the base class itself, and call it from the place with the type checking.
 
-   9. Identical formatting of an object's properties to a string over and over. Just override the ToString\(\) method in that class and use the property itself. See "Point.cs" in the TreehouseDefense project. Ex: `Console.WriteLine("(" + point.X + "," + point.Y + ")")`
+   9. Once you've properly used OOP, other classes should only interact with the base class, and allow polymorphism to do the work of type checking.
 
-   10. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
+   10. Identical formatting of an object's properties to a string over and over. Just override the ToString\(\) method in that class and use the property itself. See "Point.cs" in the TreehouseDefense project. Ex: `Console.WriteLine("(" + point.X + "," + point.Y + ")")`
+
+   11. Making a copy of an object. Why aren't you just interacting with the actual object? What's wrong with your design?
 
 7. Deployment
 

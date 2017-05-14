@@ -114,11 +114,17 @@ public int CompareTo(Student that)
 * Create a new class, and place opening and closing angle brackets after the class name.
 * Within the brackets are the names  of the values. Usually starting with T, on only T. `<T>` and `<TKey, TValue>` are often used. It is a placeholder for the actual type that will be declared during instantiation. Now within the class' implementation, you can use `T` to refer to the type.
 
+## Extension Methods
+
+* Used to add methods to an existing class. It is an alternative to extending classes directly - with inheritance - or creating a utility method within a utility class. With an extension method, you can call methods right on the objects instead of passing them like: `MyList.RandomItem()` instead of `GetRandomItem(MyList)`
+* To [create one](https://teamtreehouse.com/library/introduction-40) just add `this` before the parameter of a `public static` util method in a `public static `class. \(~11 min into that video\).
+
 ## LINQ
 
 * Linq is a way to query with your code. It looks a lot like JS filter. You can use it on anything that implements IEnumerable&lt;T&gt;
 
 * Start by `using System.Linq;`
+
 * See the LINQ project for syntax.
   * **Where**: Like JS filter. Doesn't return 1 item, returns a new enumerable.
   * **FirstOrDefault**: Returns just one element of a filter or default \(null, 0, etc\).
