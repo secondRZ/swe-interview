@@ -9,8 +9,11 @@
   * Each frame in a game render as they are needed. You want to aim for a render speed of 60fps or higher. Window -&gt; Lighting -&gt; Settings. Uncheck "Realtime Global Illumination" and "Baked Global Illumination". Also uncheck "Auto Generate" at the bottom. Then close the window. \(Look up what these do later on.\)
   * Edit -&gt; Project Settings -&gt; Player. In the "Other Settings" section of the window, change the "Color Space" to "Linear".
   * Edit -&gt; Project Settings -&gt; Quality. Delete all except "Fastest" and "Fantastic". Rename "Fastest" to "Low Quality". Change the texture quality to "Quarter Res". Rename "Fantastic" to "High Quality".
+  * Drag objects/prefabs from the project window to the hierarchy window to place them in the scene. Press F to center around the object.
+  * Place the camera in the scene by clicking on the "Game" tab at the top. Then click on the "Main Camera" in the Hierarchy window. Type the [position you want](https://teamtreehouse.com/library/position-the-camera) the starting point camera to be in in the Inspector window's "Transform" section. Next change the clipping planes to be what your game needs. Then you write the code for the camera to follow the player.
 * **Tips**
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
+  * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
 
 ## Process
 
@@ -35,6 +38,7 @@
       5. Sound Effects
       6. Music
    3. Development
+      1. First import and setup the environment, player, and camera for the level.
    4. QA and Playtesting
 3. Publish: developer digital Paradox  Surprise Attack tinyBuild  indie fund team 17 adult swim games finji devolver curve double fine
    1. What are they going to do for you? What do you want done? Do these match?
