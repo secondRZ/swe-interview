@@ -4,6 +4,8 @@
 
 * What is a game engine: Think Xcode for building games. Gives you everything necessary to build a game without worrying about how it renders and builds. It does **not** provide your final artwork and assets. It simply allows you to tie them tall together with your code.
 * Keep scenes in an **Assets/\_Scenes** folder.
+* A prefab is a game object that stores several assets together \(3d models, materials, animations, etc\).
+* Each frame in a game render as they are needed. You want to aim for a render speed of 60fps or higher. Window -&gt; Lighting -&gt; Settings. Uncheck "Realtime Global Illumination" and "Baked Global Illumination". \(Look up what these do later on.\)
 
 ## Process
 
