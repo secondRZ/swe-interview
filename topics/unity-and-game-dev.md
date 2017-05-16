@@ -10,12 +10,13 @@
   * Edit -&gt; Project Settings -&gt; Player. In the "Other Settings" section of the window, change the "Color Space" to "Linear".
   * Edit -&gt; Project Settings -&gt; Quality. Delete all except "Fastest" and "Fantastic". Rename "Fastest" to "Low Quality". Change the texture quality to "Quarter Res". Rename "Fantastic" to "High Quality".
   * Drag objects/prefabs from the project window to the hierarchy window to place them in the scene. Press F to center around the object.
+* **Camera**
   * Place the camera in the scene by clicking on the "Game" tab at the top. Then click on the "Main Camera" in the Hierarchy window. Type the [position you want](https://teamtreehouse.com/library/position-the-camera) the starting point camera to be in in the Inspector window's "Transform" section. Next change the clipping planes to be what your game needs. Then you write the code for the camera to follow the player.
+  * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
 * **Tips**
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
   * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
   * Use the Asset Store for things that may come in handy.
-  * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
 
 ## Process
 
