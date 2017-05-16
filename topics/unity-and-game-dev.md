@@ -40,7 +40,7 @@
       5. Sound Effects
       6. Music
    3. Development
-      1. First import and setup the environment, player, and camera for the level.
+      1. First import and setup the environment, player, camera, and camera effects for the level.
    4. QA and Playtesting
 3. Publish: developer digital Paradox  Surprise Attack tinyBuild  indie fund team 17 adult swim games finji devolver curve double fine
    1. What are they going to do for you? What do you want done? Do these match?
