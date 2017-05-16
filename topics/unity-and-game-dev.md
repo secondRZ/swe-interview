@@ -14,6 +14,8 @@
 * **Tips**
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
   * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
+  * Use the Asset Store for things that may come in handy.
+  * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
 
 ## Process
 
