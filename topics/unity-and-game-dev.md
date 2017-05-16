@@ -8,6 +8,9 @@
 * **Project Setup**
   * Each frame in a game render as they are needed. You want to aim for a render speed of 60fps or higher. Window -&gt; Lighting -&gt; Settings. Uncheck "Realtime Global Illumination" and "Baked Global Illumination". Also uncheck "Auto Generate" at the bottom. Then close the window. \(Look up what these do later on.\)
   * Edit -&gt; Project Settings -&gt; Player. In the "Other Settings" section of the window, change the "Color Space" to "Linear".
+  * Edit -&gt; Project Settings -&gt; Quality. Delete all except "Fastest" and "Fantastic". Rename "Fastest" to "Low Quality". Change the texture quality to "Quarter Res". Rename "Fantastic" to "High Quality".
+* **Tips**
+  * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
 
 ## Process
 
