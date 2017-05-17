@@ -50,7 +50,6 @@
       5. What are the risks and rewards that they have to balance at any given moment?
       6. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
       7. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
-      8. 9. 
    2. Art & Assets: 
       1. 3D Models
          1. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
@@ -61,7 +60,7 @@
       6. Music
    3. Development
       1. First import and setup the environment, player, camera \(FPS, following player, etc\), and camera effects for the level.
-      2. Next handle any pickups that the player can grab.
+      2. Pickups
       3. Score
       4. Enemies and Game State
       5. Audio
