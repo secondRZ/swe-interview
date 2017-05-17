@@ -34,6 +34,7 @@
   * Manipulate the RigidBody of the object, not the transform itself. RigidBody is affected by physics, so if some other force is acting on the object at the same time, RigidBody will intelligently calculate where the object should be. Transform will not do that.
   * You can expose class properties to the inspector window. This is helpful for locking one object's value to the value of another object's property. \(E.g: The playerTransform property in the camera object to the actual player object's transform value\).
   * Every game object in unity stores a reference to itself in `gameObject`.
+  * When creating game objects that aren't attached to a particular asset, always hit the gear icon in the Inspector Window, then "Reset".
 
 ## Process
 
