@@ -54,6 +54,7 @@
    2. Art & Assets: 
       1. 3D Models
          1. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
+         2. Idle Animation
       2. Textures
       3. Level UI
       4. Scripts
@@ -61,7 +62,7 @@
       6. Music
    3. Development
       1. First import and setup the environment, player, camera \(FPS, following player, etc\), and camera effects for the level.
-      2. Pickups: Idle animation \(fly flapping its wings\), idle movement \(fly moving in a circle\), pickup animation, pickup spawning.
+      2. Pickups: Idle movement \(fly moving in a circle\), pickup animation/particles, pickup spawning.
       3. Score
       4. Enemies and Game State
       5. Audio
