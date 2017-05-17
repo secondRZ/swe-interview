@@ -11,12 +11,15 @@
   * Edit -&gt; Project Settings -&gt; Quality. Delete all except "Fastest" and "Fantastic". Rename "Fastest" to "Low Quality". Change the texture quality to "Quarter Res". Rename "Fantastic" to "High Quality".
   * Drag objects/prefabs from the project window to the hierarchy window to place them in the scene. Press F to center around the object.
 * **Camera**
+
   * Place the camera in the scene by clicking on the "Game" tab at the top. Then click on the "Main Camera" in the Hierarchy window. Type the [position you want](https://teamtreehouse.com/library/position-the-camera) the starting point camera to be in in the Inspector window's "Transform" section. Next change the clipping planes to be what your game needs. Then you write the code for the camera to follow the player.
   * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
 
 * **Scripts**
+
   * Select the object that the script will control in the Hierarchy Window. Add Component -&gt; New Script -&gt; Name the script \(one word, camel case with capital first letter, as it will be the class name\) -&gt; hit enter. Make sure to move the script to the **Scripts** folder \(Unity stores it in the main **Assets** folder by default.\)
   * After saving the script, also hit Cmd + S in Unity to save the scene.
+
 * **UnityEngine**
   * **Input.GetAxisRaw\(\)**: Takes a string either `"Vertical"` or `"Horizontal"` and returns a float from **-1** to **1** stating whether the user is trying to move in the current frame.
   * **void FixedUpdate\(\)**: Used to update animator components that rely on physics. This happens after the Update method, but not as often.
@@ -25,6 +28,7 @@
   * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
   * Use the Asset Store for things that may come in handy.
   * The Y axis in `Verctor3` is up, like a jump. Not up like a vertical movement.
+  * Manipulate the RigidBody of the object, not the transform itself. RigidBody is affected by physics, so if some other force is acting on the object at the same time, RigidBody will intelligently calculate where the object should be. Transform will not do that.
 
 ## Process
 
