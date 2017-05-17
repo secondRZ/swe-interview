@@ -43,12 +43,14 @@
    4. Finally solidify your revenue streams for this particular game. Ads only? IAP to get rid of ads? Other IAPs? Also, if you're self publishing, what's the marketing budget? IG Ads? FB Ads? Influencers? 
 2. Production
    1. Design: 
-      1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) or the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\) 
+      1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\) 
       2. Upon first playing the game, how are your subjects gifted with **surprise and delight**. How is the game both **new** and **recognizable** at the same time?
       3. What are the set of problems that your subject has to solve? 
       4. How do these problems vary in design and difficulty \(levels\)? 
       5. What are the risks and rewards that they have to balance at any given moment?
-      6. What makes this game remarkable? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
+      6. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
+      7. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
+      8. 9. 
    2. Art & Assets: 
       1. 3D Models
          1. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
@@ -63,6 +65,11 @@
       3. Score
       4. Enemies and Game State
       5. Audio
+      6. Monetization and Analytics
+      7. Secondary Assets
+         1. Gameplay videos
+         2. Images \(Screenshots, Gifs, Logos\)
+         3. 
    4. QA and Playtesting
 3. Publish
    1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine
