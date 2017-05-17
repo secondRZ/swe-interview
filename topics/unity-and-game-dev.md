@@ -26,6 +26,7 @@
   * **void FixedUpdate\(\)**: Used to update animator components that rely on physics. This happens after the Update method, but not as often.
 
 * **Tips**
+
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
   * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
   * Use the Asset Store for things that may come in handy.
@@ -57,7 +58,7 @@
       5. Sound Effects
       6. Music
    3. Development
-      1. First import and setup the environment, player, camera, and camera effects for the level.
+      1. First import and setup the environment, player, camera \(FPS, following player, etc\), and camera effects for the level.
    4. QA and Playtesting
 3. Publish: developer digital Paradox  Surprise Attack tinyBuild  indie fund team 17 adult swim games finji devolver curve double fine
    1. What are they going to do for you? What do you want done? Do these match?
