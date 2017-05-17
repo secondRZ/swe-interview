@@ -13,10 +13,18 @@
 * **Camera**
   * Place the camera in the scene by clicking on the "Game" tab at the top. Then click on the "Main Camera" in the Hierarchy window. Type the [position you want](https://teamtreehouse.com/library/position-the-camera) the starting point camera to be in in the Inspector window's "Transform" section. Next change the clipping planes to be what your game needs. Then you write the code for the camera to follow the player.
   * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
+
+* **Scripts**
+  * Select the object that the script will control in the Hierarchy Window. Add Component -&gt; New Script -&gt; Name the script \(one word, camel case with capital first letter, as it will be the class name\) -&gt; hit enter. Make sure to move the script to the **Scripts** folder \(Unity stores it in the main **Assets** folder by default.\)
+  * After saving the script, also hit Cmd + S in Unity to save the scene.
+* **UnityEngine**
+  * **Input.GetAxisRaw\(\)**: Takes a string either `"Vertical"` or `"Horizontal"` and returns a float from **-1** to **1** stating whether the user is trying to move in the current frame.
+  * **void FixedUpdate\(\)**: Used to update animator components that rely on physics. This happens after the Update method, but not as often.
 * **Tips**
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
   * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
   * Use the Asset Store for things that may come in handy.
+  * The Y axis in `Verctor3` is up, like a jump. Not up like a vertical movement.
 
 ## Process
 
@@ -35,6 +43,7 @@
       6. What makes this game remarkable? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
    2. Art & Assets: 
       1. 3D Models
+         1. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
       2. Textures
       3. Level UI
       4. Scripts
