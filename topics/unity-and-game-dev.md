@@ -63,7 +63,10 @@
       6. Music
    3. Development
       1. First import and setup the environment, player, camera \(FPS, following player, etc\), and camera effects for the level.
-      2. Pickups: Idle movement \(fly moving in a circle\), pickup animation/particles, pickup spawning.
+      2. Pickups: 
+         1. Idle movement \(fly moving in a circle\)
+         2. pickup animation/particles
+         3. pickup spawning: Need the object itself that needs to be spawned, minimum and maximum number of objects that should be spawned at any given time, total number that are currently spawned, and the area that they should be spawned.
       3. Score
       4. Enemies and Game State
       5. Audio
