@@ -93,6 +93,7 @@
       5. **Audio**
          1. Make sure you have a script for the audio to not destroy every time a new scene loads.
          2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music and success effects \(pickups, kills, etc\), which should be 2D.
+         3. Mixing is just as important. Make sure the sounds are at the right levels.
       6. **Monetization and Analytics**
       7. **Secondary Assets**
          1. Gameplay videos
