@@ -15,6 +15,8 @@
   * Place the camera in the scene by clicking on the "Game" tab at the top. Then click on the "Main Camera" in the Hierarchy window. Type the [position you want](https://teamtreehouse.com/library/position-the-camera) the starting point camera to be in in the Inspector window's "Transform" section. Next change the clipping planes to be what your game needs. Then you write the code for the camera to follow the player.
   * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
 
+* **Sound**
+  * Background Music: Hierarchy Window -&gt; Create -&gt; Create Empty -&gt; Name it "2D Sound" since it won't be positional sound, simply flat music in the background. Then - with the 2D Sound object selected - Create -&gt; Create Empty Child. Name it "Music". Do it again and name the second child "Background". Now Add Component -&gt; Audio -&gt; Audio Source.
 * **UI Overlay**
 
   * Create -&gt; UI -&gt; Text.
@@ -84,6 +86,7 @@
          2. Overlay: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
          3. Health: Of course, the player health should be a public property.
       5. **Audio**
+         1. 
       6. **Monetization and Analytics**
       7. **Secondary Assets**
          1. Gameplay videos
