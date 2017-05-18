@@ -24,6 +24,7 @@
 
   * Select the object that the script will control in the Hierarchy Window. Add Component -&gt; New Script -&gt; Name the script \(one word, camel case with capital first letter, as it will be the class name\) -&gt; hit enter. Make sure to move the script to the **Scripts** folder \(Unity stores it in the main **Assets** folder by default.\)
   * After saving the script, also hit Cmd + S in Unity to save the scene.
+  * You can add the same script to multiple objects.
 
 * **UnityEngine**
 
