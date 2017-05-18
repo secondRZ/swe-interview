@@ -17,7 +17,8 @@
 
 * **UI Overlay**
 
-  * Create -&gt; UI -&gt; Text
+  * Create -&gt; UI -&gt; Text.
+  * To anchor it, click the position square \(on the actual object, not the parent\) -&gt; hold alt -&gt; click where you want it to anchor. Then click the alignment button that corresponds with where you want the object in the **Paragraph** section of the Inspector window.
 
 * **Scripts**
 
