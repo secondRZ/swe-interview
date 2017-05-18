@@ -74,7 +74,7 @@
       3. Other Characters
          1. Enemies
       4. Game State
-         1. Score: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right.
+         1. Score: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
          2. Health
       5. Audio
       6. Monetization and Analytics
