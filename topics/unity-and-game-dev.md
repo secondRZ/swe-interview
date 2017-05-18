@@ -18,7 +18,7 @@
 * **Sound**
 
   * Background Music: Hierarchy Window -&gt; Create -&gt; Create Empty -&gt; Name it "2D Sound" since it won't be positional sound, simply flat music in the background. Then - with the 2D Sound object selected - Create -&gt; Create Empty Child. Name it "Music". Do it again and name the second child "Background". Now Add Component -&gt; Audio -&gt; Audio Source. Find the audio sources for the two game objects.  Make sure "Play on Awake" \(start when the game starts running, even if before the user presses play\) and "Loop" are checked.
-  * Sound Effects: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\). In the "3D Sound Settings" section, change the minimum distance to about a third of the main camera's "Field of View" setting. This makes it so that the sound is louder when the object is closer. Now change the max distance to about twice the Field of View setting. This is just a rule of thumb, change them as the sounds would change in real life \(gun fire would have a much greater max distance than footsteps\).
+  * Sound Effects: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\). In the "3D Sound Settings" section, change the minimum distance to about a third of the main camera's "Field of View" setting. If you're under that distance from the source, then you'll hear the sound perfectly clear. Now change the max distance to about twice the Field of View setting. If you're over this distance, you won't hear the sound at all. Anything between the 2 distances makes the sound decrease. These numbers are just rules of thumb, change them as the sounds would change in real life \(gun fire would have a much greater max distance than footsteps\).
 
 * **UI Overlay**
 
@@ -41,6 +41,7 @@
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
   * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
   * Use the Asset Store for things that may come in handy.
+  * Lock the inspector widnow by clicking the little lock icon in the top right. This way you can click multiple things in the project window for dragging without the inspector window changing.
   * The Y axis in `Verctor3` is up, like a jump. Not up like a vertical movement.
   * Manipulate the RigidBody of the object, not the transform itself. RigidBody is affected by physics, so if some other force is acting on the object at the same time, RigidBody will intelligently calculate where the object should be. Transform will not do that.
   * You can expose class properties to the inspector window. This is helpful for locking one object's value to the value of another object's property. \(E.g: The playerTransform property in the camera object to the actual player object's transform value\).
