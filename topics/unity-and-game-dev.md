@@ -18,7 +18,7 @@
 * **Sound**
 
   * Background Music: Hierarchy Window -&gt; Create -&gt; Create Empty -&gt; Name it "2D Sound" since it won't be positional sound, simply flat music in the background. Then - with the 2D Sound object selected - Create -&gt; Create Empty Child. Name it "Music". Do it again and name the second child "Background". Now Add Component -&gt; Audio -&gt; Audio Source. Find the audio sources for the two game objects.  Make sure "Play on Awake" \(start when the game starts running, even if before the user presses play\) and "Loop" are checked.
-  * Sound Effects: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\). In the "3D Sound Settings" section, change the minimum distance to about a third of the main camera's "Field of View" setting. If you're under that distance from the source, then you'll hear the sound perfectly clear. Now change the max distance to about twice the Field of View setting. If you're over this distance, you won't hear the sound at all. Anything between the 2 distances makes the sound decrease. These numbers are just rules of thumb, change them as the sounds would change in real life \(gun fire would have a much greater max distance than footsteps\).
+  * Sound Effects: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\). In the "3D Sound Settings" section, change the minimum distance to about a third of the main camera's "Field of View" setting. If you're under that distance from the source, then you'll hear the sound perfectly clear. Now change the max distance to about twice the Field of View setting. If you're over this distance, you won't hear the sound at all. Anything between the 2 distances makes the sound decrease. These numbers are just rules of thumb, change them as the sounds would change in real life \(gun fire would have a much greater max distance than footsteps\). Be sure to disable any random sound players by clicking the checkbox next to the script so that it doesn't start until appropriate.
 
 * **UI Overlay**
 
@@ -92,7 +92,7 @@
          3. Health: Of course, the player health should be a public property.
       5. **Audio**
          1. Make sure you have a script for the audio to not destroy every time a new scene loads.
-         2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music, which should be 2D.
+         2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music and success effects \(pickups, kills, etc\), which should be 2D.
       6. **Monetization and Analytics**
       7. **Secondary Assets**
          1. Gameplay videos
