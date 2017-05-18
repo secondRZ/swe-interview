@@ -75,7 +75,7 @@
       3. **Other Characters**
          1. Pathfinding: 
             1. Add Component -&gt; Navigation -&gt; Nav Mesh Agent. Go to the **Scene** tab and press F to see the enemy. Now change the Height and Radius to be the size of the character. And the speed \(how fast the character is\), and the angular speed \(how fast they turn\). Set the stopping distance to the appropriate level.
-            2. Click on the environment object. Now create a nav mesh to the environment so that the characters know how to navigate around. Window -&gt; Navigation -&gt; Bake. Change the Agent Radius and Agent Height to be the average of your character's heights and radiuses.
+            2. Click on the environment object. Now create a navmesh to the environment so that the characters know how to navigate around. Window -&gt; Navigation -&gt; Bake. Change the Agent Radius and Agent Height to be the average of your character's heights and radiuses.
       4. **Game State**
          1. Score: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
          2. Health
