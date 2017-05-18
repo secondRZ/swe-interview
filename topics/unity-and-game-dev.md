@@ -16,7 +16,9 @@
   * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
 
 * **UI Overlay**
+
   * Create -&gt; UI -&gt; Text
+
 * **Scripts**
 
   * Select the object that the script will control in the Hierarchy Window. Add Component -&gt; New Script -&gt; Name the script \(one word, camel case with capital first letter, as it will be the class name\) -&gt; hit enter. Make sure to move the script to the **Scripts** folder \(Unity stores it in the main **Assets** folder by default.\)
@@ -72,7 +74,7 @@
       3. Other Characters
          1. Enemies
       4. Game State
-         1. Score: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp.
+         1. Score: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right.
          2. Health
       5. Audio
       6. Monetization and Analytics
