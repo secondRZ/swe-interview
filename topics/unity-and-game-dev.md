@@ -92,6 +92,7 @@
          3. Health: Of course, the player health should be a public property.
       5. **Audio**
          1. Make sure you have a script for the audio to not destroy every time a new scene loads.
+         2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music, which should be 2D.
       6. **Monetization and Analytics**
       7. **Secondary Assets**
          1. Gameplay videos
