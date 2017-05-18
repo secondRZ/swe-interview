@@ -18,7 +18,7 @@
 * **Sound**
 
   * Background Music: Hierarchy Window -&gt; Create -&gt; Create Empty -&gt; Name it "2D Sound" since it won't be positional sound, simply flat music in the background. Then - with the 2D Sound object selected - Create -&gt; Create Empty Child. Name it "Music". Do it again and name the second child "Background". Now Add Component -&gt; Audio -&gt; Audio Source. Find the audio sources for the two game objects.  Make sure "Play on Awake" \(start when the game starts running, even if before the user presses play\) and "Loop" are checked.
-  * Sound Effects: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\).
+  * Sound Effects: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\). In the "3D Sound Settings" section, change the minimum distance to about a third of the main camera's "Field of View" setting. This makes it so that the sound is louder when the object is closer.
 
 * **UI Overlay**
 
