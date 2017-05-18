@@ -88,7 +88,7 @@
          2. Overlay: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
          3. Health: Of course, the player health should be a public property.
       5. **Audio**
-         1. 
+         1. Make sure you have a script for the audio to not destroy every time the player dies.
       6. **Monetization and Analytics**
       7. **Secondary Assets**
          1. Gameplay videos
