@@ -42,6 +42,7 @@
   * Hotkeys: Alt click+drag. F, Q, W, E, R, Z, and X.
   * Use the Asset Store for things that may come in handy.
   * Lock the inspector widnow by clicking the little lock icon in the top right. This way you can click multiple things in the project window for dragging without the inspector window changing.
+  * You can duplicate component settings by clicking the gear icon and clicking "Copy Component", then in another game object clicking "Past Component Values". You can also paste a completely new component if you don't have it yet with "Past Component as New".
   * The Y axis in `Verctor3` is up, like a jump. Not up like a vertical movement.
   * Manipulate the RigidBody of the object, not the transform itself. RigidBody is affected by physics, so if some other force is acting on the object at the same time, RigidBody will intelligently calculate where the object should be. Transform will not do that.
   * You can expose class properties to the inspector window. This is helpful for locking one object's value to the value of another object's property. \(E.g: The playerTransform property in the camera object to the actual player object's transform value\).
