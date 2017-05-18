@@ -79,8 +79,9 @@
             2. Click on the environment object. Now create a navmesh to the environment so that the characters know how to navigate around. Window -&gt; Navigation -&gt; Bake. Change the Agent Radius and Agent Height to be the average of your character's heights and radiuses.
             3. Collisions can happen multiple times very fast, so it's best to include something in the if condition that will make sure it only happens once \(like something that changes inside of the block\) if the colliding object isn't destroyed by the collision.
       4. **Game State**
-         1. Score: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
-         2. Health: 
+         1. Before the user manually starts the game, no characters should be moving.
+         2. Overlay: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
+         3. Health: Of course, the player health should be a public property.
       5. **Audio**
       6. **Monetization and Analytics**
       7. **Secondary Assets**
