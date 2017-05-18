@@ -73,7 +73,7 @@
          2. Pickup animation/particles
          3. Pickup spawning: Need the object itself that needs to be spawned, minimum and maximum number of objects that should be spawned at any given time, total number that are currently spawned, and the area that they should be spawned. Make sure the items can never spawn within a certain radius of the player.
       3. Other Characters
-         1. Enemies
+         1. Enemies: Pathfinding is built into Unity. Add Component -&gt; Navigation -&gt; Nav Mesh Agent.
       4. Game State
          1. Score: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
          2. Health
