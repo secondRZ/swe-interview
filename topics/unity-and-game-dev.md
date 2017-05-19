@@ -37,6 +37,8 @@
   * **Input.GetAxisRaw\(\)**: Takes a string either `"Vertical"` or `"Horizontal"` and returns a float from **-1** to **1** stating whether the user is trying to move in the current frame.
   * **void FixedUpdate\(\)**: Used to update animator components that rely on physics. This happens after the Update method, but not as often.
 
+* **Building**
+  * File -&gt; Build Settings -&gt; Choose platform -&gt; Add Current -&gt; Choose Target Platform -&gt; Change Architecture to 86 \(which will allow it to be played on the lowers as well\) -&gt; Built -&gt; Select or create the "Builds" folder -&gt; Name and save.
 * **Tips**
 
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
@@ -101,6 +103,8 @@
          2. Images \(Screenshots, Gifs, Logos\)
          3. 
    4. **QA and Playtesting**
+   5. **Build**
+      1. 
 3. **Publish**
    1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine
    2. What are they going to do for you? What do you want done? Do these match?
