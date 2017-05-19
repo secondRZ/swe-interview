@@ -15,6 +15,10 @@
   * Place the camera in the scene by clicking on the "Game" tab at the top. Then click on the "Main Camera" in the Hierarchy window. Type the [position you want](https://teamtreehouse.com/library/position-the-camera) the starting point camera to be in in the Inspector window's "Transform" section. Next change the clipping planes to be what your game needs. Then you write the code for the camera to follow the player.
   * Simple camera affects: Asset Store -&gt; Post Processing Stack -&gt; Import. Main Camera -&gt; Add Component -&gt; Post Processing Behavior. Prefabs -&gt; Right Click -&gt; Create -&gt; Post Processing Profile -&gt; Name it. Drag it into the main camera's created component. Select the profile in the project window. Play with options.
 
+* **Characters**
+  * Pathfinding
+    * Add Component -&gt; Navigation -&gt; Nav Mesh Agent. Go to the Scene tab and press F to see the enemy. Now change the Height and Radius to be the size of the character. And the speed \(how fast the character is\), and the angular speed \(how fast they turn\). Set the stopping distance to the appropriate level.
+    * Click on the environment object. Now create a navmesh to the environment so that the characters know how to navigate around. Window -&gt; Navigation -&gt; Bake. Change the Agent Radius and Agent Height to be the average of your character's heights and radiuses.
 * **Sound**
 
   * **Background Music**: Hierarchy Window -&gt; Create -&gt; Create Empty -&gt; Name it "2D Sound" since it won't be positional sound, simply flat music in the background. Then - with the 2D Sound object selected - Create -&gt; Create Empty Child. Name it "Music". Do it again and name the second child "Background". Now Add Component -&gt; Audio -&gt; Audio Source. Find the audio sources for the two game objects.  Make sure "Play on Awake" \(start when the game starts running, even if before the user presses play\) and "Loop" are checked.
@@ -89,9 +93,7 @@
          3. Pickup spawning: Need the object itself that needs to be spawned, minimum and maximum number of objects that should be spawned at any given time, total number that are currently spawned, and the area that they should be spawned. Make sure the items can never spawn within a certain radius of the player.
       3. **Other Characters**
          1. Pathfinding: 
-            1. Add Component -&gt; Navigation -&gt; Nav Mesh Agent. Go to the **Scene** tab and press F to see the enemy. Now change the Height and Radius to be the size of the character. And the speed \(how fast the character is\), and the angular speed \(how fast they turn\). Set the stopping distance to the appropriate level.
-            2. Click on the environment object. Now create a navmesh to the environment so that the characters know how to navigate around. Window -&gt; Navigation -&gt; Bake. Change the Agent Radius and Agent Height to be the average of your character's heights and radiuses.
-            3. Collisions can happen multiple times very fast, so it's best to include something in the if condition that will make sure it only happens once \(like something that changes inside of the block\) if the colliding object isn't destroyed by the collision.
+            1. Collisions can happen multiple times very fast, so it's best to include something in the if condition that will make sure it only happens once \(like something that changes inside of the block\) if the colliding object isn't destroyed by the collision.
       4. **Game State**
          1. Before the user manually starts the game, no characters should be moving.
          2. Overlay: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
@@ -104,7 +106,7 @@
       7. **Secondary Assets**
          1. Gameplay videos
          2. Images \(Screenshots, Gifs, Logos\)
-         3. 
+         3. Website
    4. **QA and Playtesting**
    5. **Build**
 3. **Publish**
