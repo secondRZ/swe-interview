@@ -40,6 +40,7 @@
 * **Building**
 
   * File -&gt; Build Settings -&gt; Choose platform -&gt; Add Current -&gt; Choose Target Platform -&gt; Change Architecture to 86 \(which will allow it to be played on the lowers as well\) -&gt; Built -&gt; Select or create the "Builds" folder -&gt; Name and save. You have a game!
+  * If you build for Windows/PC, the executable will have a appname\_data folder with it as well. This folder has the assets, and should remain in the same folder as the .exe file. So if you're trying to share the game, zip them up and send the zip file.
 
 * **Tips**
 
