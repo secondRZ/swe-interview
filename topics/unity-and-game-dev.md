@@ -106,7 +106,6 @@
          3. 
    4. **QA and Playtesting**
    5. **Build**
-      1. 
 3. **Publish**
    1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine
    2. What are they going to do for you? What do you want done? Do these match?
