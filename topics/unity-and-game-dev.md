@@ -38,7 +38,9 @@
   * **void FixedUpdate\(\)**: Used to update animator components that rely on physics. This happens after the Update method, but not as often.
 
 * **Building**
-  * File -&gt; Build Settings -&gt; Choose platform -&gt; Add Current -&gt; Choose Target Platform -&gt; Change Architecture to 86 \(which will allow it to be played on the lowers as well\) -&gt; Built -&gt; Select or create the "Builds" folder -&gt; Name and save.
+
+  * File -&gt; Build Settings -&gt; Choose platform -&gt; Add Current -&gt; Choose Target Platform -&gt; Change Architecture to 86 \(which will allow it to be played on the lowers as well\) -&gt; Built -&gt; Select or create the "Builds" folder -&gt; Name and save. You have a game!
+
 * **Tips**
 
   * After adding any assets with their own lighting, go to Window -&gt; Lighting -&gt; Settings and click "Generate Lighting".
