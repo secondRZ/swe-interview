@@ -82,13 +82,14 @@
       1. **3D Models**
          1. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
          2. Idle Animation
+         3. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
       2. **Textures**
       3. **Level UI**
       4. **Scripts**
       5. **Sound Effects**
       6. **Music**
    3. **Development**
-      1. First import all assets/prefabs and setup the initial assets of the game \(environment, player, camera \(FPS, following player, etc\), and camera effects for the scene.
+      1. First import all assets/prefabs and setup the initial assets of the game \(environment/props, player, camera \(FPS, following player, etc\), and camera effects for the scene.
       2. **Pickups**: 
          1. Idle movement, different from idle animation \(fly moving in a circle\)
          2. Pickup animation/particles
