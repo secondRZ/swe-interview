@@ -80,9 +80,10 @@
       7. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
    2. **Art & Assets**: 
       1. **3D Models**
-         1. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
-         2. Idle Animation
-         3. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
+         1. First look to the Asset Store for anything you may need that fits the bill.
+         2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
+         3. Idle Animation
+         4. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
       2. **Textures**
       3. **Level UI**
       4. **Scripts**
