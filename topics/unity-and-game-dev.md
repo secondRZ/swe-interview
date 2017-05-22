@@ -115,15 +115,16 @@
    5. **Build**
 3. **Publish**
    1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine
-   2. What are they going to do for you? What do you want done? Do these match?
-   3. Eventually you want to erase these step by step and keep a larger piece of the pie. So first you're looking for funding for all three, then just marketing and distribution, and finally just distribution \(keeping 85% of the money\). \(150M in company stock, 5M in overhead for 5 years, 25M to finance acquisitions for the business, 10M for each project for a minimum of three\).
-   4. **Production** **Funding**: How much upfront \(enough to last me until the game launches plus 3 months after, plus profit\)? Money usage rules? How much on the backend and at what point? How does that backend money flow? Who cuts the checks? In what increments?
-   5. **Marketing** \[PR, Advertising, Events\]: Who exactly runs the PR? Is it just North America? Do they include streamers, Youtubers, and other social media? How are they spending advertising money, and where? What events do they go to and what happens there? Is their cohesion in their campaigning? Can they build excitement toward a release date
-   6. **Distribution** \[digital, retail, merch, direct\]: Placement on storefronts? Inclusion in promotions, merchandising? Cross promotion?
-   7. Who have they worked with before? How did it go? \(Go talk to them, and the ones that didn't sell many copies\)
-   8. Do they believe in and are they excited about the game?
-   9. In their past work, does the game have more visibility than the publisher's name?
-   10. IP: IP is under no circumstances up for grabs. Owned by the developer's studio.
+   2. Networking with publishers: You need to ask them exactly, "What is the checklist for you giving a green light to a game?" And work on giving them exactly what they want.
+   3. What are they going to do for you? What do you want done? Do these match?
+   4. Eventually you want to erase these step by step and keep a larger piece of the pie. So first you're looking for funding for all three, then just marketing and distribution, and finally just distribution \(keeping 85% of the money\). \(150M in company stock, 5M in overhead for 5 years, 25M to finance acquisitions for the business, 10M for each project for a minimum of three\).
+   5. **Production** **Funding**: How much upfront \(enough to last me until the game launches plus 3 months after, plus profit\)? Money usage rules? How much on the backend and at what point? How does that backend money flow? Who cuts the checks? In what increments?
+   6. **Marketing** \[PR, Advertising, Events\]: Who exactly runs the PR? Is it just North America? Do they include streamers, Youtubers, and other social media? How are they spending advertising money, and where? What events do they go to and what happens there? Is their cohesion in their campaigning? Can they build excitement toward a release date
+   7. **Distribution** \[digital, retail, merch, direct\]: Placement on storefronts? Inclusion in promotions, merchandising? Cross promotion?
+   8. Who have they worked with before? How did it go? \(Go talk to them, and the ones that didn't sell many copies\)
+   9. Do they believe in and are they excited about the game?
+   10. In their past work, does the game have more visibility than the publisher's name?
+   11. IP: IP is under no circumstances up for grabs. Owned by the developer's studio.
 4. **Squeeze** as much as you can out of it.
 5. **Sell**: Maple Media
 
