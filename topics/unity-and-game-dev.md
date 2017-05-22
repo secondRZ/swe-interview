@@ -75,9 +75,10 @@
       2. Upon first playing the game, how are your subjects gifted with **surprise and delight**. How is the game both **new** and **recognizable** at the same time? \(Ex: Rocket league is soccer, but with cars. Flappy birds had a Mario feel, but it was a bird.\)
       3. What are the set of problems that your subject has to solve? 
       4. How do these problems vary in design and difficulty \(levels\)? 
-      5. What are the risks and rewards that they have to balance at any given moment?
-      6. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
-      7. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
+      5. How will you give them ultimate gratification upon achieving these goals/solving these problems? \(E.g: Rocket league goal explosion and trumpet sounds\)
+      6. What are the risks and rewards that they have to balance at any given moment?
+      7. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
+      8. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
    2. **Art & Assets**: 
       1. **3D Models**
          1. First look to the Asset Store for anything you may need that fits the bill.
