@@ -81,12 +81,12 @@
    1. **Design**: 
       1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\) 
       2. Upon first playing the game, how are your subjects gifted with **surprise and delight**. How is the game both **new** and **recognizable** at the same time? \(Ex: Rocket league is soccer, but with cars. Flappy birds had a Mario feel, but it was a bird.\)
-      3. What are the set of problems that your subject has to solve? 
-      4. How do these problems vary in design and difficulty \(levels\)? 
-      5. How will you give them ultimate gratification upon achieving these goals/solving these problems? \(E.g: Rocket league goal explosion and trumpet sounds\)
-      6. What are the risks and rewards that they have to balance at any given moment?
-      7. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
-      8. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
+      3. What are the set of problems that your subject has to solve? How do these problems vary in design and difficulty \(levels\)? Game Psychology: "When you can pinpoint where you went wrong, this is called a near miss. It's used all the time in terms of how slot machines are designed. When we fail to win, we create a reason in our mind why we didn't. The losses effectively become near-wins and feel 'cognitively frustrating'. And the only way you can get rid of that frustration is to go back to the start and play again."
+
+      1. How will you give them ultimate gratification upon achieving these goals/solving these problems? \(E.g: Rocket league goal explosion and trumpet sounds\)
+      2. What are the risks and rewards that they have to balance at any given moment?
+      3. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
+      4. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
    2. **Art & Assets**: 
       1. **3D Models**
          1. First look to the Asset Store for anything you may need that fits the bill.
