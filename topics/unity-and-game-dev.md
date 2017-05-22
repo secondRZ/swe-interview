@@ -63,13 +63,21 @@
 
 ## Process
 
-1. **Ideation**
+1. **Overview**
+   1. Ideation
+   2. MVP Development
+   3. Marketing to small markets to test viability and sustainability
+   4. If viable, go to publishers with budget to pay for full game production, marketing, and distribution.
+   5. Finish the game.
+   6. Let publishers handle the profitability of the game while you focus on building and squeezing the IP for as much as you can \(which may or may not include sequals\).
+   7. Once IP is fully squeezed, sell it and move on to the next thing.
+2. **Ideation**
    1. Satisfy this requirement first: "It turns out that it boils down to a kind of pragmatic freedom to roam coupled with an odd combination of social factors. The fundamental human desire to master an environment in concert with the stories that these games generate for the player seems to be utterly compelling, independent of any idea of skill, progression … or even the game being actually finished and fully playable. You could lose years trying to figure this out fully."
    2. Next come up with new and interesting characters that can be latched on to \(and easily promoted\). With full backstories. \("You should know how much change is in their pockets at any given time."\). 
    3. Then come up with an amazing story arc and backdrop. \(Feel free to use inspiration from sources we've screenshot and saved\).
-   4. How will you be marketing the game? What's the marketing budget? IG ads? Other ads? PR? Influencers? Reddit mods of /r/gaming? What percentage of revenue from the game will go back into marketing? For every 1 person that plays the game, 3 more should be spawned. So if the game is super viral \(each person is telling 3 friends\), then no ads are necessary. If not, then hopefully the game is sticky enough that the revenue from 1 person playing pays for acquiring 3 new players plus profit.
+   4. How will you be marketing the game? What's the marketing budget? IG ads? Other ads? PR? Influencers? Reddit mods of /r/gaming? What percentage of revenue from the game will go back into marketing? For every 1 person that plays the game, 3 more should be spawned. So if the game is super viral \(each person is telling 3 friends\), then no ads are necessary. If not, then hopefully the game is sticky enough that the revenue from 1 person playing pays for acquiring 3 new players plus profit. 
    5. Finally solidify your revenue streams for this particular game. Ads only? IAP to get rid of ads? Other IAPs?
-2. **Production**
+3. **Production**
    1. **Design**: 
       1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\) 
       2. Upon first playing the game, how are your subjects gifted with **surprise and delight**. How is the game both **new** and **recognizable** at the same time? \(Ex: Rocket league is soccer, but with cars. Flappy birds had a Mario feel, but it was a bird.\)
@@ -112,22 +120,25 @@
          1. Gameplay videos
          2. Images \(Screenshots, Gifs, Logos\)
          3. Website
+         4. Icon that stands out in the app store.
    4. **QA and Playtesting**
    5. **Build**
-3. **Publish**
+4. **Publish**
    1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine
    2. Networking with publishers: You need to ask them exactly, "What is the checklist for you giving a green light to a game?" And work on giving them exactly what they want.
    3. What are they going to do for you? What do you want done? Do these match?
    4. Eventually you want to erase these step by step and keep a larger piece of the pie. So first you're looking for funding for all three, then just marketing and distribution, and finally just distribution \(keeping 85% of the money\). \(150M in company stock, 5M in overhead for 5 years, 25M to finance acquisitions for the business, 10M for each project for a minimum of three\).
    5. **Production** **Funding**: How much upfront \(enough to last me until the game launches plus 3 months after, plus profit\)? Money usage rules? How much on the backend and at what point? How does that backend money flow? Who cuts the checks? In what increments?
    6. **Marketing** \[PR, Advertising, Events\]: Who exactly runs the PR? Is it just North America? Do they include streamers, Youtubers, and other social media? How are they spending advertising money, and where? What events do they go to and what happens there? Is their cohesion in their campaigning? Can they build excitement toward a release date
-   7. **Distribution** \[digital, retail, merch, direct\]: Placement on storefronts? Inclusion in promotions, merchandising? Cross promotion?
+      1. Strategies:
+         1. Become a big fish in a small pond, and expand geographically. \#1 in Finland then Sweden then Denmark then Greece then Czech Republic. Once you have that staying power, now you go to publishers with the numbers.
+   7. **Distribution** \[digital, retail, merch, direct\]: Placement on storefronts \(physical\) or featured/front pages of digital stores? Inclusion in promotions, merchandising? Cross promotion?
    8. Who have they worked with before? How did it go? \(Go talk to them, and the ones that didn't sell many copies\)
    9. Do they believe in and are they excited about the game?
    10. In their past work, does the game have more visibility than the publisher's name?
    11. IP: IP is under no circumstances up for grabs. Owned by the developer's studio.
-4. **Squeeze** as much as you can out of it.
-5. **Sell**: Maple Media
+5. **Squeeze** as much as you can out of it. Toys, cartoons, movies, etc. How do you protect your IP?
+6. **Sell**: Sell the IP and the products. Maple Media
 
 
 
