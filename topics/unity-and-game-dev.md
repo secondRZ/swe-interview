@@ -69,7 +69,7 @@
    3. Marketing to small markets to test viability and sustainability
    4. If viable, go to publishers with budget to pay for full game production, marketing, and distribution.
    5. Finish the game.
-   6. Let publishers handle the profitability of the game while you focus on building and squeezing the IP for as much as you can \(which may or may not include sequals\).
+   6. Let publishers handle the profitability of the game while you focus on building and squeezing the IP for as much as you can \(which may or may not include game updates and sequals\).
    7. Once IP is fully squeezed, sell it and move on to the next thing.
 2. **Ideation**
    1. Satisfy this requirement first: "It turns out that it boils down to a kind of pragmatic freedom to roam coupled with an odd combination of social factors. The fundamental human desire to master an environment in concert with the stories that these games generate for the player seems to be utterly compelling, independent of any idea of skill, progression … or even the game being actually finished and fully playable. You could lose years trying to figure this out fully."
@@ -77,52 +77,55 @@
    3. Then come up with an amazing story arc and backdrop. \(Feel free to use inspiration from sources we've screenshot and saved\).
    4. How will you be marketing the game? What's the marketing budget? IG ads? Other ads? PR? Influencers? Reddit mods of /r/gaming? What percentage of revenue from the game will go back into marketing? For every 1 person that plays the game, 3 more should be spawned. So if the game is super viral \(each person is telling 3 friends\), then no ads are necessary. If not, then hopefully the game is sticky enough that the revenue from 1 person playing pays for acquiring 3 new players plus profit. 
    5. Finally solidify your revenue streams for this particular game. Ads only? IAP to get rid of ads? Other IAPs?
-3. **Production**
-   1. **Design**: 
-      1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\) 
-      2. Upon first playing the game, how are your subjects gifted with **surprise and delight**. How is the game both **new** and **recognizable** at the same time? \(Ex: Rocket league is soccer, but with cars. Flappy birds had a Mario feel, but it was a bird.\)
+3. **Production**  
+   1. **Design**:   
+      1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\)   
+      2. Upon first playing the game, how are your subjects gifted with **surprise and delight**. How is the game both **new** and **recognizable** at the same time? \(Ex: Rocket league is soccer, but with cars. Flappy birds had a Mario feel, but it was a bird.\)  
       3. What are the set of problems that your subject has to solve? How do these problems vary in design and difficulty \(levels\)? Game Psychology: "When you can pinpoint where you went wrong, this is called a near miss. It's used all the time in terms of how slot machines are designed. When we fail to win, we create a reason in our mind why we didn't. The losses effectively become near-wins and feel 'cognitively frustrating'. And the only way you can get rid of that frustration is to go back to the start and play again."
 
-      1. How will you give them ultimate gratification upon achieving these goals/solving these problems? \(E.g: Rocket league goal explosion and trumpet sounds\)
-      2. What are the risks and rewards that they have to balance at any given moment?
-      3. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
-      4. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
-   2. **Art & Assets**: 
-      1. **3D Models**
-         1. First look to the Asset Store for anything you may need that fits the bill.
-         2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
-         3. Idle Animation
-         4. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
-      2. **Textures**
-      3. **Level UI**
-      4. **Scripts**
-      5. **Sound Effects**
-      6. **Music**
-   3. **Development**
-      1. First import all assets/prefabs and setup the initial assets of the game \(environment/props, player, camera \(FPS, following player, etc\), and camera effects for the scene.
-      2. **Pickups**: 
-         1. Idle movement, different from idle animation \(fly moving in a circle\)
-         2. Pickup animation/particles
-         3. Pickup spawning: Need the object itself that needs to be spawned, minimum and maximum number of objects that should be spawned at any given time, total number that are currently spawned, and the area that they should be spawned. Make sure the items can never spawn within a certain radius of the player.
-      3. **Other Characters**
-         1. Pathfinding: 
-            1. Collisions can happen multiple times very fast, so it's best to include something in the if condition that will make sure it only happens once \(like something that changes inside of the block\) if the colliding object isn't destroyed by the collision.
-      4. **Game State**
-         1. Before the user manually starts the game, no characters should be moving.
-         2. Overlay: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
-         3. Health: Of course, the player health should be a public property.
-      5. **Audio**
-         1. Make sure you have a script for the audio to not destroy every time a new scene loads.
-         2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music and success effects \(pickups, kills, etc\), which should be 2D.
-         3. Mixing is just as important. Make sure the sounds are at the right levels.
-      6. **Monetization and Analytics**
-      7. **Secondary Assets**
-         1. Gameplay videos
-         2. Images \(Screenshots, Gifs, Logos\)
-         3. Website
-         4. Icon that stands out in the app store.
-   4. **QA and Playtesting**
-   5. **Build**
+   1. How will you give them ultimate gratification upon achieving these goals/solving these problems? \(E.g: Rocket league goal explosion and trumpet sounds\)
+   2. What are the risks and rewards that they have to balance at any given moment?
+   3. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
+   4. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
+      1. **Art & Assets**: 
+   5. **3D Models**
+      1. First look to the Asset Store for anything you may need that fits the bill.
+      2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
+      3. Idle Animation
+      4. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
+   6. **Textures**
+   7. **Level UI**
+   8. **Scripts**
+   9. **Sound Effects**
+   10. **Music**
+       1. **Development**
+   11. First import all assets/prefabs and setup the initial assets of the game \(environment/props, player, camera \(FPS, following player, etc\), and camera effects for the scene.
+   12. **Pickups**: 
+       1. Idle movement, different from idle animation \(fly moving in a circle\)
+       2. Pickup animation/particles
+       3. Pickup spawning: Need the object itself that needs to be spawned, minimum and maximum number of objects that should be spawned at any given time, total number that are currently spawned, and the area that they should be spawned. Make sure the items can never spawn within a certain radius of the player.
+   13. **Other Characters**
+       1. Pathfinding: 
+          1. Collisions can happen multiple times very fast, so it's best to include something in the if condition that will make sure it only happens once \(like something that changes inside of the block\) if the colliding object isn't destroyed by the collision.
+   14. **Game State**
+       1. Before the user manually starts the game, no characters should be moving.
+       2. Overlay: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
+       3. Health: Of course, the player health should be a public property.
+   15. **Audio**
+       1. Make sure you have a script for the audio to not destroy every time a new scene loads.
+       2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music and success effects \(pickups, kills, etc\), which should be 2D.
+       3. Mixing is just as important. Make sure the sounds are at the right levels.
+   16. **Monetization and Analytics**
+   17. **Secondary Assets**
+       1. Gameplay videos
+       2. Images \(Screenshots, Gifs, Logos\)
+       3. Website
+       4. Twitter and maybe IG.
+       5. Icon that stands out in the app store.
+   18. **QA and Playtesting**
+       1. Put it in front of your family to test its level of fun and addiction.
+   19. **Build**
+
 4. **Publish**
    1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine
    2. Networking with publishers: You need to ask them exactly, "What is the checklist for you giving a green light to a game?" And work on giving them exactly what they want.
