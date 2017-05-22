@@ -78,8 +78,8 @@
    4. How will you be marketing the game? What's the marketing budget? IG ads? Other ads? PR? Influencers? Reddit mods of /r/gaming? What percentage of revenue from the game will go back into marketing? For every 1 person that plays the game, 3 more should be spawned. So if the game is super viral \(each person is telling 3 friends\), then no ads are necessary. If not, then hopefully the game is sticky enough that the revenue from 1 person playing pays for acquiring 3 new players plus profit. 
    5. Finally solidify your revenue streams for this particular game. Ads only? IAP to get rid of ads? Other IAPs?
 3. **Production**  
-   1. **Design**:   
-      1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\)   
+   1. **Design**:  
+      1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\)  
       2. Upon first playing the game, how are your subjects gifted with **surprise and delight**. How is the game both **new** and **recognizable** at the same time? \(Ex: Rocket league is soccer, but with cars. Flappy birds had a Mario feel, but it was a bird.\)  
       3. What are the set of problems that your subject has to solve? How do these problems vary in design and difficulty \(levels\)? Game Psychology: "When you can pinpoint where you went wrong, this is called a near miss. It's used all the time in terms of how slot machines are designed. When we fail to win, we create a reason in our mind why we didn't. The losses effectively become near-wins and feel 'cognitively frustrating'. And the only way you can get rid of that frustration is to go back to the start and play again."
 
@@ -116,6 +116,8 @@
        2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music and success effects \(pickups, kills, etc\), which should be 2D.
        3. Mixing is just as important. Make sure the sounds are at the right levels.
    16. **Monetization and Analytics**
+       1. IAP Ideas
+          1. A cheat character that automatically beats the level.
    17. **Secondary Assets**
        1. Gameplay videos
        2. Images \(Screenshots, Gifs, Logos\)
@@ -126,21 +128,26 @@
        1. Put it in front of your family to test its level of fun and addiction.
    19. **Build**
 
-4. **Publish**
-   1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine
-   2. Networking with publishers: You need to ask them exactly, "What is the checklist for you giving a green light to a game?" And work on giving them exactly what they want.
-   3. What are they going to do for you? What do you want done? Do these match?
-   4. Eventually you want to erase these step by step and keep a larger piece of the pie. So first you're looking for funding for all three, then just marketing and distribution, and finally just distribution \(keeping 85% of the money\). \(150M in company stock, 5M in overhead for 5 years, 25M to finance acquisitions for the business, 10M for each project for a minimum of three\).
-   5. **Production** **Funding**: How much upfront \(enough to last me until the game launches plus 3 months after, plus profit\)? Money usage rules? How much on the backend and at what point? How does that backend money flow? Who cuts the checks? In what increments?
-   6. **Marketing** \[PR, Advertising, Events\]: Who exactly runs the PR? Is it just North America? Do they include streamers, Youtubers, and other social media? How are they spending advertising money, and where? What events do they go to and what happens there? Is their cohesion in their campaigning? Can they build excitement toward a release date
-      1. Strategies:
-         1. Become a big fish in a small pond, and expand geographically. \#1 in Finland then Sweden then Denmark then Greece then Czech Republic. Once you have that staying power, now you go to publishers with the numbers.
-   7. **Distribution** \[digital, retail, merch, direct\]: Placement on storefronts \(physical\) or featured/front pages of digital stores? Inclusion in promotions, merchandising? Cross promotion?
-   8. Who have they worked with before? How did it go? \(Go talk to them, and the ones that didn't sell many copies\)
-   9. Do they believe in and are they excited about the game?
-   10. In their past work, does the game have more visibility than the publisher's name?
+4. **Publish**  
+   1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine  
+   2. Networking with publishers: You need to ask them exactly, "What is the checklist for you giving a green light to a game?" And work on giving them exactly what they want.  
+   3. What are they going to do for you? What do you want done? Do these match?  
+   4. Eventually you want to erase these step by step and keep a larger piece of the pie. So first you're looking for funding for all three, then just marketing and distribution, and finally just distribution \(keeping 85% of the money\). \(150M in company stock, 5M in overhead for 5 years, 25M to finance acquisitions for the business, 10M for each project for a minimum of three\).  
+   5. **Production** **Funding**: How much upfront \(enough to last me until the game launches plus 3 months after, plus profit\)? Money usage rules? How much on the backend and at what point? How does that backend money flow? Who cuts the checks? In what increments?  
+   6. **Marketing** \[PR, Advertising, Events\]: Who exactly runs the PR? Is it just North America? Do they include streamers, Youtubers, and other social media? How are they spending advertising money, and where? What events do they go to and what happens there? Is their cohesion in their campaigning? Can they build excitement toward a release date  
+      1. Strategies:  
+         1. Become a big fish in a small pond, and expand geographically. \#1 in Finland then Sweden then Denmark then Greece then Czech Republic. Once you have that staying power, now you go to publishers with the numbers.  
+   7. **Distribution** \[digital, retail, merch, direct\]: Placement on storefronts \(physical\) or featured/front pages of digital stores? Inclusion in promotions, merchandising? Cross promotion?  
+   8. Who have they worked with before? How did it go? \(Go talk to them, and the ones that didn't sell many copies\)  
+   9. Do they believe in and are they excited about the game?  
+   10. In their past work, does the game have more visibility than the publisher's name?  
    11. IP: IP is under no circumstances up for grabs. Owned by the developer's studio.
-5. **Squeeze** as much as you can out of it. Toys, cartoons, movies, etc. How do you protect your IP?
+
+5. **Squeeze** as much as you can out of it. 
+   1. How do you protect your IP?
+   2. Toys: Purchasable from within the app.
+   3. Cartoons
+   4. Movies
 6. **Sell**: Sell the IP and the products. Maple Media
 
 
