@@ -77,8 +77,8 @@
    3. Then come up with an amazing story arc and backdrop. \(Feel free to use inspiration from sources we've screenshot and saved\).
    4. How will you be marketing the game? What's the marketing budget? IG ads? Other ads? PR? Influencers? Reddit mods of /r/gaming? What percentage of revenue from the game will go back into marketing? For every 1 person that plays the game, 3 more should be spawned. So if the game is super viral \(each person is telling 3 friends\), then no ads are necessary. If not, then hopefully the game is sticky enough that the revenue from 1 person playing pays for acquiring 3 new players plus profit. 
    5. Finally solidify your revenue streams for this particular game. Ads only? IAP to get rid of ads? Other IAPs?
-3. **Production** 
- 
+3. **Production**
+
    1. **Design**:
 
       1. Deciding _how_ the game should play and feel \(What are the perfect settings and platforms for the game? If it's mobile it should pass the toilet test **and** the quick show off test. If console then the Saturday on my own test \(Jak and Daxter, Uncharted\) **or** the party/everyone will have fun test \(Wii Sports, Rocket League\). 2D vs 3D? Sound effects inspirations. Soundrack inspirations. Overall mood? Physics inspirations.\)  
@@ -88,8 +88,9 @@
       5. What are the risks and rewards that they have to balance at any given moment?
       6. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
       7. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
-   
-   2. **Art & Assets**: 
+
+   2. **Art & Assets**:
+
    3. **3D Models**
       1. First look to the Asset Store for anything you may need that fits the bill.
       2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
@@ -101,7 +102,7 @@
    7. **Sound Effects**
    8. **Music**
    9. **Unity Setup**
-         1. First import all assets/prefabs and setup the initial assets of the game \(environment/props, player, camera \(FPS, following player, etc\), and camera effects for the scene.
+      1. First import all assets/prefabs and setup the initial assets of the game \(environment/props, player, camera \(FPS, following player, etc\), and camera effects for the scene.
    10. **Pickups**: 
        1. Idle movement, different from idle animation \(fly moving in a circle\)
        2. Pickup animation/particles
@@ -130,7 +131,7 @@
        1. Put it in front of your family to test its level of fun and addiction.
    17. **Build**
 
-4. **Publish**  
+4. **Publish**
 
    1. Publishers: Developer Digital, Paradox, Surprise Attack, tinyBuild, Indie Fund, Team 17, Adult Swim Games, Finji, Devolver, Curve, Double Fine  
    2. Networking with publishers: You need to ask them exactly, "What is the checklist for you giving a green light to a game?" And work on giving them exactly what they want.  
@@ -147,13 +148,13 @@
    11. IP: IP is under no circumstances up for grabs. Owned by the developer's studio.
 
 5. **Squeeze** as much as you can out of it.
-   
+
    1. How do you protect your IP?  
    2. Toys: Purchasable from within the app.  
    3. Cartoons  
    4. Movies
 
-6. **Sell**: Sell the IP and the products. Maple Media
+6. **Sell**: Sell the IP and the products. If you're only going to sell pieces of it, make sure you don't end up like Dick and Mac and allow the new owners to make your portion obsolete. Maple Media
 
 
 
