@@ -91,9 +91,7 @@
       6. What makes this game **remarkable**? Are there inherent viral attributes? Is there something particurlaly different? Why will this game spread like wildfire?
       7. How will you build strong IP? \(Strong, recognizable characters and symbols\). How will you profit off of the IP? Should you work with a publicist to treat the IP like a celebrity? Licensing deals? Selling merch? Daily vlog? 
 
-   2. **Art & Assets**:
-
-   3. **3D Models**
+   2. **3D Models**
 
       1. First look to the Asset Store for anything you may need that fits the bill.
       2. Animation:
@@ -110,43 +108,40 @@
          3. Controllers in Unity map clips to actions (E.G: Nothing happening? Use the idle clip.) You get to it by double clicking the Controller field in the Animator component of the game object. Here you can see the state machine, and the various transitions between animations, and the conditions for them to occur, which can then be triggered via scripts. (E.G: A transition from idle to walking looks for a "Speed" variable of > .5, and in your scripts you set the speed to 2.) `playerAnimator.SetFloat ("Speed", 3f);`
 
       4. On import: make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
-
-   4. **Textures**
-
-   5. **Level UI**
-
-   6. **Scripts**
-   7. **Sound Effects**
-   8. **Music**
-   9. **Unity Setup**
+   3. **Materials**
+   4. **Cameras**
+   5. **Lighting**
+   6. **Sound Effects**
+   7. **Music**
+   8. **Unity Setup**
       1. First import all assets/prefabs and setup the initial assets of the game \(environment/props, player, camera \(FPS, following player, etc\), and camera effects for the scene.
-   10. **Pickups**: 
+   9. **Pickups**: 
        1. Idle movement, different from idle animation \(fly moving in a circle\)
        2. Pickup animation/particles
        3. Pickup spawning: Need the object itself that needs to be spawned, minimum and maximum number of objects that should be spawned at any given time, total number that are currently spawned, and the area that they should be spawned. Make sure the items can never spawn within a certain radius of the player.
-   11. **Other Characters**
+   10. **Other Characters**
        1. Pathfinding: 
           1. Collisions can happen multiple times very fast, so it's best to include something in the if condition that will make sure it only happens once \(like something that changes inside of the block\) if the colliding object isn't destroyed by the collision.
-   12. **Game State**
+   11. **Game State**
        1. Before the user manually starts the game, no characters should be moving.
        2. Overlay: Use Unity's UI overlay features. Check "Pixel Perfect" in the **Canvas** object to make the letters more crisp. For the **Text** object, always set the height and width slightly larger than the perferred sizes in the "Layout Properties" window at the bottom right after you change the font size.
        3. Health: Of course, the player health should be a public property.
-   13. **Audio**
+   12. **Audio**
        1. Make sure you have a script for the audio to not destroy every time a new scene loads.
        2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music and success effects \(pickups, kills, etc\), which should be 2D.
        3. Mixing is just as important. Make sure the sounds and pitches are at the right levels at the right moments.
-   14. **Monetization and Analytics**
+   13. **Monetization and Analytics**
        1. IAP Ideas
           1. A cheat character that automatically beats the level.
-   15. **Secondary Assets**
+   14. **Secondary Assets**
        1. Gameplay videos
        2. Images \(Screenshots, Gifs, Logos\)
        3. Website
        4. Twitter and maybe IG.
        5. Icon that stands out in the app store.
-   16. **QA and Playtesting**
+   15. **QA and Playtesting**
        1. Put it in front of your family to test its level of fun and addiction.
-   17. **Build**
+   16. **Build**
 
 4. **Publish**
 
