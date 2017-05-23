@@ -107,7 +107,7 @@
             5. Turbo
             6. Jumping and Double Jumping
             7. Flying
-         3. Controllers in Unity map clips to actions (E.G: Nothing happening? Use the idle clip.)
+         3. Controllers in Unity map clips to actions (E.G: Nothing happening? Use the idle clip.) You get to it by double clicking the Controller field in the Animator component of the game object. Here you can see the state machine, and the various transitions between animations, and the conditions for them to occur, which can then be triggered via scripts. (E.G: A transition from idle to walking looks for a "Speed" variable of > .5, and in your scripts you set the speed to 2.)
 
       4. On import: make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
 
