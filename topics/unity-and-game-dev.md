@@ -26,6 +26,7 @@
   * **Background Music**: Hierarchy Window -&gt; Create -&gt; Create Empty -&gt; Name it "2D Sound" since it won't be positional sound, simply flat music in the background. Then - with the 2D Sound object selected - Create -&gt; Create Empty Child. Name it "Music". Do it again and name the second child "Background". Now Add Component -&gt; Audio -&gt; Audio Source. Find the audio sources for the two game objects.  Make sure "Play on Awake" \(start when the game starts running, even if before the user presses play\) and "Loop" are checked.
   * **Sound Effects**: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\). In the "3D Sound Settings" section, change the minimum distance to about a third of the main camera's "Field of View" setting. If you're under that distance from the source, then you'll hear the sound perfectly clear. Now change the max distance to about twice the Field of View setting. If you're over this distance, you won't hear the sound at all. Anything between the 2 distances makes the sound decrease. These numbers are just rules of thumb, change them as the sounds would change in real life \(gun fire would have a much greater max distance than footsteps\). Be sure to disable any random sound players by clicking the checkbox next to the script so that it doesn't start until appropriate.
   * **Mixer**: Window -&gt; Audio Mixer. Move the Mixer to the **Sound **folder. You can create a group for sounds that should have identical mixing, or create a new group for each sound. Then click on the component with the sound component, click the circle next to the "Output" field, and double click on the group that it should output to. A neat thing to do is disable any enemies \(by clicking the checkbox next to the game object name in the inspector window\), or disable the ability to die, then in the mixer window , while the game is playing, click "Edit in Play Mode".
+  * You can also click "Add" at the bottom of an audio channel, to add a setting adjuster like "Pitch Shifter", then adjust these during gameplay.
 
 * **UI Overlay**
 
@@ -91,11 +92,12 @@
 
    2. **Art & Assets**:
 
-   3. **3D Models**
-      1. First look to the Asset Store for anything you may need that fits the bill.
-      2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
-      3. Idle Animation
+   3. **3D Models**  
+      1. First look to the Asset Store for anything you may need that fits the bill.  
+      2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.  
+      3. Idle Animation  
       4. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
+
    4. **Textures**
    5. **Level UI**
    6. **Scripts**
@@ -117,7 +119,7 @@
    13. **Audio**
        1. Make sure you have a script for the audio to not destroy every time a new scene loads.
        2. Each sound should be as realistic as possible in its depth and frequency with the exception of background music and success effects \(pickups, kills, etc\), which should be 2D.
-       3. Mixing is just as important. Make sure the sounds are at the right levels.
+       3. Mixing is just as important. Make sure the sounds and pitches are at the right levels at the right moments.
    14. **Monetization and Analytics**
        1. IAP Ideas
           1. A cheat character that automatically beats the level.
