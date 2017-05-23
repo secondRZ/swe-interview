@@ -99,7 +99,7 @@
       2. Animation:
       
          1. Bones: Bones and pivots provide the points at which a model should animate. **Rigging** is the process of providing those bones and pivots to a model.
-         2. Clips
+         2. Clips: When you first import a 3D model into Unity - say, from the Asset Store - they may not have clips, but a timeline of all the animations. Create clips by clicking the + button and setting the section of the animations you want.
             1. Idle Animation
             2. Slow Moving Animation (Forward and Backwards)
             3. Normal Moving (Forward and Backwards)
