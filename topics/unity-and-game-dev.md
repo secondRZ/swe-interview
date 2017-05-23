@@ -93,15 +93,24 @@
 
    2. **Art & Assets**:
 
-   3. **3D Models**  
-      1. First look to the Asset Store for anything you may need that fits the bill.  
-      2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.  
-      3. Idle Animation  
-      4. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
+   3. **3D Models**
+
+      1. First look to the Asset Store for anything you may need that fits the bill.
+
+      2. Animation:
+
+         1. Bones: Bones and pivots provide the points at which a model should animate. **Rigging** is the process of providing those bones and pivots to a model.
+
+      3. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
+
+         1. Idle Animation
+
+      4. On import: make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
 
    4. **Textures**
 
    5. **Level UI**
+
    6. **Scripts**
    7. **Sound Effects**
    8. **Music**
