@@ -99,8 +99,15 @@
       2. Animation:
       
          1. Bones: Bones and pivots provide the points at which a model should animate. **Rigging** is the process of providing those bones and pivots to a model.
-         2. Characters should have both an idle animation, and a movement animation component for when the user is actively moving.
-         3. Idle Animation
+         2. Clips
+            1. Idle Animation
+            2. Slow Moving Animation (Forward and Backwards)
+            3. Normal Moving (Forward and Backwards)
+            4. Fast Moving (Forward and Backwards)
+            5. Turbo
+            6. Jumping and Double Jumping
+            7. Flying
+         3. Controllers in Unity map clips to actions (E.G: Nothing happening? Use the idle clip.)
 
       4. On import: make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
 
