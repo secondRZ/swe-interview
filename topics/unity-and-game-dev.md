@@ -27,6 +27,7 @@
   * **Sound Effects**: Create an empty child object on the object that makes the sound. Add an audio source component. Uncheck "Play on Awake". Slide "Spacial Blend" all the way up \(makes it a 3D sound\). In the "3D Sound Settings" section, change the minimum distance to about a third of the main camera's "Field of View" setting. If you're under that distance from the source, then you'll hear the sound perfectly clear. Now change the max distance to about twice the Field of View setting. If you're over this distance, you won't hear the sound at all. Anything between the 2 distances makes the sound decrease. These numbers are just rules of thumb, change them as the sounds would change in real life \(gun fire would have a much greater max distance than footsteps\). Be sure to disable any random sound players by clicking the checkbox next to the script so that it doesn't start until appropriate.
   * **Mixer**: Window -&gt; Audio Mixer. Move the Mixer to the **Sound **folder. You can create a group for sounds that should have identical mixing, or create a new group for each sound. Then click on the component with the sound component, click the circle next to the "Output" field, and double click on the group that it should output to. A neat thing to do is disable any enemies \(by clicking the checkbox next to the game object name in the inspector window\), or disable the ability to die, then in the mixer window , while the game is playing, click "Edit in Play Mode".
   * You can also click "Add" at the bottom of an audio channel, to add a setting adjuster like "Pitch Shifter", then adjust these during gameplay.
+  * You can also create alternate mixes by saving a "Snapshot" on the left side of the mixing board.
 
 * **UI Overlay**
 
@@ -99,6 +100,7 @@
       4. Make sure that props are checked as "Static" \(meaning that they will not be moving\) so that unity can perform its optimizations for them. The checkbox is in the inspector window next to the naming field.
 
    4. **Textures**
+
    5. **Level UI**
    6. **Scripts**
    7. **Sound Effects**
